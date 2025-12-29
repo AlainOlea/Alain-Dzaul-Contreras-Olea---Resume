@@ -4,7 +4,7 @@ let currentLanguage = localStorage.getItem('language') || 'en';
 // Resume Data - Bilingual
 const resumeDataBilingual = {
     en: {
-        title: 'Quality Assurance Engineering',
+        title: 'Quality Assurance',
         professionalSummary: 'Professional Summary',
         experience: 'Experience',
         education: 'Education',
@@ -12,11 +12,20 @@ const resumeDataBilingual = {
         certifications: 'Certifications & Licenses',
         languages: 'Languages',
         summaryItems: [
-            'Specialized in QA for pharmaceutical-grade software under FDA 21CFR Part 11 compliance',
+            'Experienced Software Quality Engineer with strong background in quality assurance, procedure adherence, and customer support',
             'Proven track record: 5 consecutive zero-bug releases, 125% quality improvement (4/10 → 9/10)',
+            'Specialized in QA for pharmaceutical-grade software under FDA 21CFR Part 11 compliance',
             'Full-stack QA expertise: 800+ automated tests across React/TypeScript/Node.js/Next.js/Nest.js stack',
+            'Skilled in critical thinking and finding out-of-the-box solutions to address complex issues',
+            'Proficient in resolving customer queries and issues related to software development programs with detail-oriented approach',
             'Technical leadership: Led QA for 7 developers, implemented CI/CD, Three Amigos, Definition of Ready',
-            'Multi-industry experience: Pharmaceutical, Enterprise Software, Energy sectors'
+            'Strong team player dedicated to knowledge sharing and collaborative problem-solving',
+            'Expert in both automated and manual testing strategies, including unit, integration, E2E, and white-box testing',
+            'Adaptable professional always seeking new solutions to improve processes and outcomes',
+            'Multi-industry experience: Pharmaceutical, Enterprise Software, Energy sectors',
+            'Proficient in modern testing frameworks: Jest, Playwright, Vitest, SuperTest for comprehensive quality assurance',
+            'Experienced in Agile/Scrum methodologies with focus on continuous integration and iterative improvement',
+            'Passionate about leveraging AI tools (Claude Code, Gemini CLI, WindSurf) to enhance testing efficiency and code quality'
         ],
         keyAchievements: [
             { metric: '125%', label: 'Quality improvement (4/10 → 9/10)' },
@@ -77,11 +86,13 @@ const resumeDataBilingual = {
                 location: 'Mexico City, Tula Hidalgo, Salina Cruz Oaxaca',
                 period: 'September 2018 – March 2019',
                 description: [
-                    'Visited 5 facilities (refineries, distribution centers, gas processing plants) for operational audits',
+                    'Analyzed and collected data from gas production optimization system, performing ethylene production forecasting with predictions that accurately reflected subsequent national production decline',
+                    'Visited 5 facilities (refineries, distribution centers, gas processing plants) for operational audits'
+                ],
+                expandedDescription: [
                     'Supported gas and liquid transportation process tracking',
                     'Gained exposure to large-scale industrial operations in energy sector'
-                ],
-                expandedDescription: []
+                ]
             }
         ],
         educationItems: [
@@ -93,13 +104,7 @@ const resumeDataBilingual = {
             {
                 institution: 'Instituto Tecnológico de Buenos Aires (ITBA)',
                 location: 'Buenos Aires, Argentina',
-                degree: 'Exchange Program',
-                details: [
-                    'Courses in Chemical/Industrial Engineering:',
-                    'Process Simulation and Optimization',
-                    'Quality Management',
-                    'Environmental Engineering'
-                ]
+                degree: 'Exchange Program - Chemical/Industrial Engineering'
             }
         ],
         skillsItems: [
@@ -174,7 +179,7 @@ const resumeDataBilingual = {
         ]
     },
     es: {
-        title: 'Ingeniería de Aseguramiento de Calidad',
+        title: 'Aseguramiento de Calidad',
         professionalSummary: 'Resumen Profesional',
         experience: 'Experiencia',
         education: 'Educación',
@@ -182,11 +187,20 @@ const resumeDataBilingual = {
         certifications: 'Certificaciones y Licencias',
         languages: 'Idiomas',
         summaryItems: [
-            'Especializado en QA para software farmacéutico bajo cumplimiento FDA 21CFR Part 11',
+            'Ingeniero de Calidad de Software experimentado con sólida trayectoria en aseguramiento de calidad, cumplimiento de procedimientos y soporte al cliente',
             'Historial comprobado: 5 releases consecutivos sin bugs, mejora de calidad del 125% (4/10 → 9/10)',
+            'Especializado en QA para software farmacéutico bajo cumplimiento FDA 21CFR Part 11',
             'Expertise en QA full-stack: 800+ tests automatizados en React/TypeScript/Node.js/Next.js/Nest.js',
+            'Hábil en pensamiento crítico y búsqueda de soluciones innovadoras para abordar problemas complejos',
+            'Competente en resolver consultas y problemas de clientes relacionados con programas de desarrollo de software con enfoque orientado al detalle',
             'Liderazgo técnico: Lideré QA para 7 developers, implementé CI/CD, Three Amigos, Definition of Ready',
-            'Experiencia multi-industria: Farmacéutica, Software Enterprise, Energía'
+            'Colaborador destacado dedicado al intercambio de conocimientos y resolución colaborativa de problemas',
+            'Experto en estrategias de testing automatizado y manual, incluyendo pruebas unitarias, integración, E2E y white-box',
+            'Profesional adaptable siempre buscando nuevas soluciones para mejorar procesos y resultados',
+            'Experiencia multi-industria: Farmacéutica, Software Enterprise, Energía',
+            'Competente en frameworks modernos de testing: Jest, Playwright, Vitest, SuperTest para aseguramiento de calidad integral',
+            'Experimentado en metodologías Agile/Scrum con enfoque en integración continua y mejora iterativa',
+            'Apasionado por aprovechar herramientas de IA (Claude Code, Gemini CLI, WindSurf) para mejorar eficiencia de testing y calidad de código'
         ],
         keyAchievements: [
             { metric: '125%', label: 'Mejora de calidad (4/10 → 9/10)' },
@@ -247,11 +261,13 @@ const resumeDataBilingual = {
                 location: 'Ciudad de México, Tula Hidalgo, Salina Cruz Oaxaca',
                 period: 'Septiembre 2018 – Marzo 2019',
                 description: [
-                    'Visité 5 instalaciones (refinerías, centros de distribución, plantas de procesamiento de gas) para auditorías operacionales',
+                    'Analicé y recopilé datos del sistema de optimización de producción de gas, realizando forecasting de producción de etileno con predicciones que reflejaron con precisión la posterior caída de producción nacional',
+                    'Visité 5 instalaciones (refinerías, centros de distribución, plantas de procesamiento de gas) para auditorías operacionales'
+                ],
+                expandedDescription: [
                     'Apoyé seguimiento de procesos de transportación de gas y líquidos',
                     'Obtuve exposición a operaciones industriales a gran escala en sector energético'
-                ],
-                expandedDescription: []
+                ]
             }
         ],
         educationItems: [
@@ -263,13 +279,7 @@ const resumeDataBilingual = {
             {
                 institution: 'Instituto Tecnológico de Buenos Aires (ITBA)',
                 location: 'Buenos Aires, Argentina',
-                degree: 'Programa de Intercambio',
-                details: [
-                    'Cursos en Ingeniería Química/Industrial:',
-                    'Simulación y Optimización de Procesos',
-                    'Gestión de Calidad',
-                    'Ingeniería Ambiental'
-                ]
+                degree: 'Programa de Intercambio - Ingeniería Química/Industrial'
             }
         ],
         skillsItems: [
@@ -430,11 +440,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Remove typing cursor after animation
     setTimeout(() => {
         document.querySelector('.name').classList.add('done');
-    }, 3500);
+    }, 2000);
 
     setTimeout(() => {
         document.querySelector('.title').classList.add('done');
-    }, 6000);
+    }, 3400);
 });
 
 // Summary Carousel
@@ -442,25 +452,51 @@ function renderSummary() {
     const data = getCurrentData();
     const container = document.getElementById('summary-carousel');
     container.innerHTML = '';
-    
-    data.summaryItems.forEach((item, index) => {
-        const p = document.createElement('p');
-        p.className = 'summary-item';
-        if (index === summaryIndex) p.classList.add('active');
-        p.setAttribute('data-index', index);
-        p.textContent = item;
-        container.appendChild(p);
-    });
-    
+
+    // Group items in pairs (2 items per page)
+    const itemsPerPage = 2;
+    const totalPages = Math.ceil(data.summaryItems.length / itemsPerPage);
+
+    for (let i = 0; i < totalPages; i++) {
+        const pageDiv = document.createElement('div');
+        pageDiv.className = 'summary-item';
+        if (i === summaryIndex) pageDiv.classList.add('active');
+        pageDiv.setAttribute('data-index', i);
+
+        const ul = document.createElement('ul');
+        ul.className = 'summary-bullets';
+
+        // Add 2 items to this page
+        for (let j = 0; j < itemsPerPage; j++) {
+            const itemIndex = i * itemsPerPage + j;
+            if (itemIndex < data.summaryItems.length) {
+                const li = document.createElement('li');
+                const textWrapper = document.createElement('span');
+                textWrapper.className = 'bullet-text';
+                textWrapper.textContent = data.summaryItems[itemIndex];
+                li.appendChild(textWrapper);
+                ul.appendChild(li);
+            }
+        }
+
+        pageDiv.appendChild(ul);
+        container.appendChild(pageDiv);
+    }
+
     // Wrap letters for karaoke effect on current item
     const currentItem = container.querySelector('.summary-item.active');
     if (currentItem && !currentItem.hasAttribute('data-wrapped')) {
-        wrapLettersInSpans(currentItem);
+        const bulletTexts = currentItem.querySelectorAll('.bullet-text');
+        bulletTexts.forEach(textWrapper => {
+            if (!textWrapper.hasAttribute('data-wrapped')) {
+                wrapLettersInSpans(textWrapper);
+                textWrapper.setAttribute('data-wrapped', 'true');
+            }
+        });
         currentItem.setAttribute('data-wrapped', 'true');
     }
-    
-    const items = container.querySelectorAll('.summary-item');
-    document.getElementById('summary-indicator').textContent = (summaryIndex + 1) + ' / ' + items.length;
+
+    document.getElementById('summary-indicator').textContent = (summaryIndex + 1) + ' / ' + totalPages;
 }
 
 function wrapLettersInSpans(element) {
@@ -496,9 +532,15 @@ function showSummary(index) {
     items.forEach(item => item.classList.remove('active'));
     items[summaryIndex].classList.add('active');
 
-    // Wrap letters in spans for karaoke effect
+    // Wrap letters in spans for karaoke effect on each bullet-text
     if (!items[summaryIndex].hasAttribute('data-wrapped')) {
-        wrapLettersInSpans(items[summaryIndex]);
+        const bulletTexts = items[summaryIndex].querySelectorAll('.bullet-text');
+        bulletTexts.forEach(textWrapper => {
+            if (!textWrapper.hasAttribute('data-wrapped')) {
+                wrapLettersInSpans(textWrapper);
+                textWrapper.setAttribute('data-wrapped', 'true');
+            }
+        });
         items[summaryIndex].setAttribute('data-wrapped', 'true');
     }
 
@@ -741,11 +783,31 @@ function switchToLanguage(lang) {
 }
 
 // Copy to Clipboard
-function copyToClipboard(text, message) {
+function copyToClipboard(text, type) {
     navigator.clipboard.writeText(text).then(() => {
+        let message = '';
+
+        if (type === 'email') {
+            message = currentLanguage === 'en'
+                ? `Email ${text} copied`
+                : `Email ${text} copiado`;
+        } else if (type === 'phone') {
+            message = currentLanguage === 'en'
+                ? `Phone ${text} copied`
+                : `Teléfono ${text} copiado`;
+        } else {
+            message = currentLanguage === 'en'
+                ? `${text} copied`
+                : `${text} copiado`;
+        }
+
         showNotification(message);
     }).catch(err => {
-        console.error('Error al copiar:', err);
+        console.error('Error copying to clipboard:', err);
+        const errorMessage = currentLanguage === 'en'
+            ? 'Error copying to clipboard'
+            : 'Error al copiar al portapapeles';
+        showNotification(errorMessage);
     });
 }
 

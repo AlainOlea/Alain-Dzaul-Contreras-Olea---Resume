@@ -83,6 +83,7 @@
 **Mexico City, Tula Hidalgo, Salina Cruz Oaxaca | September 2018 – March 2019**
 
 **Key Responsibilities:**
+- Analyzed and collected data from gas production optimization system, performing ethylene production forecasting with predictions that accurately reflected subsequent national production decline
 - Visited 5 facilities (refineries, distribution centers, gas processing plants) for operational audits
 - Supported gas and liquid transportation process tracking
 - Gained exposure to large-scale industrial operations in energy sector
@@ -166,4 +167,4 @@ Exchange Program
 
 ---
 
-*This resume was generated with [Claude Code](https://claude.com/claude-code)*
+

@@ -83,6 +83,7 @@
 **Ciudad de México, Tula Hidalgo, Salina Cruz Oaxaca | Septiembre 2018 – Marzo 2019**
 
 **Responsabilidades Clave:**
+- Analicé y recopilé datos del sistema de optimización de producción de gas, realizando forecasting de producción de etileno con predicciones que reflejaron con precisión la posterior caída de producción nacional
 - Visité 5 instalaciones (refinerías, centros de distribución, plantas de procesamiento de gas) para auditorías operacionales
 - Apoyé seguimiento de procesos de transportación de gas y líquidos
 - Obtuve exposición a operaciones industriales a gran escala en sector energético

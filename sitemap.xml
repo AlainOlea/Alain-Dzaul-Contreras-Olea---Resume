@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    <url>
+        <loc>https://alain-contreras-olea-resume.vercel.app/</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://alain-contreras-olea-resume.vercel.app/public/images/profile-picture.png</image:loc>
+            <image:title>Alain Dzaul Contreras Olea - SDET Quality Assurance Engineer</image:title>
+            <image:caption>Professional profile picture of Alain Dzaul Contreras Olea, SDET Quality Assurance Engineer</image:caption>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://alain-contreras-olea-resume.vercel.app/Alain_Contreras_Resume_EN.md</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://alain-contreras-olea-resume.vercel.app/Alain_Contreras_Resume_ES.md</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+</urlset>

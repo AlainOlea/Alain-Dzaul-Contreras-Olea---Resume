@@ -4,7 +4,7 @@ let currentLanguage = localStorage.getItem('language') || 'en';
 // Resume Data - Bilingual
 const resumeDataBilingual = {
     en: {
-        title: 'Quality Assurance',
+        title: 'SDET Quality Assurance',
         professionalSummary: 'Professional Summary',
         experience: 'Experience',
         education: 'Education',
@@ -179,7 +179,7 @@ const resumeDataBilingual = {
         ]
     },
     es: {
-        title: 'Aseguramiento de Calidad',
+        title: 'SDET Aseguramiento de Calidad',
         professionalSummary: 'Resumen Profesional',
         experience: 'Experiencia',
         education: 'Educación',

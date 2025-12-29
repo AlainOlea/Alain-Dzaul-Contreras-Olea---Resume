@@ -163,6 +163,69 @@ body {
     color: #f1f5f9;
 }
 
+/* Key Achievements Section */
+.achievements-section {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
+    padding: 30px 50px;
+    border-radius: 16px;
+    margin-bottom: 40px;
+    border: 2px solid rgba(148, 163, 184, 0.3);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    animation: slideInDown 0.8s ease-out;
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.achievement-card {
+    background: rgba(15, 23, 42, 0.6);
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 4px solid #94a3b8;
+    text-align: center;
+    transition: all 0.3s ease;
+    animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) backwards;
+}
+
+.achievement-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.achievement-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.achievement-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.achievement-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.achievement-card:hover {
+    transform: translateY(-5px) scale(1.05);
+    border-left-color: #f1f5f9;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.achievement-metric {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #f1f5f9;
+    margin-bottom: 8px;
+    line-height: 1;
+}
+
+.achievement-label {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    line-height: 1.4;
+}
+
 /* Sections */
 section {
     background: rgba(30, 41, 59, 0.85);
@@ -388,6 +451,49 @@ h2 {
     animation: pulse 1.5s ease-in-out infinite;
 }
 
+/* Expand/Collapse Button */
+.expand-btn {
+    background: rgba(148, 163, 184, 0.15);
+    border: 2px solid rgba(148, 163, 184, 0.3);
+    color: #cbd5e1;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.expand-btn:hover {
+    background: rgba(148, 163, 184, 0.25);
+    border-color: rgba(148, 163, 184, 0.6);
+    transform: translateY(-2px);
+    color: #f1f5f9;
+}
+
+/* Expanded Bullets */
+.expanded-bullets {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
+    margin-top: 0;
+    list-style: none;
+}
+
+.expanded-bullets.show {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 15px;
+}
+
+.expanded-bullets li {
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
 .carousel-experience {
     min-height: 450px;
 }
@@ -460,7 +566,7 @@ h2 {
     transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     cursor: pointer;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .skill-tag:hover {
@@ -468,6 +574,48 @@ h2 {
     border-color: rgba(148, 163, 184, 0.6);
     transform: scale(1.15) translateY(-5px);
     color: #f1f5f9;
+}
+
+/* Tooltip */
+.tooltip {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-5px);
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.98));
+    color: #cbd5e1;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 1000;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    line-height: 1.4;
+    max-width: 280px;
+    white-space: normal;
+    text-align: center;
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: rgba(15, 23, 42, 0.98);
+}
+
+.tooltip.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
 }
 
 /* Certifications */
@@ -514,11 +662,45 @@ h2 {
     transition: all 0.4s ease;
     animation: slideInUp 0.7s ease-out;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.language-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(148, 163, 184, 0.1), rgba(203, 213, 225, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .language-item:hover {
     transform: translateY(-10px) scale(1.05);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    border-left-color: #cbd5e1;
+}
+
+.language-item:hover::before {
+    opacity: 1;
+}
+
+.language-item.active {
+    border-left-color: #f1f5f9;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(51, 65, 85, 0.95));
+    box-shadow: 0 15px 40px rgba(148, 163, 184, 0.3);
+}
+
+.language-item.active h3 {
+    color: #f1f5f9;
+}
+
+.language-item.active .level {
+    color: #cbd5e1;
 }
 
 .language-item h3 {
@@ -526,12 +708,16 @@ h2 {
     margin-bottom: 8px;
     font-size: 1.3rem;
     font-weight: 700;
+    position: relative;
+    z-index: 1;
 }
 
 .language-item .level {
     color: #94a3b8;
     font-size: 1rem;
     font-weight: 500;
+    position: relative;
+    z-index: 1;
 }
 
 /* Notifications */
@@ -628,6 +814,17 @@ h2 {
     from {
         opacity: 0;
         transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
     }
     to {
         opacity: 1;
@@ -780,9 +977,37 @@ h2 {
         padding: 30px 0 60px;
     }
 
+    .achievements-section {
+        padding: 20px 30px;
+    }
+
+    .achievements-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .achievement-metric {
+        font-size: 2.5rem;
+    }
+
+    .achievement-label {
+        font-size: 0.85rem;
+    }
+
     .skill-tag {
         font-size: 0.9rem;
         padding: 8px 14px;
+    }
+
+    .tooltip {
+        font-size: 0.75rem;
+        padding: 10px 12px;
+        max-width: 220px;
+        bottom: calc(100% + 8px);
+    }
+
+    .tooltip::after {
+        border-width: 5px;
     }
 
     .copy-notification {

@@ -12,23 +12,33 @@ const resumeDataBilingual = {
         certifications: 'Certifications & Licenses',
         languages: 'Languages',
         summaryItems: [
-            'Experienced Software Quality Engineer with a strong background in quality assurance, procedure adherence, and customer support.',
-            'Proficient in resolving customer queries and issues related to software development programs.',
-            'Skilled in critical thinking and finding out-of-the-box solutions to address complex issues.',
-            'Strong team player dedicated to knowledge sharing and collaborative problem-solving.',
-            'Adaptable and always seeking new solutions to improve processes and outcomes.'
+            'Specialized in QA for pharmaceutical-grade software under FDA 21CFR Part 11 compliance',
+            'Proven track record: 5 consecutive zero-bug releases, 125% quality improvement (4/10 → 9/10)',
+            'Full-stack QA expertise: 800+ automated tests across React/TypeScript/Node.js/Next.js/Nest.js stack',
+            'Technical leadership: Led QA for 7 developers, implemented CI/CD, Three Amigos, Definition of Ready',
+            'Multi-industry experience: Pharmaceutical, Enterprise Software, Energy sectors'
+        ],
+        keyAchievements: [
+            { metric: '125%', label: 'Quality improvement (4/10 → 9/10)' },
+            { metric: '800+', label: 'Automated tests created' },
+            { metric: '100%', label: 'FDA audit pass rate' },
+            { metric: '5', label: 'Bug-free releases in a row' }
         ],
         experienceItems: [
             {
                 role: 'Quality Assurance',
                 company: 'Rubidex',
                 location: 'Mexico City',
-                period: 'October 2023 - Present',
+                period: 'February 2025 - Present',
                 description: [
-                    '8+ months of experience in white box testing for modern web applications built with React, TypeScript, Node.js, Next.js, and Nest.js.',
-                    'Developing and executing unit, integration, and end-to-end tests using frameworks like Jest, SuperTest, Playwright, and Vitest.',
-                    'Collaborating closely with development teams to identify and resolve defects early in the software development lifecycle.',
-                    'Ensuring code quality and application reliability through comprehensive testing strategies.'
+                    'Improved product quality from 4/10 to 9/10 client satisfaction (125% increase)',
+                    'Built 800+ automated tests (600 unit, 200 integration, 10 E2E) saving 5h/week',
+                    'Led QA for 7 developers across 2 teams, blocking 5+ critical bugs pre-production'
+                ],
+                expandedDescription: [
+                    'Implemented agile processes: Three Amigos, Design Handoffs, CI/CD, Definition of Ready',
+                    'Managed QA for 3 projects (Next.js/Nest.js stack + C++/Python pharma analytics)',
+                    'Multi-role ownership: QA + Tech Lead + PO + Support in startup environment'
                 ]
             },
             {
@@ -37,13 +47,14 @@ const resumeDataBilingual = {
                 location: 'Mexico City',
                 period: 'March 2021 – July 2024',
                 description: [
-                    'Ensured software design for clients had zero showstopper and critical issues, focusing on final customer satisfaction.',
-                    'Created and executed test cases and managed test plans using VSTS/Azure DevOps.',
-                    'Tested with API, Python test Frameworks, OPC UA connections.',
-                    'Reduced customer-reported issues by reproducing them in a development environment.',
-                    'Gained experience in the pharmaceutical industry regulations.',
-                    'Utilized automation software, with most test cases executed manually for greater flexibility.',
-                    'Worked under the guidance of FDA 21CFR Part 11, ISO 9001.'
+                    '5 consecutive releases with zero critical bugs (zero showstoppers)',
+                    'Passed 2 FDA audits + 3+ client audits with no critical observations',
+                    'Managed 1,600+ test cases for pharmaceutical spectrometry software (50 specialized users)'
+                ],
+                expandedDescription: [
+                    'Delivered 7-8 successful releases for enterprise client with 3 interdependent products',
+                    'Complete documentation under FDA 21CFR Part 11 and ISO 9001 compliance',
+                    'Hybrid testing approach: 10% automated (critical flows) + 90% manual (regulatory flexibility)'
                 ]
             },
             {
@@ -52,10 +63,12 @@ const resumeDataBilingual = {
                 location: 'Mexico City',
                 period: 'July 2019 – February 2021',
                 description: [
-                    'Provided technical support for a large account using Oracle ERP in the Supply Chain area.',
-                    'Utilized Python, SQL, and Java for various projects.',
-                    'Gained basic app development experience using Kotlin.',
-                    'Collaborated in a multicultural environment, focusing on software development and problem resolution.'
+                    'L2/L3 technical support for 5,000+ users in Fortune 500 client (multi-continental operations)',
+                    'Resolved ~25 tickets/month in Oracle ERP Supply Chain using Python, SQL, and Java',
+                    'Collaborated in multicultural team for international enterprise-scale project'
+                ],
+                expandedDescription: [
+                    'Basic Android development with Kotlin for internal tools'
                 ]
             },
             {
@@ -64,12 +77,11 @@ const resumeDataBilingual = {
                 location: 'Mexico City, Tula Hidalgo, Salina Cruz Oaxaca',
                 period: 'September 2018 – March 2019',
                 description: [
-                    'Gathered information from different production plants for decision-making management.',
-                    'Followed up on product transportation processes of gas and liquids.',
-                    'Updated Piping and Instrumentation Diagrams (P&IDs).',
-                    'Conducted and reported on maintenance and quality audits.',
-                    'Performed industrial visits to various facilities to enhance understanding of industrial processes.'
-                ]
+                    'Visited 5 facilities (refineries, distribution centers, gas processing plants) for operational audits',
+                    'Supported gas and liquid transportation process tracking',
+                    'Gained exposure to large-scale industrial operations in energy sector'
+                ],
+                expandedDescription: []
             }
         ],
         educationItems: [
@@ -91,9 +103,66 @@ const resumeDataBilingual = {
             }
         ],
         skillsItems: [
-            { category: 'Programming Languages', items: ['Python', 'SQL', 'Java', 'Fortran', 'C++'] },
-            { category: 'Development & Testing', items: ['React', 'TypeScript', 'Node.js', 'Next.js', 'Nest.js', 'Jest', 'SuperTest', 'Playwright', 'Vitest'] },
-            { category: 'Software & Tools', items: ['VSTS/Azure DevOps', 'Aspen HYSYS', 'Ranorex', 'AutoCAD', 'UniSim', 'Postman', 'Microsoft Office', 'Orange', 'UAexpert', 'Aspen Plus', 'OPC Tools'] }
+            {
+                category: 'AI & Development Tools',
+                items: [
+                    { name: 'Antigravity', description: 'AI-powered development environment for rapid prototyping' },
+                    { name: 'Claude Code', description: 'AI coding assistant CLI for autonomous software development' },
+                    { name: 'Gemini CLI', description: 'Google\'s AI assistant command-line interface for coding tasks' },
+                    { name: 'WindSurf', description: 'AI-first IDE with intelligent code completion and refactoring' }
+                ]
+            },
+            {
+                category: 'Programming Languages',
+                items: [
+                    { name: 'TypeScript', description: 'Typed superset of JavaScript for safer, scalable applications' },
+                    { name: 'JavaScript', description: 'Dynamic programming language for web and server-side development' },
+                    { name: 'Python', description: 'Versatile language for automation, testing, and data analysis' },
+                    { name: 'SQL', description: 'Query language for relational database operations and analytics' },
+                    { name: 'Java', description: 'Object-oriented language for enterprise applications' },
+                    { name: 'C++', description: 'High-performance language for system and scientific computing' }
+                ]
+            },
+            {
+                category: 'Testing & QA',
+                items: [
+                    { name: 'Jest', description: 'JavaScript testing framework for unit and integration tests' },
+                    { name: 'Playwright', description: 'End-to-end testing framework for web applications across browsers' },
+                    { name: 'Vitest', description: 'Fast unit test framework optimized for Vite/modern projects' },
+                    { name: 'SuperTest', description: 'HTTP assertion library for testing Node.js REST APIs' },
+                    { name: 'Manual Testing', description: 'Exploratory testing with human judgment for UX and edge cases' },
+                    { name: 'White-box Testing', description: 'Internal structure testing with full code knowledge' }
+                ]
+            },
+            {
+                category: 'Frontend & Backend',
+                items: [
+                    { name: 'React', description: 'Component-based UI library for building interactive interfaces' },
+                    { name: 'Next.js', description: 'React framework with SSR, routing, and full-stack capabilities' },
+                    { name: 'Nest.js', description: 'Progressive Node.js framework with TypeScript and modular architecture' },
+                    { name: 'Node.js', description: 'JavaScript runtime for building scalable server-side applications' }
+                ]
+            },
+            {
+                category: 'Code Quality & CI/CD',
+                items: [
+                    { name: 'ESLint', description: 'JavaScript linter for identifying code quality and style issues' },
+                    { name: 'Prettier', description: 'Opinionated code formatter for consistent style across teams' },
+                    { name: 'GitHub Actions', description: 'Automation platform for CI/CD workflows in GitHub repositories' },
+                    { name: 'Git', description: 'Distributed version control system for tracking code changes' },
+                    { name: 'Azure DevOps', description: 'Microsoft\'s DevOps platform for CI/CD, repos, and project management' }
+                ]
+            },
+            {
+                category: 'Industry Software',
+                items: [
+                    { name: 'Aspen HYSYS', description: 'Process simulation software for chemical engineering' },
+                    { name: 'Ranorex', description: 'GUI test automation framework for desktop and web applications' },
+                    { name: 'AutoCAD', description: 'Computer-aided design software for 2D/3D technical drawings' },
+                    { name: 'Postman', description: 'API development and testing platform for REST/GraphQL' },
+                    { name: 'OPC Tools', description: 'Industrial automation protocol tools for SCADA systems' }
+                ]
+            }
         ],
         certificationsItems: [
             { name: 'Certified in ISO 9001:2015', details: '' },
@@ -113,23 +182,33 @@ const resumeDataBilingual = {
         certifications: 'Certificaciones y Licencias',
         languages: 'Idiomas',
         summaryItems: [
-            'Ingeniero de Calidad de Software experimentado con sólida trayectoria en aseguramiento de calidad, cumplimiento de procedimientos y soporte al cliente.',
-            'Competente en resolver consultas y problemas de clientes relacionados con programas de desarrollo de software.',
-            'Hábil en pensamiento crítico y búsqueda de soluciones innovadoras para abordar problemas complejos.',
-            'Colaborador destacado dedicado al intercambio de conocimientos y resolución colaborativa de problemas.',
-            'Adaptable y siempre buscando nuevas soluciones para mejorar procesos y resultados.'
+            'Especializado en QA para software farmacéutico bajo cumplimiento FDA 21CFR Part 11',
+            'Historial comprobado: 5 releases consecutivos sin bugs, mejora de calidad del 125% (4/10 → 9/10)',
+            'Expertise en QA full-stack: 800+ tests automatizados en React/TypeScript/Node.js/Next.js/Nest.js',
+            'Liderazgo técnico: Lideré QA para 7 developers, implementé CI/CD, Three Amigos, Definition of Ready',
+            'Experiencia multi-industria: Farmacéutica, Software Enterprise, Energía'
+        ],
+        keyAchievements: [
+            { metric: '125%', label: 'Mejora de calidad (4/10 → 9/10)' },
+            { metric: '800+', label: 'Tests automatizados creados' },
+            { metric: '100%', label: 'Tasa de aprobación FDA' },
+            { metric: '5', label: 'Releases sin bugs consecutivos' }
         ],
         experienceItems: [
             {
                 role: 'Aseguramiento de Calidad',
                 company: 'Rubidex',
                 location: 'Ciudad de México',
-                period: 'Octubre 2023 - Presente',
+                period: 'Febrero 2025 - Presente',
                 description: [
-                    'Más de 8 meses de experiencia en pruebas de caja blanca para aplicaciones web modernas construidas con React, TypeScript, Node.js, Next.js y Nest.js.',
-                    'Desarrollo y ejecución de pruebas unitarias, de integración y de extremo a extremo utilizando frameworks como Jest, SuperTest, Playwright y Vitest.',
-                    'Colaboración estrecha con equipos de desarrollo para identificar y resolver defectos tempranamente en el ciclo de vida del desarrollo de software.',
-                    'Garantizar la calidad del código y la confiabilidad de las aplicaciones mediante estrategias de prueba integrales.'
+                    'Mejoré la calidad del producto de 4/10 a 9/10 en satisfacción del cliente (incremento del 125%)',
+                    'Desarrollé 800+ tests automatizados (600 unitarios, 200 integración, 10 E2E) ahorrando 5h/semana',
+                    'Lideré QA para 7 developers en 2 equipos, bloqueando 5+ bugs críticos pre-producción'
+                ],
+                expandedDescription: [
+                    'Implementé procesos ágiles: Three Amigos, Design Handoffs, CI/CD, Definition of Ready',
+                    'Gestioné QA para 3 proyectos (stack Next.js/Nest.js + C++/Python analytics farmacéuticas)',
+                    'Responsabilidad multi-rol: QA + Tech Lead + PO + Soporte en ambiente startup'
                 ]
             },
             {
@@ -138,13 +217,14 @@ const resumeDataBilingual = {
                 location: 'Ciudad de México',
                 period: 'Marzo 2021 – Julio 2024',
                 description: [
-                    'Aseguré que el diseño de software para clientes tuviera cero problemas críticos, enfocándome en la satisfacción final del cliente.',
-                    'Creé y ejecuté casos de prueba y gestioné planes de prueba usando VSTS/Azure DevOps.',
-                    'Realicé pruebas con API, frameworks de prueba en Python, conexiones OPC UA.',
-                    'Reduje problemas reportados por clientes reproduciéndolos en un entorno de desarrollo.',
-                    'Adquirí experiencia en regulaciones de la industria farmacéutica.',
-                    'Utilicé software de automatización, con la mayoría de casos de prueba ejecutados manualmente para mayor flexibilidad.',
-                    'Trabajé bajo la guía de FDA 21CFR Part 11, ISO 9001.'
+                    '5 releases consecutivos con cero bugs críticos (cero showstoppers)',
+                    'Aprobé 2 auditorías FDA + 3+ auditorías de clientes sin observaciones críticas',
+                    'Gestioné 1,600+ casos de prueba para software de espectrometría farmacéutica (50 usuarios especializados)'
+                ],
+                expandedDescription: [
+                    'Entregué 7-8 releases exitosos para cliente enterprise con 3 productos interdependientes',
+                    'Documentación completa bajo cumplimiento FDA 21CFR Part 11 e ISO 9001',
+                    'Enfoque de testing híbrido: 10% automatizado (flujos críticos) + 90% manual (flexibilidad regulatoria)'
                 ]
             },
             {
@@ -153,10 +233,12 @@ const resumeDataBilingual = {
                 location: 'Ciudad de México',
                 period: 'Julio 2019 – Febrero 2021',
                 description: [
-                    'Proporcioné soporte técnico para una cuenta grande usando Oracle ERP en el área de Cadena de Suministro.',
-                    'Utilicé Python, SQL y Java para diversos proyectos.',
-                    'Adquirí experiencia básica en desarrollo de aplicaciones usando Kotlin.',
-                    'Colaboré en un entorno multicultural, enfocándome en desarrollo de software y resolución de problemas.'
+                    'Soporte técnico L2/L3 para 5,000+ usuarios en cliente Fortune 500 (operaciones multi-continentales)',
+                    'Resolví ~25 tickets/mes en Oracle ERP Supply Chain usando Python, SQL y Java',
+                    'Colaboré en equipo multicultural para proyecto internacional a escala enterprise'
+                ],
+                expandedDescription: [
+                    'Desarrollo básico Android con Kotlin para herramientas internas'
                 ]
             },
             {
@@ -165,12 +247,11 @@ const resumeDataBilingual = {
                 location: 'Ciudad de México, Tula Hidalgo, Salina Cruz Oaxaca',
                 period: 'Septiembre 2018 – Marzo 2019',
                 description: [
-                    'Recopilé información de diferentes plantas de producción para la toma de decisiones gerenciales.',
-                    'Di seguimiento a procesos de transporte de productos de gas y líquidos.',
-                    'Actualicé Diagramas de Tuberías e Instrumentación (P&IDs).',
-                    'Realicé y reporté auditorías de mantenimiento y calidad.',
-                    'Realicé visitas industriales a diversas instalaciones para mejorar la comprensión de procesos industriales.'
-                ]
+                    'Visité 5 instalaciones (refinerías, centros de distribución, plantas de procesamiento de gas) para auditorías operacionales',
+                    'Apoyé seguimiento de procesos de transportación de gas y líquidos',
+                    'Obtuve exposición a operaciones industriales a gran escala en sector energético'
+                ],
+                expandedDescription: []
             }
         ],
         educationItems: [
@@ -192,9 +273,66 @@ const resumeDataBilingual = {
             }
         ],
         skillsItems: [
-            { category: 'Lenguajes de Programación', items: ['Python', 'SQL', 'Java', 'Fortran', 'C++'] },
-            { category: 'Desarrollo y Pruebas', items: ['React', 'TypeScript', 'Node.js', 'Next.js', 'Nest.js', 'Jest', 'SuperTest', 'Playwright', 'Vitest'] },
-            { category: 'Software y Herramientas', items: ['VSTS/Azure DevOps', 'Aspen HYSYS', 'Ranorex', 'AutoCAD', 'UniSim', 'Postman', 'Microsoft Office', 'Orange', 'UAexpert', 'Aspen Plus', 'OPC Tools'] }
+            {
+                category: 'IA y Herramientas de Desarrollo',
+                items: [
+                    { name: 'Antigravity', description: 'Entorno de desarrollo potenciado por IA para prototipado rápido' },
+                    { name: 'Claude Code', description: 'Asistente de código IA CLI para desarrollo autónomo de software' },
+                    { name: 'Gemini CLI', description: 'Interfaz de línea de comandos del asistente IA de Google para tareas de código' },
+                    { name: 'WindSurf', description: 'IDE con IA integrada para autocompletado y refactorización inteligente' }
+                ]
+            },
+            {
+                category: 'Lenguajes de Programación',
+                items: [
+                    { name: 'TypeScript', description: 'Superconjunto tipado de JavaScript para aplicaciones más seguras y escalables' },
+                    { name: 'JavaScript', description: 'Lenguaje dinámico para desarrollo web y del lado del servidor' },
+                    { name: 'Python', description: 'Lenguaje versátil para automatización, testing y análisis de datos' },
+                    { name: 'SQL', description: 'Lenguaje de consultas para operaciones en bases de datos relacionales' },
+                    { name: 'Java', description: 'Lenguaje orientado a objetos para aplicaciones empresariales' },
+                    { name: 'C++', description: 'Lenguaje de alto rendimiento para computación científica y de sistemas' }
+                ]
+            },
+            {
+                category: 'Testing y QA',
+                items: [
+                    { name: 'Jest', description: 'Framework de testing JavaScript para pruebas unitarias y de integración' },
+                    { name: 'Playwright', description: 'Framework end-to-end para testing de aplicaciones web multi-navegador' },
+                    { name: 'Vitest', description: 'Framework de tests unitarios optimizado para Vite/proyectos modernos' },
+                    { name: 'SuperTest', description: 'Librería de assertions HTTP para testing de APIs Node.js REST' },
+                    { name: 'Testing Manual', description: 'Testing exploratorio con juicio humano para UX y casos extremos' },
+                    { name: 'White-box Testing', description: 'Testing de estructura interna con conocimiento completo del código' }
+                ]
+            },
+            {
+                category: 'Frontend y Backend',
+                items: [
+                    { name: 'React', description: 'Librería UI basada en componentes para interfaces interactivas' },
+                    { name: 'Next.js', description: 'Framework React con SSR, enrutamiento y capacidades full-stack' },
+                    { name: 'Nest.js', description: 'Framework progresivo Node.js con TypeScript y arquitectura modular' },
+                    { name: 'Node.js', description: 'Runtime JavaScript para construir aplicaciones escalables del lado del servidor' }
+                ]
+            },
+            {
+                category: 'Calidad de Código y CI/CD',
+                items: [
+                    { name: 'ESLint', description: 'Linter JavaScript para identificar problemas de calidad y estilo de código' },
+                    { name: 'Prettier', description: 'Formateador de código para estilo consistente entre equipos' },
+                    { name: 'GitHub Actions', description: 'Plataforma de automatización para workflows CI/CD en repositorios GitHub' },
+                    { name: 'Git', description: 'Sistema de control de versiones distribuido para rastrear cambios de código' },
+                    { name: 'Azure DevOps', description: 'Plataforma DevOps de Microsoft para CI/CD, repos y gestión de proyectos' }
+                ]
+            },
+            {
+                category: 'Software Industrial',
+                items: [
+                    { name: 'Aspen HYSYS', description: 'Software de simulación de procesos para ingeniería química' },
+                    { name: 'Ranorex', description: 'Framework de automatización de tests GUI para apps desktop y web' },
+                    { name: 'AutoCAD', description: 'Software CAD para dibujos técnicos 2D/3D' },
+                    { name: 'Postman', description: 'Plataforma de desarrollo y testing de APIs REST/GraphQL' },
+                    { name: 'OPC Tools', description: 'Herramientas de protocolo de automatización industrial para sistemas SCADA' }
+                ]
+            }
         ],
         certificationsItems: [
             { name: 'Certificado en ISO 9001:2015', details: '' },
@@ -241,12 +379,29 @@ function updateSectionTitles() {
 
 // Render all content
 function renderAllContent() {
+    renderAchievements();
     renderSummary();
     renderEducation();
     renderSkills();
     renderCertifications();
     renderLanguages();
     renderExperience();
+}
+
+// Render Key Achievements
+function renderAchievements() {
+    const data = getCurrentData();
+    const container = document.getElementById('achievements-grid');
+    let html = '';
+
+    data.keyAchievements.forEach(achievement => {
+        html += '<div class="achievement-card">';
+        html += '<div class="achievement-metric">' + achievement.metric + '</div>';
+        html += '<div class="achievement-label">' + achievement.label + '</div>';
+        html += '</div>';
+    });
+
+    container.innerHTML = html;
 }
 
 // Carousel State
@@ -258,7 +413,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set initial language
     document.getElementById('language-text').textContent = currentLanguage === 'en' ? 'ES' : 'EN';
     updateSectionTitles();
-    
+
+    renderAchievements();
     renderSummary();
     renderEducation();
     renderSkills();
@@ -267,6 +423,9 @@ document.addEventListener('DOMContentLoaded', () => {
     renderExperience();
     showSummary(0);
     startSummaryAutoplay();
+
+    // Setup global tooltip handler
+    setupGlobalTooltipHandler();
 
     // Remove typing cursor after animation
     setTimeout(() => {
@@ -376,17 +535,34 @@ function renderExperience() {
     const container = document.getElementById('experience-carousel');
     let html = '';
 
-    data.experienceItems.forEach(item => {
+    data.experienceItems.forEach((item, index) => {
         html += '<div class="swiper-slide">';
         html += '<div class="experience-item"><h3>' + item.role + '</h3>';
         html += '<div class="company">' + item.company + ' • ' + item.location + '</div>';
-        html += '<div class="meta">' + item.period + '</div><ul>';
+        html += '<div class="meta">' + item.period + '</div><ul class="main-bullets">';
 
         item.description.forEach(desc => {
             html += '<li>' + desc + '</li>';
         });
 
-        html += '</ul></div></div>';
+        html += '</ul>';
+
+        // Add expandable section if there are expanded descriptions
+        if (item.expandedDescription && item.expandedDescription.length > 0) {
+            const buttonText = currentLanguage === 'en' ? 'See full details' : 'Ver detalles completos';
+            const hideText = currentLanguage === 'en' ? 'Hide details' : 'Ocultar detalles';
+
+            html += '<button class="expand-btn" onclick="toggleExpand(this)">' + buttonText + ' ↓</button>';
+            html += '<ul class="expanded-bullets" data-hide-text="' + hideText + '">';
+
+            item.expandedDescription.forEach(desc => {
+                html += '<li>' + desc + '</li>';
+            });
+
+            html += '</ul>';
+        }
+
+        html += '</div></div>';
     });
 
     container.innerHTML = html;
@@ -453,16 +629,72 @@ function renderSkills() {
     const data = getCurrentData();
     const container = document.getElementById('skills-list');
     let html = '';
-    
+
     data.skillsItems.forEach(skill => {
         html += '<div class="skills-category"><h3>' + skill.category + '</h3><div class="skill-tags">';
         skill.items.forEach(item => {
-            html += '<span class="skill-tag">' + item + '</span>';
+            html += '<span class="skill-tag" data-tooltip="' + item.description + '">' + item.name + '<span class="tooltip">' + item.description + '</span></span>';
         });
         html += '</div></div>';
     });
-    
+
     container.innerHTML = html;
+
+    // Add tooltip event listeners
+    addTooltipListeners();
+}
+
+// Tooltip functionality
+function addTooltipListeners() {
+    const skillTags = document.querySelectorAll('.skill-tag');
+
+    skillTags.forEach(tag => {
+        // Desktop: hover
+        tag.addEventListener('mouseenter', () => {
+            const tooltip = tag.querySelector('.tooltip');
+            if (tooltip) {
+                tooltip.classList.add('visible');
+            }
+        });
+
+        tag.addEventListener('mouseleave', () => {
+            const tooltip = tag.querySelector('.tooltip');
+            if (tooltip) {
+                tooltip.classList.remove('visible');
+            }
+        });
+
+        // Mobile: click/touch
+        tag.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const tooltip = tag.querySelector('.tooltip');
+            if (tooltip) {
+                // Hide all other tooltips
+                document.querySelectorAll('.tooltip.visible').forEach(t => {
+                    if (t !== tooltip) {
+                        t.classList.remove('visible');
+                    }
+                });
+                // Toggle this tooltip
+                tooltip.classList.toggle('visible');
+            }
+        });
+    });
+}
+
+// Global click handler to close tooltips (set up once)
+let tooltipClickHandlerAdded = false;
+function setupGlobalTooltipHandler() {
+    if (!tooltipClickHandlerAdded) {
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.skill-tag')) {
+                document.querySelectorAll('.tooltip.visible').forEach(tooltip => {
+                    tooltip.classList.remove('visible');
+                });
+            }
+        });
+        tooltipClickHandlerAdded = true;
+    }
 }
 
 // Certifications
@@ -488,12 +720,24 @@ function renderLanguages() {
     const container = document.getElementById('languages-list');
     let html = '';
 
-    data.languagesItems.forEach(lang => {
-        html += '<div class="language-item"><h3>' + lang.name + '</h3>';
+    data.languagesItems.forEach((lang, index) => {
+        // Determine target language based on lang.name
+        const targetLang = (lang.name === 'Spanish' || lang.name === 'Español') ? 'es' : 'en';
+        const isActive = currentLanguage === targetLang ? 'active' : '';
+
+        html += '<div class="language-item ' + isActive + '" onclick="switchToLanguage(\'' + targetLang + '\')">';
+        html += '<h3>' + lang.name + '</h3>';
         html += '<div class="level">' + lang.level + '</div></div>';
     });
 
     container.innerHTML = html;
+}
+
+// Switch to specific language
+function switchToLanguage(lang) {
+    if (currentLanguage !== lang) {
+        toggleLanguage();
+    }
 }
 
 // Copy to Clipboard
@@ -519,22 +763,44 @@ function showNotification(message) {
 
 // Download Resume
 function downloadResume() {
-    const resumePath = '/resume.pdf';
+    const fileName = currentLanguage === 'en' ? 'Alain_Contreras_Resume_EN.md' : 'Alain_Contreras_Resume_ES.md';
+    const resumePath = '/' + fileName;
 
     fetch(resumePath, { method: 'HEAD' })
         .then(response => {
             if (response.ok) {
                 const link = document.createElement('a');
                 link.href = resumePath;
-                link.download = 'Alain_Contreras_Resume.pdf';
+                link.download = fileName;
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
+
+                const message = currentLanguage === 'en' ? 'Resume downloaded' : 'CV descargado';
+                showNotification(message);
             } else {
-                showNotification('En mantenimiento');
+                const message = currentLanguage === 'en' ? 'Under maintenance' : 'En mantenimiento';
+                showNotification(message);
             }
         })
         .catch(error => {
-            showNotification('En mantenimiento');
+            const message = currentLanguage === 'en' ? 'Under maintenance' : 'En mantenimiento';
+            showNotification(message);
         });
+}
+
+// Toggle expand/collapse for experience details
+function toggleExpand(button) {
+    const expandedSection = button.nextElementSibling;
+    const isExpanded = expandedSection.classList.contains('show');
+
+    if (isExpanded) {
+        expandedSection.classList.remove('show');
+        const showText = currentLanguage === 'en' ? 'See full details' : 'Ver detalles completos';
+        button.textContent = showText + ' ↓';
+    } else {
+        expandedSection.classList.add('show');
+        const hideText = expandedSection.getAttribute('data-hide-text');
+        button.textContent = hideText + ' ↑';
+    }
 }

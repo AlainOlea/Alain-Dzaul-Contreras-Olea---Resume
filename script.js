@@ -99,12 +99,14 @@ const resumeDataBilingual = {
             {
                 institution: 'Escuela Superior de Ingeniería Química e Industrias Extractivas (IPN)',
                 location: 'Mexico City',
-                degree: "Bachelor's degree in Petroleum Chemical Engineering"
+                degree: "Bachelor's degree in Petroleum Chemical Engineering",
+                url: 'https://www.esiqie.ipn.mx/'
             },
             {
                 institution: 'Instituto Tecnológico de Buenos Aires (ITBA)',
                 location: 'Buenos Aires, Argentina',
-                degree: 'Exchange Program - Chemical/Industrial Engineering'
+                degree: 'Exchange Program - Chemical/Industrial Engineering',
+                url: 'https://www.itba.edu.ar/'
             }
         ],
         skillsItems: [
@@ -274,12 +276,14 @@ const resumeDataBilingual = {
             {
                 institution: 'Escuela Superior de Ingeniería Química e Industrias Extractivas (IPN)',
                 location: 'Ciudad de México',
-                degree: 'Licenciatura en Ingeniería Química Petrolera'
+                degree: 'Licenciatura en Ingeniería Química Petrolera',
+                url: 'https://www.esiqie.ipn.mx/'
             },
             {
                 institution: 'Instituto Tecnológico de Buenos Aires (ITBA)',
                 location: 'Buenos Aires, Argentina',
-                degree: 'Programa de Intercambio - Ingeniería Química/Industrial'
+                degree: 'Programa de Intercambio - Ingeniería Química/Industrial',
+                url: 'https://www.itba.edu.ar/'
             }
         ],
         skillsItems: [
@@ -647,12 +651,20 @@ function renderEducation() {
     const data = getCurrentData();
     const container = document.getElementById('education-list');
     let html = '';
-    
+
     data.educationItems.forEach(edu => {
-        html += '<div class="education-item"><h3>' + edu.institution + '</h3>';
+        html += '<div class="education-item">';
+
+        // Make institution name clickable if URL exists
+        if (edu.url) {
+            html += '<h3><a href="' + edu.url + '" target="_blank" rel="noopener noreferrer" class="institution-link">' + edu.institution + ' <i class="fas fa-external-link-alt"></i></a></h3>';
+        } else {
+            html += '<h3>' + edu.institution + '</h3>';
+        }
+
         html += '<div class="degree">' + edu.degree + '</div>';
         html += '<div class="institution">' + edu.location + '</div>';
-        
+
         if (edu.details) {
             html += '<ul style="margin-top: 10px; margin-left: 15px; color: #cbd5e1; list-style: none;">';
             edu.details.forEach(detail => {
@@ -662,7 +674,7 @@ function renderEducation() {
         }
         html += '</div>';
     });
-    
+
     container.innerHTML = html;
 }
 

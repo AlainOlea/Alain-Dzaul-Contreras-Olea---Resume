@@ -613,6 +613,31 @@ h3, h4 {
     font-weight: 500;
 }
 
+.institution-link {
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.institution-link:hover {
+    color: #4ecdc4;
+    transform: translateX(5px);
+}
+
+.institution-link i {
+    font-size: 0.85em;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.institution-link:hover i {
+    opacity: 1;
+    transform: translateX(3px);
+}
+
 /* Skills */
 .skills-category {
     margin-bottom: 35px;

@@ -1,6 +1,6 @@
 # Alain Dzaul Contreras Olea
 
-**Ingeniería de Aseguramiento de Calidad**
+**SDET Aseguramiento de Calidad**
 
 ---
 
@@ -40,14 +40,14 @@
 **Ciudad de México | Febrero 2025 - Presente**
 
 **Responsabilidades Clave:**
-- Mejoré la calidad del producto de 4/10 a 9/10 en satisfacción del cliente (incremento del 125%)
-- Desarrollé 800+ tests automatizados (600 unitarios, 200 integración, 10 E2E) ahorrando 5h/semana
+- Mejoré la calidad del producto de 6/10 a 8/10 en satisfacción del cliente (incremento del 33%)
+- Desarrollé 800+ tests automatizados (600 unitarios, 200 integración, 10 E2E) con doble propósito: validación y documentación viva
 - Lideré QA para 7 developers en 2 equipos, bloqueando 5+ bugs críticos pre-producción
 
 **Detalles Adicionales:**
-- Implementé procesos ágiles: Three Amigos, Design Handoffs, CI/CD, Definition of Ready
-- Gestioné QA para 3 proyectos (stack Next.js/Nest.js + C++/Python analytics farmacéuticas)
-- Responsabilidad multi-rol: QA + Tech Lead + PO + Soporte en ambiente startup
+- Implementé pipelines CI/CD para Frontend/Backend y procesos ágiles: Three Amigos, Design Handoffs, Definition of Ready
+- Actué como puente técnico entre C-Level y desarrollo, refinando requerimientos y definiendo criterios de aceptación para módulos complejos
+- Establecí gobernanza de control de cambios y estandarización de procesos para proteger el alcance del sprint y mitigar riesgos
 
 ---
 
@@ -166,5 +166,3 @@ Programa de Intercambio
 - **Inglés** - Fluidez Profesional
 
 ---
-
-*Este currículum fue generado con [Claude Code](https://claude.com/claude-code)*

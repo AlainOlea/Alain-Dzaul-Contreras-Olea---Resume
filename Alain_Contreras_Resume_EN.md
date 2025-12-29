@@ -1,6 +1,6 @@
 # Alain Dzaul Contreras Olea
 
-**Quality Assurance Engineering**
+**SDET Quality Assurance**
 
 ---
 
@@ -40,14 +40,14 @@
 **Mexico City | February 2025 - Present**
 
 **Key Responsibilities:**
-- Improved product quality from 4/10 to 9/10 client satisfaction (125% increase)
-- Built 800+ automated tests (600 unit, 200 integration, 10 E2E) saving 5h/week
+- Improved product quality from 6/10 to 8/10 client satisfaction (33% increase)
+- Built 800+ automated tests (600 unit, 200 integration, 10 E2E) serving dual purpose: validation and living documentation
 - Led QA for 7 developers across 2 teams, blocking 5+ critical bugs pre-production
 
 **Additional Details:**
-- Implemented agile processes: Three Amigos, Design Handoffs, CI/CD, Definition of Ready
-- Managed QA for 3 projects (Next.js/Nest.js stack + C++/Python pharma analytics)
-- Multi-role ownership: QA + Tech Lead + PO + Support in startup environment
+- Implemented CI/CD pipelines for Frontend/Backend and agile processes: Three Amigos, Design Handoffs, Definition of Ready
+- Acted as technical bridge between C-Level and development, refining requirements and defining acceptance criteria for complex modules
+- Established change control governance and process standardization to protect sprint scope and mitigate risks
 
 ---
 

@@ -215,6 +215,49 @@
         </section>
     </div>
 
+    <!-- Download Modal -->
+    <div id="downloadModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Download Resume</h2>
+                <span class="close-modal" onclick="closeDownloadModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p id="modal-description">Choose your preferred format and language:</p>
+                <div class="download-options">
+                    <button class="download-option" onclick="downloadFile('Alain_Contreras_Resume_EN.md')">
+                        <i class="fas fa-file-code"></i>
+                        <div class="option-text">
+                            <strong>Markdown - English</strong>
+                            <span>Machine-readable format</span>
+                        </div>
+                    </button>
+                    <button class="download-option" onclick="downloadFile('Alain_Contreras_Resume_ES.md')">
+                        <i class="fas fa-file-code"></i>
+                        <div class="option-text">
+                            <strong>Markdown - Español</strong>
+                            <span>Formato legible por máquinas</span>
+                        </div>
+                    </button>
+                    <button class="download-option" onclick="downloadFile('Alain_Contreras_Resume_EN.pdf')">
+                        <i class="fas fa-file-pdf"></i>
+                        <div class="option-text">
+                            <strong>PDF - English</strong>
+                            <span>Professional print format</span>
+                        </div>
+                    </button>
+                    <button class="download-option" onclick="downloadFile('Alain_Contreras_Resume_ES.pdf')">
+                        <i class="fas fa-file-pdf"></i>
+                        <div class="option-text">
+                            <strong>PDF - Español</strong>
+                            <span>Formato profesional imprimible</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
 </body>

@@ -13,7 +13,7 @@ const resumeDataBilingual = {
         languages: 'Languages',
         summaryItems: [
             'Experienced Software Quality Engineer with strong background in quality assurance, procedure adherence, and customer support',
-            'Proven track record: 5 consecutive zero-bug releases, 125% quality improvement (4/10 → 9/10)',
+            'Proven track record: 5 consecutive zero-bug releases, 33% quality improvement (6/10 → 8/10)',
             'Specialized in QA for pharmaceutical-grade software under FDA 21CFR Part 11 compliance',
             'Full-stack QA expertise: 800+ automated tests across React/TypeScript/Node.js/Next.js/Nest.js stack',
             'Skilled in critical thinking and finding out-of-the-box solutions to address complex issues',
@@ -28,7 +28,7 @@ const resumeDataBilingual = {
             'Passionate about leveraging AI tools (Claude Code, Gemini CLI, WindSurf) to enhance testing efficiency and code quality'
         ],
         keyAchievements: [
-            { metric: '125%', label: 'Quality improvement (4/10 → 9/10)' },
+            { metric: '33%', label: 'Quality improvement (6/10 → 8/10)' },
             { metric: '800+', label: 'Automated tests created' },
             { metric: '100%', label: 'FDA audit pass rate' },
             { metric: '5', label: 'Bug-free releases in a row' }
@@ -40,14 +40,14 @@ const resumeDataBilingual = {
                 location: 'Mexico City',
                 period: 'February 2025 - Present',
                 description: [
-                    'Improved product quality from 4/10 to 9/10 client satisfaction (125% increase)',
-                    'Built 800+ automated tests (600 unit, 200 integration, 10 E2E) saving 5h/week',
+                    'Improved product quality from 6/10 to 8/10 client satisfaction (33% increase)',
+                    'Built 800+ automated tests (600 unit, 200 integration, 10 E2E) serving dual purpose: validation and living documentation',
                     'Led QA for 7 developers across 2 teams, blocking 5+ critical bugs pre-production'
                 ],
                 expandedDescription: [
-                    'Implemented agile processes: Three Amigos, Design Handoffs, CI/CD, Definition of Ready',
-                    'Managed QA for 3 projects (Next.js/Nest.js stack + C++/Python pharma analytics)',
-                    'Multi-role ownership: QA + Tech Lead + PO + Support in startup environment'
+                    'Implemented CI/CD pipelines for Frontend/Backend and agile processes: Three Amigos, Design Handoffs, Definition of Ready',
+                    'Acted as technical bridge between C-Level and development, refining requirements and defining acceptance criteria for complex modules',
+                    'Established change control governance and process standardization to protect sprint scope and mitigate risks'
                 ]
             },
             {
@@ -188,7 +188,7 @@ const resumeDataBilingual = {
         languages: 'Idiomas',
         summaryItems: [
             'Ingeniero de Calidad de Software experimentado con sólida trayectoria en aseguramiento de calidad, cumplimiento de procedimientos y soporte al cliente',
-            'Historial comprobado: 5 releases consecutivos sin bugs, mejora de calidad del 125% (4/10 → 9/10)',
+            'Historial comprobado: 5 releases consecutivos sin bugs, mejora de calidad del 33% (6/10 → 8/10)',
             'Especializado en QA para software farmacéutico bajo cumplimiento FDA 21CFR Part 11',
             'Expertise en QA full-stack: 800+ tests automatizados en React/TypeScript/Node.js/Next.js/Nest.js',
             'Hábil en pensamiento crítico y búsqueda de soluciones innovadoras para abordar problemas complejos',
@@ -203,7 +203,7 @@ const resumeDataBilingual = {
             'Apasionado por aprovechar herramientas de IA (Claude Code, Gemini CLI, WindSurf) para mejorar eficiencia de testing y calidad de código'
         ],
         keyAchievements: [
-            { metric: '125%', label: 'Mejora de calidad (4/10 → 9/10)' },
+            { metric: '33%', label: 'Mejora de calidad (6/10 → 8/10)' },
             { metric: '800+', label: 'Tests automatizados creados' },
             { metric: '100%', label: 'Tasa de aprobación FDA' },
             { metric: '5', label: 'Releases sin bugs consecutivos' }
@@ -215,14 +215,14 @@ const resumeDataBilingual = {
                 location: 'Ciudad de México',
                 period: 'Febrero 2025 - Presente',
                 description: [
-                    'Mejoré la calidad del producto de 4/10 a 9/10 en satisfacción del cliente (incremento del 125%)',
-                    'Desarrollé 800+ tests automatizados (600 unitarios, 200 integración, 10 E2E) ahorrando 5h/semana',
+                    'Mejoré la calidad del producto de 6/10 a 8/10 en satisfacción del cliente (incremento del 33%)',
+                    'Desarrollé 800+ tests automatizados (600 unitarios, 200 integración, 10 E2E) con doble propósito: validación y documentación viva',
                     'Lideré QA para 7 developers en 2 equipos, bloqueando 5+ bugs críticos pre-producción'
                 ],
                 expandedDescription: [
-                    'Implementé procesos ágiles: Three Amigos, Design Handoffs, CI/CD, Definition of Ready',
-                    'Gestioné QA para 3 proyectos (stack Next.js/Nest.js + C++/Python analytics farmacéuticas)',
-                    'Responsabilidad multi-rol: QA + Tech Lead + PO + Soporte en ambiente startup'
+                    'Implementé pipelines CI/CD para Frontend/Backend y procesos ágiles: Three Amigos, Design Handoffs, Definition of Ready',
+                    'Actué como puente técnico entre C-Level y desarrollo, refinando requerimientos y definiendo criterios de aceptación para módulos complejos',
+                    'Establecí gobernanza de control de cambios y estandarización de procesos para proteger el alcance del sprint y mitigar riesgos'
                 ]
             },
             {
@@ -825,7 +825,39 @@ function showNotification(message) {
 
 // Download Resume
 function downloadResume() {
-    const fileName = currentLanguage === 'en' ? 'Alain_Contreras_Resume_EN.md' : 'Alain_Contreras_Resume_ES.md';
+    openDownloadModal();
+}
+
+function openDownloadModal() {
+    const modal = document.getElementById('downloadModal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDescription = document.getElementById('modal-description');
+
+    // Update modal text based on current language
+    if (currentLanguage === 'en') {
+        modalTitle.textContent = 'Download Resume';
+        modalDescription.textContent = 'Choose your preferred format and language:';
+    } else {
+        modalTitle.textContent = 'Descargar CV';
+        modalDescription.textContent = 'Elige tu formato y idioma preferido:';
+    }
+
+    modal.classList.add('show');
+
+    // Close modal when clicking outside
+    modal.onclick = function(event) {
+        if (event.target === modal) {
+            closeDownloadModal();
+        }
+    };
+}
+
+function closeDownloadModal() {
+    const modal = document.getElementById('downloadModal');
+    modal.classList.remove('show');
+}
+
+function downloadFile(fileName) {
     const resumePath = '/' + fileName;
 
     fetch(resumePath, { method: 'HEAD' })
@@ -840,13 +872,15 @@ function downloadResume() {
 
                 const message = currentLanguage === 'en' ? 'Resume downloaded' : 'CV descargado';
                 showNotification(message);
+                closeDownloadModal();
             } else {
-                const message = currentLanguage === 'en' ? 'Under maintenance' : 'En mantenimiento';
+                const message = currentLanguage === 'en' ? 'File not found' : 'Archivo no encontrado';
                 showNotification(message);
             }
         })
         .catch(error => {
-            const message = currentLanguage === 'en' ? 'Under maintenance' : 'En mantenimiento';
+            console.error('Download error:', error);
+            const message = currentLanguage === 'en' ? 'Download error' : 'Error al descargar';
             showNotification(message);
         });
 }

@@ -438,9 +438,6 @@ document.addEventListener('DOMContentLoaded', () => {
     showSummary(0);
     startSummaryAutoplay();
 
-    // Setup global tooltip handler
-    setupGlobalTooltipHandler();
-
     // Remove typing cursor after animation
     setTimeout(() => {
         document.querySelector('.name').classList.add('done');
@@ -682,73 +679,43 @@ function renderEducation() {
 function renderSkills() {
     const data = getCurrentData();
     const container = document.getElementById('skills-list');
-    let html = '';
 
+    // Professional blue and green colors for hover
+    const hoverColors = [
+        '#2563eb', // Professional blue
+        '#3b82f6', // Lighter blue
+        '#0ea5e9', // Sky blue
+        '#059669', // Emerald green
+        '#10b981', // Green
+        '#06b6d4'  // Cyan blue
+    ];
+
+    let html = '';
     data.skillsItems.forEach(skill => {
         html += '<div class="skills-category"><h3>' + skill.category + '</h3><div class="skill-tags">';
         skill.items.forEach(item => {
-            html += '<span class="skill-tag" data-tooltip="' + item.description + '">' + item.name + '<span class="tooltip">' + item.description + '</span></span>';
+            // Assign random color from palette
+            const randomColor = hoverColors[Math.floor(Math.random() * hoverColors.length)];
+            html += '<span class="skill-tag" data-hover-color="' + randomColor + '">' + item.name + '</span>';
         });
         html += '</div></div>';
     });
 
     container.innerHTML = html;
 
-    // Add tooltip event listeners
-    addTooltipListeners();
-}
-
-// Tooltip functionality
-function addTooltipListeners() {
+    // Add hover listeners for color changes
     const skillTags = document.querySelectorAll('.skill-tag');
-
     skillTags.forEach(tag => {
-        // Desktop: hover
+        const hoverColor = tag.getAttribute('data-hover-color');
         tag.addEventListener('mouseenter', () => {
-            const tooltip = tag.querySelector('.tooltip');
-            if (tooltip) {
-                tooltip.classList.add('visible');
-            }
+            tag.style.borderColor = hoverColor;
+            tag.style.boxShadow = `0 8px 20px rgba(0, 0, 0, 0.7), 0 0 6px ${hoverColor}80`;
         });
-
         tag.addEventListener('mouseleave', () => {
-            const tooltip = tag.querySelector('.tooltip');
-            if (tooltip) {
-                tooltip.classList.remove('visible');
-            }
-        });
-
-        // Mobile: click/touch
-        tag.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const tooltip = tag.querySelector('.tooltip');
-            if (tooltip) {
-                // Hide all other tooltips
-                document.querySelectorAll('.tooltip.visible').forEach(t => {
-                    if (t !== tooltip) {
-                        t.classList.remove('visible');
-                    }
-                });
-                // Toggle this tooltip
-                tooltip.classList.toggle('visible');
-            }
+            tag.style.borderColor = '';
+            tag.style.boxShadow = '';
         });
     });
-}
-
-// Global click handler to close tooltips (set up once)
-let tooltipClickHandlerAdded = false;
-function setupGlobalTooltipHandler() {
-    if (!tooltipClickHandlerAdded) {
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.skill-tag')) {
-                document.querySelectorAll('.tooltip.visible').forEach(tooltip => {
-                    tooltip.classList.remove('visible');
-                });
-            }
-        });
-        tooltipClickHandlerAdded = true;
-    }
 }
 
 // Certifications

@@ -404,6 +404,53 @@ function renderAchievements() {
 let summaryIndex = 0;
 let summaryAutoplay;
 
+// Intersection Observer for conditional autoplay
+let summaryObserver;
+let experienceObserver;
+let summaryAutoplayStarted = false;
+let experienceAutoplayStarted = false;
+
+function setupAutoplayObservers() {
+    // Observer for Summary Carousel
+    const summarySection = document.querySelector('.summary-section');
+    if (summarySection) {
+        summaryObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !summaryAutoplayStarted) {
+                    // User scrolled to summary section, start autoplay
+                    startSummaryAutoplay();
+                    summaryAutoplayStarted = true;
+                }
+            });
+        }, {
+            threshold: 0.3 // Trigger when 30% of section is visible
+        });
+
+        summaryObserver.observe(summarySection);
+    }
+
+    // Observer for Experience Swiper
+    const experienceSection = document.querySelector('.experience-section');
+    if (experienceSection) {
+        experienceObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !experienceAutoplayStarted) {
+                    // User scrolled to experience section, start swiper autoplay
+                    const swiper = document.querySelector('.experience-swiper').swiper;
+                    if (swiper && swiper.autoplay) {
+                        swiper.autoplay.start();
+                        experienceAutoplayStarted = true;
+                    }
+                }
+            });
+        }, {
+            threshold: 0.3 // Trigger when 30% of section is visible
+        });
+
+        experienceObserver.observe(experienceSection);
+    }
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     // Set initial language
@@ -418,7 +465,9 @@ document.addEventListener('DOMContentLoaded', () => {
     renderLanguages();
     renderExperience();
     showSummary(0);
-    startSummaryAutoplay();
+
+    // Setup observers for conditional autoplay
+    setupAutoplayObservers();
 
     // Remove typing cursor after animation
     setTimeout(() => {
@@ -562,7 +611,10 @@ function renderExperience() {
 
     data.experienceItems.forEach((item, index) => {
         html += '<div class="swiper-slide">';
-        html += '<div class="experience-item"><h3>' + item.role + '</h3>';
+        // Add 'current-job' class to first item (most recent position)
+        const isCurrentJob = index === 0;
+        const experienceClass = isCurrentJob ? 'experience-item current-job' : 'experience-item';
+        html += '<div class="' + experienceClass + '"><h3>' + item.role + '</h3>';
         html += '<div class="company">' + item.company + ' • ' + item.location + '</div>';
         html += '<div class="meta">' + item.period + '</div><ul class="main-bullets">';
 
@@ -599,7 +651,8 @@ function renderExperience() {
     }
 
     // Initialize Swiper with 3D Coverflow effect
-    new Swiper('.experience-swiper', {
+    // Note: autoplay will be started by Intersection Observer when section becomes visible
+    const swiperInstance = new Swiper('.experience-swiper', {
         effect: 'coverflow',
         grabCursor: true,
         centeredSlides: true,
@@ -615,7 +668,8 @@ function renderExperience() {
         },
         autoplay: {
             delay: 5000,
-            disableOnInteraction: false
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true // Pause when user hovers
         },
         pagination: {
             el: '.swiper-pagination',
@@ -623,6 +677,11 @@ function renderExperience() {
             dynamicBullets: true
         }
     });
+
+    // Stop autoplay initially - will be started by Intersection Observer
+    if (swiperInstance.autoplay) {
+        swiperInstance.autoplay.stop();
+    }
 }
 
 // Education

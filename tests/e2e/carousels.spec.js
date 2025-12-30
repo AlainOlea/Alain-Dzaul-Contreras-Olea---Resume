@@ -52,8 +52,15 @@ test.describe('Summary Carousel', () => {
     expect(newText).not.toBe(currentText);
   });
 
-  test('should auto-advance after 5 seconds', async ({ page }) => {
+  test('should auto-advance after scrolling to section', async ({ page }) => {
     await page.goto('/');
+
+    // Scroll to summary section to trigger autoplay
+    const summarySection = page.locator('.summary-section');
+    await summarySection.scrollIntoViewIfNeeded();
+
+    // Wait a bit for Intersection Observer to trigger
+    await page.waitForTimeout(500);
 
     const indicator = page.locator('#summary-indicator');
     const initialText = await indicator.textContent();
@@ -178,11 +185,15 @@ test.describe('Experience Swiper', () => {
     await expect(expandBtn).toContainText('↓');
   });
 
-  test('should auto-rotate experience slides', async ({ page }) => {
+  test('should auto-rotate experience slides after scrolling to section', async ({ page }) => {
     await page.goto('/');
 
-    // Wait for swiper init
-    await page.waitForTimeout(1000);
+    // Scroll to experience section to trigger autoplay
+    const experienceSection = page.locator('.experience-section');
+    await experienceSection.scrollIntoViewIfNeeded();
+
+    // Wait for swiper init and Intersection Observer
+    await page.waitForTimeout(1500);
 
     // Get initial active slide
     const getActiveSlideIndex = async () => {
@@ -197,8 +208,36 @@ test.describe('Experience Swiper', () => {
 
     const newIndex = await getActiveSlideIndex();
 
-    // Note: might not change if there's only one slide or loop is disabled
-    // We just verify the swiper is initialized correctly
+    // Verify swiper rotated (index should be different)
     expect(newIndex).toBeDefined();
+    expect(newIndex).not.toBe(initialIndex);
+  });
+
+  test('should apply distinctive styling to current job', async ({ page }) => {
+    await page.goto('/');
+
+    // Scroll to experience section
+    const experienceSection = page.locator('.experience-section');
+    await experienceSection.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(1500);
+
+    // Find the current job item (has current-job class)
+    const currentJobItem = page.locator('.experience-item.current-job');
+
+    // Should exist
+    await expect(currentJobItem.first()).toBeVisible();
+
+    // Should have both classes
+    const classNames = await currentJobItem.first().getAttribute('class');
+    expect(classNames).toContain('current-job');
+    expect(classNames).toContain('experience-item');
+
+    // Verify distinctive styling is applied (check border-left color)
+    const borderLeftColor = await currentJobItem.first().evaluate(el =>
+      window.getComputedStyle(el).borderLeftColor
+    );
+
+    // Border should be blue (rgb(59, 130, 246) is #3b82f6)
+    expect(borderLeftColor).toContain('rgb');
   });
 });

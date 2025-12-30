@@ -8,6 +8,7 @@
 
 - **Email**: Alaindcontreras@gmail.com
 - **Teléfono**: +52 55 5105 6694
+- **Sitio Web**: [alain-contreras-olea-resume.vercel.app](https://alain-contreras-olea-resume.vercel.app/)
 - **LinkedIn**: [linkedin.com/in/alain-contreras-olea-b39992115](https://www.linkedin.com/in/alain-contreras-olea-b39992115/)
 - **Ubicación**: Ciudad de México, México
 
@@ -17,7 +18,7 @@
 
 | Métrica | Logro |
 |---------|-------|
-| **125%** | Mejora de calidad (4/10 → 9/10) |
+| **33%** | Mejora de calidad (6/10 → 8/10) |
 | **800+** | Tests automatizados creados |
 | **100%** | Tasa de aprobación FDA |
 | **5** | Releases sin bugs consecutivos |
@@ -26,11 +27,11 @@
 
 ## Resumen Profesional
 
-- Especializado en QA para software farmacéutico bajo cumplimiento FDA 21CFR Part 11
-- Historial comprobado: 5 releases consecutivos sin bugs, mejora de calidad del 125% (4/10 → 9/10)
-- Expertise en QA full-stack: 800+ tests automatizados en React/TypeScript/Node.js/Next.js/Nest.js
-- Liderazgo técnico: Lideré QA para 7 developers, implementé CI/CD, Three Amigos, Definition of Ready
-- Experiencia multi-industria: Farmacéutica, Software Enterprise, Energía
+- Ingeniero enfocado en calidad que cree que el gran software nace de la gran colaboración—4+ años trabajando con developers, stakeholders y usuarios finales para entregar soluciones confiables
+- Reconocido por traducir requerimientos técnicos complejos en criterios de aceptación claros y estrategias de testing accionables que los equipos realmente usan
+- Construí confianza con liderazgo actuando como puente técnico entre la visión de C-Level y la ejecución de desarrollo, mejorando la satisfacción del producto de 6/10 a 8/10
+- Líder práctico que empodera equipos a través de knowledge sharing, frameworks de testing automatizado y procesos optimizados (CI/CD, Three Amigos)
+- Historial comprobado en ambientes críticos: 5 releases consecutivos sin bugs, 100% de tasa de aprobación en auditorías FDA
 
 ---
 
@@ -110,46 +111,22 @@ Programa de Intercambio
 ## Habilidades Técnicas
 
 ### IA y Herramientas de Desarrollo
-- **Antigravity** - Entorno de desarrollo potenciado por IA para prototipado rápido
-- **Claude Code** - Asistente de código IA CLI para desarrollo autónomo de software
-- **Gemini CLI** - Interfaz de línea de comandos del asistente IA de Google para tareas de código
-- **WindSurf** - IDE con IA integrada para autocompletado y refactorización inteligente
+Antigravity, Claude Code, Gemini CLI, WindSurf
 
 ### Lenguajes de Programación
-- **TypeScript** - Superconjunto tipado de JavaScript para aplicaciones más seguras y escalables
-- **JavaScript** - Lenguaje dinámico para desarrollo web y del lado del servidor
-- **Python** - Lenguaje versátil para automatización, testing y análisis de datos
-- **SQL** - Lenguaje de consultas para operaciones en bases de datos relacionales
-- **Java** - Lenguaje orientado a objetos para aplicaciones empresariales
-- **C++** - Lenguaje de alto rendimiento para computación científica y de sistemas
+TypeScript, JavaScript, Python, SQL, Java, C++
 
 ### Testing y QA
-- **Jest** - Framework de testing JavaScript para pruebas unitarias y de integración
-- **Playwright** - Framework end-to-end para testing de aplicaciones web multi-navegador
-- **Vitest** - Framework de tests unitarios optimizado para Vite/proyectos modernos
-- **SuperTest** - Librería de assertions HTTP para testing de APIs Node.js REST
-- **Testing Manual** - Testing exploratorio con juicio humano para UX y casos extremos
-- **White-box Testing** - Testing de estructura interna con conocimiento completo del código
+Jest, Playwright, Vitest, SuperTest, Testing Manual, White-box Testing
 
 ### Frontend y Backend
-- **React** - Librería UI basada en componentes para interfaces interactivas
-- **Next.js** - Framework React con SSR, enrutamiento y capacidades full-stack
-- **Nest.js** - Framework progresivo Node.js con TypeScript y arquitectura modular
-- **Node.js** - Runtime JavaScript para construir aplicaciones escalables del lado del servidor
+React, Next.js, Nest.js, Node.js
 
 ### Calidad de Código y CI/CD
-- **ESLint** - Linter JavaScript para identificar problemas de calidad y estilo de código
-- **Prettier** - Formateador de código para estilo consistente entre equipos
-- **GitHub Actions** - Plataforma de automatización para workflows CI/CD en repositorios GitHub
-- **Git** - Sistema de control de versiones distribuido para rastrear cambios de código
-- **Azure DevOps** - Plataforma DevOps de Microsoft para CI/CD, repos y gestión de proyectos
+ESLint, Prettier, GitHub Actions, Git, Azure DevOps
 
 ### Software Industrial
-- **Aspen HYSYS** - Software de simulación de procesos para ingeniería química
-- **Ranorex** - Framework de automatización de tests GUI para apps desktop y web
-- **AutoCAD** - Software CAD para dibujos técnicos 2D/3D
-- **Postman** - Plataforma de desarrollo y testing de APIs REST/GraphQL
-- **OPC Tools** - Herramientas de protocolo de automatización industrial para sistemas SCADA
+Aspen HYSYS, Ranorex, AutoCAD, Postman, OPC Tools
 
 ---
 

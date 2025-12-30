@@ -12,20 +12,11 @@ const resumeDataBilingual = {
         certifications: 'Certifications & Licenses',
         languages: 'Languages',
         summaryItems: [
-            'Experienced Software Quality Engineer with strong background in quality assurance, procedure adherence, and customer support',
-            'Proven track record: 5 consecutive zero-bug releases, 33% quality improvement (6/10 → 8/10)',
-            'Specialized in QA for pharmaceutical-grade software under FDA 21CFR Part 11 compliance',
-            'Full-stack QA expertise: 800+ automated tests across React/TypeScript/Node.js/Next.js/Nest.js stack',
-            'Skilled in critical thinking and finding out-of-the-box solutions to address complex issues',
-            'Proficient in resolving customer queries and issues related to software development programs with detail-oriented approach',
-            'Technical leadership: Led QA for 7 developers, implemented CI/CD, Three Amigos, Definition of Ready',
-            'Strong team player dedicated to knowledge sharing and collaborative problem-solving',
-            'Expert in both automated and manual testing strategies, including unit, integration, E2E, and white-box testing',
-            'Adaptable professional always seeking new solutions to improve processes and outcomes',
-            'Multi-industry experience: Pharmaceutical, Enterprise Software, Energy sectors',
-            'Proficient in modern testing frameworks: Jest, Playwright, Vitest, SuperTest for comprehensive quality assurance',
-            'Experienced in Agile/Scrum methodologies with focus on continuous integration and iterative improvement',
-            'Passionate about leveraging AI tools (Claude Code, Gemini CLI, WindSurf) to enhance testing efficiency and code quality'
+            'Quality-focused engineer who believes great software comes from great collaboration—4+ years partnering with developers, stakeholders, and end users to deliver reliable solutions',
+            'Known for translating complex technical requirements into clear acceptance criteria and actionable test strategies that teams actually use',
+            'Built trust with leadership by acting as technical bridge between C-Level vision and development execution, improving product satisfaction from 6/10 to 8/10',
+            'Hands-on leader who empowers teams through knowledge sharing, automated testing frameworks, and streamlined processes (CI/CD, Three Amigos)',
+            'Proven track record in high-stakes environments: 5 consecutive zero-bug releases, 100% FDA audit pass rate'
         ],
         keyAchievements: [
             { metric: '33%', label: 'Quality improvement (6/10 → 8/10)' },
@@ -189,20 +180,11 @@ const resumeDataBilingual = {
         certifications: 'Certificaciones y Licencias',
         languages: 'Idiomas',
         summaryItems: [
-            'Ingeniero de Calidad de Software experimentado con sólida trayectoria en aseguramiento de calidad, cumplimiento de procedimientos y soporte al cliente',
-            'Historial comprobado: 5 releases consecutivos sin bugs, mejora de calidad del 33% (6/10 → 8/10)',
-            'Especializado en QA para software farmacéutico bajo cumplimiento FDA 21CFR Part 11',
-            'Expertise en QA full-stack: 800+ tests automatizados en React/TypeScript/Node.js/Next.js/Nest.js',
-            'Hábil en pensamiento crítico y búsqueda de soluciones innovadoras para abordar problemas complejos',
-            'Competente en resolver consultas y problemas de clientes relacionados con programas de desarrollo de software con enfoque orientado al detalle',
-            'Liderazgo técnico: Lideré QA para 7 developers, implementé CI/CD, Three Amigos, Definition of Ready',
-            'Colaborador destacado dedicado al intercambio de conocimientos y resolución colaborativa de problemas',
-            'Experto en estrategias de testing automatizado y manual, incluyendo pruebas unitarias, integración, E2E y white-box',
-            'Profesional adaptable siempre buscando nuevas soluciones para mejorar procesos y resultados',
-            'Experiencia multi-industria: Farmacéutica, Software Enterprise, Energía',
-            'Competente en frameworks modernos de testing: Jest, Playwright, Vitest, SuperTest para aseguramiento de calidad integral',
-            'Experimentado en metodologías Agile/Scrum con enfoque en integración continua y mejora iterativa',
-            'Apasionado por aprovechar herramientas de IA (Claude Code, Gemini CLI, WindSurf) para mejorar eficiencia de testing y calidad de código'
+            'Ingeniero enfocado en calidad que cree que el gran software nace de la gran colaboración—4+ años trabajando con developers, stakeholders y usuarios finales para entregar soluciones confiables',
+            'Reconocido por traducir requerimientos técnicos complejos en criterios de aceptación claros y estrategias de testing accionables que los equipos realmente usan',
+            'Construí confianza con liderazgo actuando como puente técnico entre la visión de C-Level y la ejecución de desarrollo, mejorando la satisfacción del producto de 6/10 a 8/10',
+            'Líder práctico que empodera equipos a través de knowledge sharing, frameworks de testing automatizado y procesos optimizados (CI/CD, Three Amigos)',
+            'Historial comprobado en ambientes críticos: 5 releases consecutivos sin bugs, 100% de tasa de aprobación en auditorías FDA'
         ],
         keyAchievements: [
             { metric: '33%', label: 'Mejora de calidad (6/10 → 8/10)' },

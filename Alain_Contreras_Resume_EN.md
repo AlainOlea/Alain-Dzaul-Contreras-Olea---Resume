@@ -8,6 +8,7 @@
 
 - **Email**: Alaindcontreras@gmail.com
 - **Phone**: +52 55 5105 6694
+- **Website**: [alain-contreras-olea-resume.vercel.app](https://alain-contreras-olea-resume.vercel.app/)
 - **LinkedIn**: [linkedin.com/in/alain-contreras-olea-b39992115](https://www.linkedin.com/in/alain-contreras-olea-b39992115/)
 - **Location**: Mexico City, Mexico
 
@@ -17,7 +18,7 @@
 
 | Metric | Achievement |
 |--------|-------------|
-| **125%** | Quality improvement (4/10 → 9/10) |
+| **33%** | Quality improvement (6/10 → 8/10) |
 | **800+** | Automated tests created |
 | **100%** | FDA audit pass rate |
 | **5** | Bug-free releases in a row |
@@ -26,11 +27,11 @@
 
 ## Professional Summary
 
-- Specialized in QA for pharmaceutical-grade software under FDA 21CFR Part 11 compliance
-- Proven track record: 5 consecutive zero-bug releases, 125% quality improvement (4/10 → 9/10)
-- Full-stack QA expertise: 800+ automated tests across React/TypeScript/Node.js/Next.js/Nest.js stack
-- Technical leadership: Led QA for 7 developers, implemented CI/CD, Three Amigos, Definition of Ready
-- Multi-industry experience: Pharmaceutical, Enterprise Software, Energy sectors
+- Quality-focused engineer who believes great software comes from great collaboration—4+ years partnering with developers, stakeholders, and end users to deliver reliable solutions
+- Known for translating complex technical requirements into clear acceptance criteria and actionable test strategies that teams actually use
+- Built trust with leadership by acting as technical bridge between C-Level vision and development execution, improving product satisfaction from 6/10 to 8/10
+- Hands-on leader who empowers teams through knowledge sharing, automated testing frameworks, and streamlined processes (CI/CD, Three Amigos)
+- Proven track record in high-stakes environments: 5 consecutive zero-bug releases, 100% FDA audit pass rate
 
 ---
 
@@ -110,46 +111,22 @@ Exchange Program
 ## Technical Skills
 
 ### AI & Development Tools
-- **Antigravity** - AI-powered development environment for rapid prototyping
-- **Claude Code** - AI coding assistant CLI for autonomous software development
-- **Gemini CLI** - Google's AI assistant command-line interface for coding tasks
-- **WindSurf** - AI-first IDE with intelligent code completion and refactoring
+Antigravity, Claude Code, Gemini CLI, WindSurf
 
 ### Programming Languages
-- **TypeScript** - Typed superset of JavaScript for safer, scalable applications
-- **JavaScript** - Dynamic programming language for web and server-side development
-- **Python** - Versatile language for automation, testing, and data analysis
-- **SQL** - Query language for relational database operations and analytics
-- **Java** - Object-oriented language for enterprise applications
-- **C++** - High-performance language for system and scientific computing
+TypeScript, JavaScript, Python, SQL, Java, C++
 
 ### Testing & QA
-- **Jest** - JavaScript testing framework for unit and integration tests
-- **Playwright** - End-to-end testing framework for web applications across browsers
-- **Vitest** - Fast unit test framework optimized for Vite/modern projects
-- **SuperTest** - HTTP assertion library for testing Node.js REST APIs
-- **Manual Testing** - Exploratory testing with human judgment for UX and edge cases
-- **White-box Testing** - Internal structure testing with full code knowledge
+Jest, Playwright, Vitest, SuperTest, Manual Testing, White-box Testing
 
 ### Frontend & Backend
-- **React** - Component-based UI library for building interactive interfaces
-- **Next.js** - React framework with SSR, routing, and full-stack capabilities
-- **Nest.js** - Progressive Node.js framework with TypeScript and modular architecture
-- **Node.js** - JavaScript runtime for building scalable server-side applications
+React, Next.js, Nest.js, Node.js
 
 ### Code Quality & CI/CD
-- **ESLint** - JavaScript linter for identifying code quality and style issues
-- **Prettier** - Opinionated code formatter for consistent style across teams
-- **GitHub Actions** - Automation platform for CI/CD workflows in GitHub repositories
-- **Git** - Distributed version control system for tracking code changes
-- **Azure DevOps** - Microsoft's DevOps platform for CI/CD, repos, and project management
+ESLint, Prettier, GitHub Actions, Git, Azure DevOps
 
 ### Industry Software
-- **Aspen HYSYS** - Process simulation software for chemical engineering
-- **Ranorex** - GUI test automation framework for desktop and web applications
-- **AutoCAD** - Computer-aided design software for 2D/3D technical drawings
-- **Postman** - API development and testing platform for REST/GraphQL
-- **OPC Tools** - Industrial automation protocol tools for SCADA systems
+Aspen HYSYS, Ranorex, AutoCAD, Postman, OPC Tools
 
 ---
 

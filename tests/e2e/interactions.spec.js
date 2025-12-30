@@ -1,9 +1,13 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('User Interactions', () => {
-  test('should copy email to clipboard when clicking email icon', async ({ page, context }) => {
-    await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  test('should copy email to clipboard when clicking email icon', async ({ page, context, browserName }) => {
     await page.goto('/');
+
+    // Grant permissions only for Chromium (Firefox doesn't support clipboard-read)
+    if (browserName === 'chromium') {
+      await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+    }
 
     // Click email icon
     const emailIcon = page.locator('.icon-button').filter({
@@ -11,9 +15,9 @@ test.describe('User Interactions', () => {
     });
     await emailIcon.click();
 
-    // Check notification appears
+    // Check notification appears (this works in all browsers)
     const notification = page.locator('.copy-notification');
-    await expect(notification).toBeVisible();
+    await expect(notification).toBeVisible({ timeout: 5000 });
     await expect(notification).toHaveText(/Email.*copied|copiado/i);
 
     // Notification should disappear after 3 seconds
@@ -21,9 +25,13 @@ test.describe('User Interactions', () => {
     await expect(notification).not.toBeVisible();
   });
 
-  test('should copy phone to clipboard when clicking phone icon', async ({ page, context }) => {
-    await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  test('should copy phone to clipboard when clicking phone icon', async ({ page, context, browserName }) => {
     await page.goto('/');
+
+    // Grant permissions only for Chromium
+    if (browserName === 'chromium') {
+      await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+    }
 
     // Click phone icon
     const phoneIcon = page.locator('.icon-button').filter({
@@ -33,7 +41,7 @@ test.describe('User Interactions', () => {
 
     // Check notification appears
     const notification = page.locator('.copy-notification');
-    await expect(notification).toBeVisible();
+    await expect(notification).toBeVisible({ timeout: 5000 });
     await expect(notification).toHaveText(/Phone|Teléfono.*copied|copiado/i);
   });
 
@@ -59,16 +67,20 @@ test.describe('User Interactions', () => {
     await newPage.close();
   });
 
-  test('should show notification with correct language', async ({ page, context }) => {
-    await context.grantPermissions(['clipboard-read', 'clipboard-write']);
-
+  test('should show notification with correct language', async ({ page, context, browserName }) => {
     // Set language to Spanish
     await page.goto('/');
+
+    // Grant permissions only for Chromium
+    if (browserName === 'chromium') {
+      await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+    }
+
     await page.evaluate(() => {
       localStorage.setItem('language', 'es');
-      location.reload();
     });
-    await page.waitForLoadState('load');
+    await page.reload();
+    await page.waitForLoadState('networkidle');
 
     // Click email icon
     const emailIcon = page.locator('.icon-button').filter({
@@ -78,6 +90,7 @@ test.describe('User Interactions', () => {
 
     // Notification should be in Spanish
     const notification = page.locator('.copy-notification');
+    await expect(notification).toBeVisible({ timeout: 5000 });
     await expect(notification).toContainText('copiado');
   });
 
@@ -117,14 +130,17 @@ test.describe('User Interactions', () => {
 
     expect(count).toBe(2); // IPN and ITBA
 
-    // Click first link
-    const pagePromise = context.waitForEvent('page');
+    // Click first link and verify new page opens
+    const pagePromise = context.waitForEvent('page', { timeout: 10000 });
     await institutionLinks.first().click();
 
     const newPage = await pagePromise;
-    await newPage.waitForLoadState();
 
-    // Should open external link
+    // Wait only for commit (URL is set), not full page load
+    // External sites can be slow or block headless browsers
+    await newPage.waitForLoadState('commit', { timeout: 10000 });
+
+    // Should open external link (URL should contain domain)
     expect(newPage.url()).toContain('ipn.mx');
 
     await newPage.close();

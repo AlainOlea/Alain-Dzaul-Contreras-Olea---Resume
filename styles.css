@@ -48,7 +48,7 @@ html {
 }
 
 .profile-image {
-    width: 280px;
+    width: 240px;
     height: auto;
     border-radius: 12px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
@@ -1018,9 +1018,6 @@ h3, h4 {
         justify-content: center;
     }
 
-    .profile-image-container {
-    }
-
     .contact-icons {
         display: flex;
         flex-direction: row;
@@ -1034,7 +1031,7 @@ h3, h4 {
     }
 
     .profile-image {
-        width: 200px;
+        width: 180px;
     }
 
     .name {

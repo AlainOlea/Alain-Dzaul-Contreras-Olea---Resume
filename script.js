@@ -13,9 +13,9 @@ const resumeDataBilingual = {
         languages: 'Languages',
         summaryItems: [
             'Quality-focused engineer who believes great software comes from great collaboration—4+ years partnering with developers, stakeholders, and end users to deliver reliable solutions',
-            'Known for translating complex technical requirements into clear acceptance criteria and actionable test strategies that teams actually use',
+            'Translate complex technical requirements into clear acceptance criteria and actionable test strategies that teams actually use',
             'Built trust with leadership by acting as technical bridge between C-Level vision and development execution, improving product satisfaction from 6/10 to 8/10',
-            'Hands-on leader who empowers teams through knowledge sharing, automated testing frameworks, and streamlined processes (CI/CD, Three Amigos)',
+            'Hands-on engineer who strengthens teams through knowledge sharing, automated testing frameworks, and streamlined processes (CI/CD, Three Amigos)',
             'Proven track record in high-stakes environments: 5 consecutive zero-bug releases, 100% FDA audit pass rate'
         ],
         keyAchievements: [
@@ -37,7 +37,7 @@ const resumeDataBilingual = {
                 ],
                 expandedDescription: [
                     'Implemented CI/CD pipelines for Frontend/Backend and agile processes: Three Amigos, Design Handoffs, Definition of Ready',
-                    'Acted as technical bridge between C-Level and development, refining requirements and defining acceptance criteria for complex modules',
+                    'Acted as technical bridge between leadership and development, refining requirements and defining acceptance criteria for complex modules',
                     'Established change control governance and process standardization to protect sprint scope and mitigate risks'
                 ]
             },
@@ -52,7 +52,7 @@ const resumeDataBilingual = {
                     'Managed 1,600+ test cases for pharmaceutical spectrometry software (50 specialized users)'
                 ],
                 expandedDescription: [
-                    'Delivered 7-8 successful releases for enterprise client with 3 interdependent products',
+                    'Delivered multiple successful releases for enterprise client with 3 interdependent products',
                     'Complete documentation under FDA 21CFR Part 11 and ISO 9001 compliance',
                     'Hybrid testing approach: 10% automated (critical flows) + 90% manual (regulatory flexibility)'
                 ]
@@ -68,7 +68,7 @@ const resumeDataBilingual = {
                     'Collaborated in multicultural team for international enterprise-scale project'
                 ],
                 expandedDescription: [
-                    'Basic Android development with Kotlin for internal tools'
+                    'Android development with Kotlin for internal tools'
                 ]
             },
             {
@@ -77,12 +77,12 @@ const resumeDataBilingual = {
                 location: 'Mexico City, Tula Hidalgo, Salina Cruz Oaxaca',
                 period: 'September 2018 – March 2019',
                 description: [
-                    'Analyzed and collected data from gas production optimization system, performing ethylene production forecasting with predictions that accurately reflected subsequent national production decline',
+                    'Analyzed gas production optimization data and performed ethylene production forecasting that aligned with subsequent downward trends in national output',
                     'Visited 5 facilities (refineries, distribution centers, gas processing plants) for operational audits'
                 ],
                 expandedDescription: [
                     'Supported gas and liquid transportation process tracking',
-                    'Gained exposure to large-scale industrial operations in energy sector'
+                    'Participated in large-scale industrial operations in energy sector'
                 ]
             }
         ],
@@ -97,7 +97,12 @@ const resumeDataBilingual = {
                 institution: 'Instituto Tecnológico de Buenos Aires (ITBA)',
                 location: 'Buenos Aires, Argentina',
                 degree: 'Exchange Program - Chemical/Industrial Engineering',
-                url: 'https://www.itba.edu.ar/'
+                url: 'https://www.itba.edu.ar/',
+                details: [
+                    'Process Simulation and Optimization',
+                    'Quality Management',
+                    'Environmental Engineering'
+                ]
             }
         ],
         skillsItems: [
@@ -164,11 +169,11 @@ const resumeDataBilingual = {
         ],
         certificationsItems: [
             { name: 'Certified in ISO 9001:2015', details: '' },
-            { name: 'Professional License', details: 'Number: 12075687' }
+            { name: 'Professional License (Cédula Profesional)', details: 'Chemical Engineering — Number: 12075687' }
         ],
         languagesItems: [
             { name: 'Spanish', level: 'Native' },
-            { name: 'English', level: 'Professional Fluency' }
+            { name: 'English', level: 'Full Professional Proficiency' }
         ]
     },
     es: {
@@ -181,9 +186,9 @@ const resumeDataBilingual = {
         languages: 'Idiomas',
         summaryItems: [
             'Ingeniero enfocado en calidad que cree que el gran software nace de la gran colaboración—4+ años trabajando con developers, stakeholders y usuarios finales para entregar soluciones confiables',
-            'Reconocido por traducir requerimientos técnicos complejos en criterios de aceptación claros y estrategias de testing accionables que los equipos realmente usan',
+            'Traduzco requerimientos técnicos complejos en criterios de aceptación claros y estrategias de testing accionables que los equipos realmente usan',
             'Construí confianza con liderazgo actuando como puente técnico entre la visión de C-Level y la ejecución de desarrollo, mejorando la satisfacción del producto de 6/10 a 8/10',
-            'Líder práctico que empodera equipos a través de knowledge sharing, frameworks de testing automatizado y procesos optimizados (CI/CD, Three Amigos)',
+            'Ingeniero práctico que fortalece equipos a través de compartir conocimiento, frameworks de testing automatizado y procesos optimizados (CI/CD, Three Amigos)',
             'Historial comprobado en ambientes críticos: 5 releases consecutivos sin bugs, 100% de tasa de aprobación en auditorías FDA'
         ],
         keyAchievements: [
@@ -205,8 +210,8 @@ const resumeDataBilingual = {
                 ],
                 expandedDescription: [
                     'Implementé pipelines CI/CD para Frontend/Backend y procesos ágiles: Three Amigos, Design Handoffs, Definition of Ready',
-                    'Actué como puente técnico entre C-Level y desarrollo, refinando requerimientos y definiendo criterios de aceptación para módulos complejos',
-                    'Establecí gobernanza de control de cambios y estandarización de procesos para proteger el alcance del sprint y mitigar riesgos'
+                    'Actué como puente técnico entre liderazgo y desarrollo, refinando requerimientos y definiendo criterios de aceptación para módulos complejos',
+                    'Establecí control de cambios y estandarización de procesos para proteger el alcance del sprint y mitigar riesgos'
                 ]
             },
             {
@@ -220,7 +225,7 @@ const resumeDataBilingual = {
                     'Gestioné 1,600+ casos de prueba para software de espectrometría farmacéutica (50 usuarios especializados)'
                 ],
                 expandedDescription: [
-                    'Entregué 7-8 releases exitosos para cliente enterprise con 3 productos interdependientes',
+                    'Entregué múltiples releases exitosos para cliente enterprise con 3 productos interdependientes',
                     'Documentación completa bajo cumplimiento FDA 21CFR Part 11 e ISO 9001',
                     'Enfoque de testing híbrido: 10% automatizado (flujos críticos) + 90% manual (flexibilidad regulatoria)'
                 ]
@@ -236,7 +241,7 @@ const resumeDataBilingual = {
                     'Colaboré en equipo multicultural para proyecto internacional a escala enterprise'
                 ],
                 expandedDescription: [
-                    'Desarrollo básico Android con Kotlin para herramientas internas'
+                    'Desarrollo Android con Kotlin para herramientas internas'
                 ]
             },
             {
@@ -245,12 +250,12 @@ const resumeDataBilingual = {
                 location: 'Ciudad de México, Tula Hidalgo, Salina Cruz Oaxaca',
                 period: 'Septiembre 2018 – Marzo 2019',
                 description: [
-                    'Analicé y recopilé datos del sistema de optimización de producción de gas, realizando forecasting de producción de etileno con predicciones que reflejaron con precisión la posterior caída de producción nacional',
+                    'Analicé datos de optimización de producción de gas y realicé forecasting de producción de etileno que se alineó con la tendencia nacional de disminución subsecuente',
                     'Visité 5 instalaciones (refinerías, centros de distribución, plantas de procesamiento de gas) para auditorías operacionales'
                 ],
                 expandedDescription: [
                     'Apoyé seguimiento de procesos de transportación de gas y líquidos',
-                    'Obtuve exposición a operaciones industriales a gran escala en sector energético'
+                    'Participé en operaciones industriales a gran escala en sector energético'
                 ]
             }
         ],
@@ -265,7 +270,12 @@ const resumeDataBilingual = {
                 institution: 'Instituto Tecnológico de Buenos Aires (ITBA)',
                 location: 'Buenos Aires, Argentina',
                 degree: 'Programa de Intercambio - Ingeniería Química/Industrial',
-                url: 'https://www.itba.edu.ar/'
+                url: 'https://www.itba.edu.ar/',
+                details: [
+                    'Simulación y Optimización de Procesos',
+                    'Gestión de Calidad',
+                    'Ingeniería Ambiental'
+                ]
             }
         ],
         skillsItems: [
@@ -332,7 +342,7 @@ const resumeDataBilingual = {
         ],
         certificationsItems: [
             { name: 'Certificado en ISO 9001:2015', details: '' },
-            { name: 'Licencia Profesional', details: 'Número: 12075687' }
+            { name: 'Cédula Profesional', details: 'Ingeniería Química — Número: 12075687' }
         ],
         languagesItems: [
             { name: 'Español', level: 'Nativo' },
@@ -346,13 +356,29 @@ function getCurrentData() {
     return resumeDataBilingual[currentLanguage];
 }
 
+// Tooltips in both languages
+const tooltipTexts = {
+    en: ['Email', 'Phone', 'LinkedIn', 'Download CV', 'Cambiar a espa\u00f1ol / Switch to Spanish'],
+    es: ['Correo', 'Tel\u00e9fono', 'LinkedIn', 'Descargar CV', 'Cambiar a ingl\u00e9s / Switch to English']
+};
+
 // Toggle language
 function toggleLanguage() {
     currentLanguage = currentLanguage === 'en' ? 'es' : 'en';
     localStorage.setItem('language', currentLanguage);
     
+    // Update HTML lang attribute
+    document.documentElement.lang = currentLanguage;
+    
     // Update language button text
     document.getElementById('language-text').textContent = currentLanguage === 'en' ? 'ES' : 'EN';
+    
+    // Update icon tooltips
+    const icons = document.querySelectorAll('.contact-icons .icon-button');
+    const tips = tooltipTexts[currentLanguage];
+    icons.forEach((icon, i) => {
+        if (tips[i]) icon.title = tips[i];
+    });
     
     // Update all section titles
     updateSectionTitles();
@@ -557,9 +583,10 @@ function wrapLettersInSpans(element) {
 }
 
 function showSummary(index) {
+    summaryIndex = index;
     const items = document.querySelectorAll('.summary-item');
-    if (index >= items.length) summaryIndex = 0;
-    if (index < 0) summaryIndex = items.length - 1;
+    if (summaryIndex >= items.length) summaryIndex = 0;
+    if (summaryIndex < 0) summaryIndex = items.length - 1;
 
     items.forEach(item => item.classList.remove('active'));
     items[summaryIndex].classList.add('active');

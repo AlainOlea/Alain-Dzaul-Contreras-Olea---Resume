@@ -2,7 +2,6 @@
   "buildCommand": null,
   "outputDirectory": ".",
   "framework": null,
-  "installCommand": "npm install",
   "headers": [
     {
       "source": "/robots.txt",

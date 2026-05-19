@@ -28,9 +28,9 @@
 ## Professional Summary
 
 - Quality-focused engineer who believes great software comes from great collaboration—4+ years partnering with developers, stakeholders, and end users to deliver reliable solutions
-- Known for translating complex technical requirements into clear acceptance criteria and actionable test strategies that teams actually use
+- Translate complex technical requirements into clear acceptance criteria and actionable test strategies that teams actually use
 - Built trust with leadership by acting as technical bridge between C-Level vision and development execution, improving product satisfaction from 6/10 to 8/10
-- Hands-on leader who empowers teams through knowledge sharing, automated testing frameworks, and streamlined processes (CI/CD, Three Amigos)
+- Hands-on engineer who strengthens teams through knowledge sharing, automated testing frameworks, and streamlined processes (CI/CD, Three Amigos)
 - Proven track record in high-stakes environments: 5 consecutive zero-bug releases, 100% FDA audit pass rate
 
 ---
@@ -47,7 +47,7 @@
 
 **Additional Details:**
 - Implemented CI/CD pipelines for Frontend/Backend and agile processes: Three Amigos, Design Handoffs, Definition of Ready
-- Acted as technical bridge between C-Level and development, refining requirements and defining acceptance criteria for complex modules
+- Acted as technical bridge between leadership and development, refining requirements and defining acceptance criteria for complex modules
 - Established change control governance and process standardization to protect sprint scope and mitigate risks
 
 ---
@@ -61,7 +61,7 @@
 - Managed 1,600+ test cases for pharmaceutical spectrometry software (50 specialized users)
 
 **Additional Details:**
-- Delivered 7-8 successful releases for enterprise client with 3 interdependent products
+- Delivered multiple successful releases for enterprise client with 3 interdependent products
 - Complete documentation under FDA 21CFR Part 11 and ISO 9001 compliance
 - Hybrid testing approach: 10% automated (critical flows) + 90% manual (regulatory flexibility)
 
@@ -76,7 +76,7 @@
 - Collaborated in multicultural team for international enterprise-scale project
 
 **Additional Details:**
-- Basic Android development with Kotlin for internal tools
+- Android development with Kotlin for internal tools
 
 ---
 
@@ -84,10 +84,12 @@
 **Mexico City, Tula Hidalgo, Salina Cruz Oaxaca | September 2018 – March 2019**
 
 **Key Responsibilities:**
-- Analyzed and collected data from gas production optimization system, performing ethylene production forecasting with predictions that accurately reflected subsequent national production decline
+- Analyzed gas production optimization data and performed ethylene production forecasting that aligned with subsequent downward trends in national output
 - Visited 5 facilities (refineries, distribution centers, gas processing plants) for operational audits
+
+**Additional Details:**
 - Supported gas and liquid transportation process tracking
-- Gained exposure to large-scale industrial operations in energy sector
+- Participated in large-scale industrial operations in energy sector
 
 ---
 
@@ -133,14 +135,14 @@ Aspen HYSYS, Ranorex, AutoCAD, Postman, OPC Tools
 ## Certifications & Licenses
 
 - **Certified in ISO 9001:2015**
-- **Professional License** - Number: 12075687
+- **Professional License (Cédula Profesional)** - Chemical Engineering, Number: 12075687
 
 ---
 
 ## Languages
 
 - **Spanish** - Native
-- **English** - Professional Fluency
+- **English** - Full Professional Proficiency
 
 ---
 

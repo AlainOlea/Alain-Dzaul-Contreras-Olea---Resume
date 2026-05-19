@@ -28,9 +28,9 @@
 ## Resumen Profesional
 
 - Ingeniero enfocado en calidad que cree que el gran software nace de la gran colaboración—4+ años trabajando con developers, stakeholders y usuarios finales para entregar soluciones confiables
-- Reconocido por traducir requerimientos técnicos complejos en criterios de aceptación claros y estrategias de testing accionables que los equipos realmente usan
+- Traduzco requerimientos técnicos complejos en criterios de aceptación claros y estrategias de testing accionables que los equipos realmente usan
 - Construí confianza con liderazgo actuando como puente técnico entre la visión de C-Level y la ejecución de desarrollo, mejorando la satisfacción del producto de 6/10 a 8/10
-- Líder práctico que empodera equipos a través de knowledge sharing, frameworks de testing automatizado y procesos optimizados (CI/CD, Three Amigos)
+- Ingeniero práctico que fortalece equipos a través de compartir conocimiento, frameworks de testing automatizado y procesos optimizados (CI/CD, Three Amigos)
 - Historial comprobado en ambientes críticos: 5 releases consecutivos sin bugs, 100% de tasa de aprobación en auditorías FDA
 
 ---
@@ -47,8 +47,8 @@
 
 **Detalles Adicionales:**
 - Implementé pipelines CI/CD para Frontend/Backend y procesos ágiles: Three Amigos, Design Handoffs, Definition of Ready
-- Actué como puente técnico entre C-Level y desarrollo, refinando requerimientos y definiendo criterios de aceptación para módulos complejos
-- Establecí gobernanza de control de cambios y estandarización de procesos para proteger el alcance del sprint y mitigar riesgos
+- Actué como puente técnico entre liderazgo y desarrollo, refinando requerimientos y definiendo criterios de aceptación para módulos complejos
+- Establecí control de cambios y estandarización de procesos para proteger el alcance del sprint y mitigar riesgos
 
 ---
 
@@ -61,7 +61,7 @@
 - Gestioné 1,600+ casos de prueba para software de espectrometría farmacéutica (50 usuarios especializados)
 
 **Detalles Adicionales:**
-- Entregué 7-8 releases exitosos para cliente enterprise con 3 productos interdependientes
+- Entregué múltiples releases exitosos para cliente enterprise con 3 productos interdependientes
 - Documentación completa bajo cumplimiento FDA 21CFR Part 11 e ISO 9001
 - Enfoque de testing híbrido: 10% automatizado (flujos críticos) + 90% manual (flexibilidad regulatoria)
 
@@ -76,7 +76,7 @@
 - Colaboré en equipo multicultural para proyecto internacional a escala enterprise
 
 **Detalles Adicionales:**
-- Desarrollo básico Android con Kotlin para herramientas internas
+- Desarrollo Android con Kotlin para herramientas internas
 
 ---
 
@@ -84,10 +84,12 @@
 **Ciudad de México, Tula Hidalgo, Salina Cruz Oaxaca | Septiembre 2018 – Marzo 2019**
 
 **Responsabilidades Clave:**
-- Analicé y recopilé datos del sistema de optimización de producción de gas, realizando forecasting de producción de etileno con predicciones que reflejaron con precisión la posterior caída de producción nacional
+- Analicé datos de optimización de producción de gas y realicé forecasting de producción de etileno que se alineó con la tendencia nacional de disminución subsecuente
 - Visité 5 instalaciones (refinerías, centros de distribución, plantas de procesamiento de gas) para auditorías operacionales
+
+**Detalles Adicionales:**
 - Apoyé seguimiento de procesos de transportación de gas y líquidos
-- Obtuve exposición a operaciones industriales a gran escala en sector energético
+- Participé en operaciones industriales a gran escala en sector energético
 
 ---
 
@@ -133,7 +135,7 @@ Aspen HYSYS, Ranorex, AutoCAD, Postman, OPC Tools
 ## Certificaciones y Licencias
 
 - **Certificado en ISO 9001:2015**
-- **Licencia Profesional** - Número: 12075687
+- **Cédula Profesional** - Ingeniería Química, Número: 12075687
 
 ---
 

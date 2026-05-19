@@ -1,20 +1,54 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Alain Dzaul Contreras Olea — Resume
 
-# Run and deploy your AI Studio app
+Static single-page interactive resume website with full bilingual support (English/Spanish).
 
-This contains everything you need to run your app locally.
+**Live site:** [alain-contreras-olea-resume.vercel.app](https://alain-contreras-olea-resume.vercel.app/)
 
-View your app in AI Studio: https://ai.studio/apps/drive/1zRZIL34Ns0_8JpFr7A8eg5ixoYTZKkLq
+## Tech Stack
 
-## Run Locally
+- **HTML5** — Semantic markup with Schema.org JSON-LD structured data
+- **CSS3** — Custom stylesheet with animations, backdrop-filter, responsive design
+- **Vanilla JavaScript (ES6+)** — Dynamic content rendering, bilingual logic, carousel controls
+- **Swiper.js** — 3D coverflow carousel for experience section
+- **Font Awesome 6** — Icons
+- **Google Fonts** — Inter + Fira Code
 
-**Prerequisites:**  Node.js
+## Local Development
 
+```bash
+npm install
+npm run dev
+# Opens at http://localhost:8000
+```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Testing
+
+E2E tests with Playwright across Chromium, Firefox, and Mobile Chrome:
+
+```bash
+npm test              # Run all E2E tests
+npm run test:headed   # Run with browser UI
+npm run test:report   # View HTML test report
+```
+
+## Project Structure
+
+```
+resume/
+├── index.html                          # Main page
+├── script.js                           # All logic + bilingual data
+├── styles.css                          # Full stylesheet
+├── Alain_Contreras_Resume_EN.md        # English Markdown resume
+├── Alain_Contreras_Resume_ES.md        # Spanish Markdown resume
+├── Alain_Contreras_Resume_EN.pdf       # English PDF resume
+├── Alain_Contreras_Resume_ES.pdf       # Spanish PDF resume
+├── public/images/profile-picture.png   # Profile photo
+├── sitemap.xml                         # SEO sitemap
+├── robots.txt                          # Crawl rules
+├── tests/e2e/                          # Playwright E2E tests
+└── .github/workflows/test.yml          # CI/CD pipeline
+```
+
+## Deployment
+
+Deployed on [Vercel](https://vercel.com). Static files, no build step required.

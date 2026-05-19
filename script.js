@@ -481,7 +481,7 @@ const resumeDataBilingual = {
         ],
         certificationsItems: [
             { name: 'Certificado en ISO 9001:2015', details: '' },
-            { name: 'Cédula Profesional', details: 'Ingeniería Química — Número: 12075687' }
+            { name: 'Cédula Profesional', details: 'Ingeniería Química Petrolera — Número: 12075687' }
         ],
         languagesItems: [
             { name: 'Español', level: 'Nativo' },
@@ -642,6 +642,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Setup observers for conditional autoplay
     setupAutoplayObservers();
 
+    // Scroll-driven reveal animations
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+            }
+        });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.profile-section, .achievements-section, section').forEach((el) => {
+        revealObserver.observe(el);
+    });
+
     // Remove typing cursor after animation
     setTimeout(() => {
         document.querySelector('.name').classList.add('done');
@@ -712,17 +725,20 @@ function wrapLettersInSpans(element) {
     let letterIndex = 0;
 
     words.forEach((word, wordIdx) => {
-        // Wrap each word in a span to keep it together
+        const wordSpan = document.createElement('span');
+        wordSpan.className = 'word';
+
         for (let i = 0; i < word.length; i++) {
             const span = document.createElement('span');
             span.textContent = word[i];
             span.className = 'letter';
-            span.style.animationDelay = (letterIndex * 0.05) + 's';
+            span.style.animationDelay = (letterIndex * 0.025) + 's';
             letterIndex++;
-            element.appendChild(span);
+            wordSpan.appendChild(span);
         }
 
-        // Add space after word (except last word)
+        element.appendChild(wordSpan);
+
         if (wordIdx < words.length - 1) {
             element.appendChild(document.createTextNode(' '));
         }
@@ -769,7 +785,7 @@ function startSummaryAutoplay() {
     summaryAutoplay = setInterval(() => {
         summaryIndex++;
         showSummary(summaryIndex);
-    }, 5000);
+    }, 10000);
 }
 
 function resetSummaryAutoplay() {

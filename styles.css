@@ -4,22 +4,22 @@
     box-sizing: border-box;
 }
 
+html {
+    overflow: hidden;
+    background: #080808;
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     background: transparent;
     color: #e8e8e8;
     line-height: 1.8;
-    min-height: 100vh;
+    height: 100vh;
     padding: 20px;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: scroll;
     scroll-snap-type: y proximity;
-}
-
-html {
-    overflow-x: hidden;
-    background: #080808;
-    scroll-behavior: smooth;
+    scroll-padding: 80px 0;
 }
 
 /* Sections */
@@ -37,8 +37,15 @@ html {
     border: 1px solid rgba(200, 200, 200, 0.2);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 1px rgba(255, 255, 255, 0.1);
     position: relative;
-    min-height: calc(100vh - 40px);
+    min-height: calc(100vh - 100px);
     scroll-snap-align: start;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.profile-section.revealed {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .profile-image-container {
@@ -186,13 +193,19 @@ html {
     max-width: 900px;
     border: 1px solid rgba(200, 200, 200, 0.25);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 1px rgba(255, 255, 255, 0.15);
-    animation: slideInDown 0.8s ease-out;
     scroll-snap-align: start;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.achievements-section.revealed {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .achievements-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     gap: 20px;
 }
 
@@ -233,7 +246,7 @@ html {
 
 .achievement-metric {
     font-family: 'Fira Code', monospace;
-    font-size: 3rem;
+    font-size: clamp(1.6rem, 6vw, 3rem);
     font-weight: 700;
     color: #f1f5f9;
     margin-bottom: 8px;
@@ -242,7 +255,7 @@ html {
 }
 
 .achievement-label {
-    font-size: 0.95rem;
+    font-size: clamp(0.7rem, 2.5vw, 0.95rem);
     color: #cbd5e1;
     line-height: 1.4;
 }
@@ -254,9 +267,16 @@ section {
     margin: 0 auto 40px;
     max-width: 900px;
     border: 1px solid rgba(200, 200, 200, 0.2);
-    animation: bounceInUp 0.8s ease-out;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8), 0 0 1px rgba(255, 255, 255, 0.1);
     scroll-snap-align: start;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+section.revealed {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 h2 {
@@ -346,6 +366,11 @@ h3, h4 {
     width: 100%;
 }
 
+.word {
+    display: inline-block;
+    white-space: nowrap;
+}
+
 .bullet-text .letter {
     display: inline-block;
 }
@@ -359,13 +384,13 @@ h3, h4 {
 
 .summary-item .letter {
     display: inline-block;
-    animation: karaokeGrow 0.3s ease-out forwards;
+    animation: karaokeGrow 0.15s ease-out forwards;
     opacity: 0.4;
     transform: scale(0.9);
 }
 
 .summary-item.active .letter {
-    animation: karaokeGrow 0.3s ease-out forwards;
+    animation: karaokeGrow 0.15s ease-out forwards;
 }
 
 .carousel-controls {
@@ -606,7 +631,7 @@ h3, h4 {
 /* Education */
 .education-item {
     background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(35, 35, 35, 0.9));
-    padding: 28px;
+    padding: 18px 24px;
     border-radius: 12px;
     margin-bottom: 20px;
     border: 1px solid rgba(180, 180, 180, 0.2);
@@ -701,6 +726,8 @@ h3, h4 {
     position: relative;
     overflow: visible;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .skill-tag:hover {
@@ -1015,7 +1042,7 @@ h3, h4 {
         flex-direction: column;
         gap: 20px;
         padding: 30px;
-        min-height: calc(100vh - 40px);
+        min-height: calc(100vh - 100px);
         justify-content: center;
     }
 
@@ -1068,11 +1095,28 @@ h3, h4 {
     }
 
     .experience-item {
-        padding: 20px;
+        padding: 16px;
+        max-height: 55vh;
+        overflow-y: auto;
+    }
+
+    .experience-item li {
+        padding-left: 16px;
+    }
+
+    .experience-item li:before {
+        display: none;
     }
 
     .experience-swiper .swiper-slide {
-        width: 90%;
+        width: 96%;
+    }
+
+    .experience-section {
+        border: none;
+        box-shadow: none;
+        background: transparent;
+        padding: 10px 0 20px;
     }
 
     .experience-swiper {
@@ -1088,17 +1132,17 @@ h3, h4 {
         gap: 15px;
     }
 
-    .achievement-metric {
-        font-size: 2.5rem;
-    }
-
-    .achievement-label {
-        font-size: 0.85rem;
-    }
-
     .summary-item {
         font-size: 1.1rem;
         padding: 20px;
+    }
+
+    .education-section {
+        padding: 20px 12px;
+    }
+
+    .education-item {
+        padding: 14px 16px;
     }
 
     .skill-tag {

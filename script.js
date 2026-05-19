@@ -623,6 +623,10 @@ document.addEventListener('DOMContentLoaded', () => {
         navigator.serviceWorker.register('/sw.js');
     }
 
+    // Remove static fallback content (for crawlers that don't execute JS)
+    const staticCv = document.querySelector('.static-cv');
+    if (staticCv) staticCv.remove();
+
     // Start interactive grid background
     new GridWarp();
 

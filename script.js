@@ -1,6 +1,145 @@
 // Language state
 let currentLanguage = localStorage.getItem('language') || 'en';
 
+// GridWarp — interactive background
+class GridWarp {
+    constructor() {
+        this.canvas = document.createElement('canvas');
+        this.ctx = this.canvas.getContext('2d');
+        this.points = [];
+        this.mouse = { x: -1000, y: -1000 };
+        this.target = { x: -1000, y: -1000 };
+        this.spacing = 50;
+        this.radius = 200;
+        this.maxForce = 30;
+        this.isMobile = /Android|iPhone|iPad|iPod|webOS/i.test(navigator.userAgent);
+        this.clickPulse = 0;
+        this.init();
+    }
+
+    init() {
+        this.canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;';
+        document.body.prepend(this.canvas);
+        this.resize();
+        this.createGrid();
+
+        if (this.isMobile) {
+            document.addEventListener('touchstart', (e) => this.onTouchStart(e), { passive: true });
+            document.addEventListener('touchmove', (e) => this.onTouchMove(e), { passive: true });
+            document.addEventListener('touchend', () => this.onTouchEnd());
+            document.addEventListener('click', (e) => this.onClick(e));
+        } else {
+            document.addEventListener('mousemove', (e) => this.onMove(e));
+            document.addEventListener('mouseleave', () => { this.target.x = -1000; this.target.y = -1000; });
+        }
+
+        window.addEventListener('resize', () => { this.resize(); this.createGrid(); });
+        this.animate();
+    }
+
+    resize() {
+        const dpr = window.devicePixelRatio || 1;
+        this.canvas.width = window.innerWidth * dpr;
+        this.canvas.height = window.innerHeight * dpr;
+        this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        this.w = window.innerWidth;
+        this.h = window.innerHeight;
+    }
+
+    createGrid() {
+        this.points = [];
+        const cols = Math.ceil(this.w / this.spacing) + 1;
+        const rows = Math.ceil(this.h / this.spacing) + 1;
+        for (let i = 0; i < cols; i++) {
+            for (let j = 0; j < rows; j++) {
+                const x = i * this.spacing;
+                const y = j * this.spacing;
+                this.points.push({ x, y, ox: x, oy: y, vx: 0, vy: 0 });
+            }
+        }
+    }
+
+    onMove(e) {
+        this.target.x = e.clientX;
+        this.target.y = e.clientY;
+    }
+
+    onClick(e) {
+        this.target.x = e.clientX;
+        this.target.y = e.clientY;
+        this.clickPulse = 2.5;
+        clearTimeout(this._pulseTimeout);
+        clearTimeout(this._fadeTimeout);
+        this._pulseTimeout = setTimeout(() => { this.clickPulse = -0.3; }, 1000);
+        this._fadeTimeout = setTimeout(() => { this.target.x = -1000; this.target.y = -1000; this.clickPulse = 0; }, 3500);
+    }
+
+    onTouchStart(e) {
+        const t = e.touches[0];
+        this.target.x = t.clientX;
+        this.target.y = t.clientY;
+        this.clickPulse = 1.5;
+        clearTimeout(this._pulseTimeout);
+        clearTimeout(this._fadeTimeout);
+    }
+
+    onTouchMove(e) {
+        const t = e.touches[0];
+        this.target.x = t.clientX;
+        this.target.y = t.clientY;
+    }
+
+    onTouchEnd() {
+        this._pulseTimeout = setTimeout(() => { this.clickPulse = -0.3; }, 200);
+        this._fadeTimeout = setTimeout(() => { this.target.x = -1000; this.target.y = -1000; this.clickPulse = 0; }, 2500);
+    }
+
+    animate() {
+        this.ctx.fillStyle = '#080808';
+        this.ctx.fillRect(0, 0, this.w, this.h);
+
+        this.mouse.x += (this.target.x - this.mouse.x) * 0.08;
+        this.mouse.y += (this.target.y - this.mouse.y) * 0.08;
+
+        if (this.clickPulse > 0) this.clickPulse *= 0.96;
+        else if (this.clickPulse < 0) this.clickPulse *= 0.94;
+
+        const pulseBoost = this.clickPulse > 0 ? 1 + this.clickPulse : 1;
+        const radius = this.radius * (this.isMobile ? 2 * pulseBoost : 1);
+
+        for (const p of this.points) {
+            const dx = this.mouse.x - p.x;
+            const dy = this.mouse.y - p.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < radius && dist > 0.1) {
+                const force = Math.pow(1 - dist / radius, 2) * this.maxForce * pulseBoost;
+                const angle = Math.atan2(dy, dx);
+                p.vx -= Math.cos(angle) * force * 0.12;
+                p.vy -= Math.sin(angle) * force * 0.12;
+            }
+
+            p.vx += (p.ox - p.x) * 0.06;
+            p.vy += (p.oy - p.y) * 0.06;
+            p.vx *= 0.88;
+            p.vy *= 0.88;
+            p.x += p.vx;
+            p.y += p.vy;
+
+            const displaced = Math.sqrt((p.x - p.ox) ** 2 + (p.y - p.oy) ** 2);
+            const pulseBrightness = this.clickPulse > 0 ? 1 + this.clickPulse * 0.8 : 1;
+            const alpha = (0.12 + displaced * 0.04) * pulseBrightness;
+
+            this.ctx.beginPath();
+            this.ctx.arc(p.x, p.y, 1.6, 0, Math.PI * 2);
+            this.ctx.fillStyle = `rgba(220,220,220,${Math.min(alpha, 0.75)})`;
+            this.ctx.fill();
+        }
+
+        requestAnimationFrame(() => this.animate());
+    }
+}
+
 // Resume Data - Bilingual
 const resumeDataBilingual = {
     en: {
@@ -479,6 +618,14 @@ function setupAutoplayObservers() {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
+    // Register service worker for PWA
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js');
+    }
+
+    // Start interactive grid background
+    new GridWarp();
+
     // Set initial language
     document.getElementById('language-text').textContent = currentLanguage === 'en' ? 'ES' : 'EN';
     updateSectionTitles();

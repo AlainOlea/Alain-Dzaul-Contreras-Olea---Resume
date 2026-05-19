@@ -1,0 +1,19 @@
+{
+  "name": "Alain Dzaul Contreras Olea — Resume",
+  "short_name": "Alain Contreras",
+  "description": "SDET Quality Assurance Engineer — Professional resume and portfolio",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080808",
+  "theme_color": "#080808",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/public/images/profile-picture.png",
+      "sizes": "768x1376",
+      "type": "image/png"
+    }
+  ],
+  "lang": "en",
+  "categories": ["business", "productivity"]
+}

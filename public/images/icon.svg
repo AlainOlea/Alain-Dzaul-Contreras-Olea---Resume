@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="64" fill="#080808"/>
+  <rect width="512" height="512" rx="64" fill="none" stroke="#3b82f6" stroke-width="4"/>
+  <text x="256" y="290" font-family="'Fira Code', monospace" font-size="220" font-weight="700" fill="#f1f5f9" text-anchor="middle" letter-spacing="-8">AC</text>
+</svg>

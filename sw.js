@@ -6,6 +6,7 @@ const ASSETS = [
     '/script.js',
     '/manifest.json',
     '/public/images/profile-picture.png',
+    '/public/images/icon.svg',
     'https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap',
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
     'https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css',

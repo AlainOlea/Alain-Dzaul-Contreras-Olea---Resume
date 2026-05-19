@@ -135,7 +135,7 @@ Aspen HYSYS, Ranorex, AutoCAD, Postman, OPC Tools
 ## Certificaciones y Licencias
 
 - **Certificado en ISO 9001:2015**
-- **Cédula Profesional** - Ingeniería Química, Número: 12075687
+- **Cédula Profesional** - Ingeniería Química Petrolera, Número: 12075687
 
 ---
 

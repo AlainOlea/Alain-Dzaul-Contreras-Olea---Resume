@@ -1,143 +1,184 @@
 // Language state
 let currentLanguage = localStorage.getItem('language') || 'en';
 
-// GridWarp — interactive background
-class GridWarp {
-    constructor() {
-        this.canvas = document.createElement('canvas');
-        this.ctx = this.canvas.getContext('2d');
-        this.points = [];
-        this.mouse = { x: -1000, y: -1000 };
-        this.target = { x: -1000, y: -1000 };
-        this.spacing = 50;
-        this.radius = 200;
-        this.maxForce = 30;
-        this.isMobile = /Android|iPhone|iPad|iPod|webOS/i.test(navigator.userAgent);
-        this.clickPulse = 0;
-        this.init();
+// Node Graph — CSS 3D background (replaces the old canvas GridWarp)
+const GRAPH_CATEGORIES = ['whoami', 'summary', 'achievements', 'experience', 'education', 'skills', 'certifications', 'languages'];
+let graphAnimating = false;
+let backgroundGraph = null;
+let sidebarGraph = null;
+
+function buildGraphNodes(count) {
+    const nodes = [];
+    for (let i = 0; i < count; i++) {
+        nodes.push({
+            id: i,
+            category: GRAPH_CATEGORIES[i % GRAPH_CATEGORIES.length],
+            left: Math.random() * 100,
+            top: Math.random() * 100,
+            z: (Math.random() - 0.5) * 400,
+            size: 3 + Math.random() * 4
+        });
     }
+    return nodes;
+}
 
-    init() {
-        this.canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;';
-        document.body.prepend(this.canvas);
-        this.resize();
-        this.createGrid();
-
-        if (this.isMobile) {
-            document.addEventListener('touchstart', (e) => this.onTouchStart(e), { passive: true });
-            document.addEventListener('touchmove', (e) => this.onTouchMove(e), { passive: true });
-            document.addEventListener('touchend', () => this.onTouchEnd());
-            document.addEventListener('click', (e) => this.onClick(e));
-        } else {
-            document.addEventListener('mousemove', (e) => this.onMove(e));
-            document.addEventListener('mouseleave', () => { this.target.x = -1000; this.target.y = -1000; });
+function buildGraphLines(nodes, linksPerNode) {
+    const lines = [];
+    nodes.forEach((node, i) => {
+        for (let k = 1; k <= linksPerNode; k++) {
+            const target = nodes[(i + k * 3) % nodes.length];
+            if (target === node) continue;
+            lines.push({ from: node, to: target, category: node.category });
         }
+    });
+    return lines;
+}
 
-        window.addEventListener('resize', () => { this.resize(); this.createGrid(); });
-        this.animate();
+function renderGraph(container, { nodeCount, opacity, is3D }) {
+    container.innerHTML = '';
+    container.style.setProperty('--graph-bg-opacity', opacity);
+
+    const scene = document.createElement('div');
+    scene.className = 'graph-scene';
+    container.appendChild(scene);
+
+    const nodes = buildGraphNodes(nodeCount);
+    const lines = buildGraphLines(nodes, is3D ? 2 : 1);
+
+    lines.forEach((line) => {
+        const el = document.createElement('div');
+        el.className = 'graph-line';
+        el.dataset.category = line.category;
+        const dx = line.to.left - line.from.left;
+        const dy = line.to.top - line.from.top;
+        const length = Math.sqrt(dx * dx + dy * dy);
+        const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+        el.style.left = line.from.left + '%';
+        el.style.top = line.from.top + '%';
+        el.style.width = length + '%';
+        el.style.transform = is3D
+            ? `rotate(${angle}deg) translateZ(${line.from.z}px)`
+            : `rotate(${angle}deg)`;
+        scene.appendChild(el);
+    });
+
+    nodes.forEach((node) => {
+        const el = document.createElement('div');
+        el.className = 'graph-node';
+        el.dataset.category = node.category;
+        el.style.left = node.left + '%';
+        el.style.top = node.top + '%';
+        el.style.width = node.size + 'px';
+        el.style.height = node.size + 'px';
+        el.style.transform = is3D ? `translateZ(${node.z}px)` : 'none';
+        scene.appendChild(el);
+    });
+
+    return { container, scene, nodes, lines };
+}
+
+function updateScrollProgress() {
+    const doc = document.body;
+    const scrollable = doc.scrollHeight - doc.clientHeight;
+    const progress = scrollable > 0 ? doc.scrollTop / scrollable : 0;
+    document.documentElement.style.setProperty('--scroll-progress', progress.toFixed(4));
+}
+
+function animateGraph() {
+    if (!graphAnimating) return;
+    const t = performance.now() * 0.00005;
+    const rx = Math.sin(t) * 6 + 'deg';
+    const ry = (t * 12 % 360) + 'deg';
+    document.querySelectorAll('.graph-scene').forEach((scene) => {
+        scene.style.setProperty('--graph-rx', rx);
+        scene.style.setProperty('--graph-ry', ry);
+    });
+    updateScrollProgress();
+    requestAnimationFrame(animateGraph);
+}
+
+function setupNodeGraph() {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobileViewport = window.matchMedia('(max-width: 768px)').matches;
+
+    const bgContainer = document.createElement('div');
+    bgContainer.id = 'node-graph';
+    bgContainer.setAttribute('aria-hidden', 'true');
+    document.body.prepend(bgContainer);
+
+    backgroundGraph = renderGraph(bgContainer, {
+        nodeCount: isMobileViewport ? 9 : 26,
+        opacity: isMobileViewport ? 0.12 : 0.2,
+        is3D: !isMobileViewport && !prefersReducedMotion
+    });
+
+    const sidebarContainer = document.getElementById('sidebar-graph');
+    if (sidebarContainer && !isMobileViewport) {
+        sidebarGraph = renderGraph(sidebarContainer, {
+            nodeCount: 12,
+            opacity: 0.9,
+            is3D: !prefersReducedMotion
+        });
     }
 
-    resize() {
-        const dpr = window.devicePixelRatio || 1;
-        this.canvas.width = window.innerWidth * dpr;
-        this.canvas.height = window.innerHeight * dpr;
-        this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        this.w = window.innerWidth;
-        this.h = window.innerHeight;
-    }
+    // Body scroll drives progress bar / scroll listener even when the rotation loop is off (reduced motion)
+    document.body.addEventListener('scroll', updateScrollProgress, { passive: true });
+    updateScrollProgress();
 
-    createGrid() {
-        this.points = [];
-        const cols = Math.ceil(this.w / this.spacing) + 1;
-        const rows = Math.ceil(this.h / this.spacing) + 1;
-        for (let i = 0; i < cols; i++) {
-            for (let j = 0; j < rows; j++) {
-                const x = i * this.spacing;
-                const y = j * this.spacing;
-                this.points.push({ x, y, ox: x, oy: y, vx: 0, vy: 0 });
-            }
+    if (!isMobileViewport && !prefersReducedMotion) {
+        graphAnimating = true;
+        animateGraph();
+    }
+}
+
+function updateGraphHighlight(sectionId) {
+    if (!sidebarGraph) return;
+    sidebarGraph.container.querySelectorAll('.graph-node, .graph-line').forEach((el) => {
+        el.classList.toggle('lit', el.dataset.category === sectionId);
+    });
+}
+
+let scanlineEl = null;
+
+function triggerScanline() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!scanlineEl) {
+        scanlineEl = document.createElement('div');
+        scanlineEl.id = 'scanline-overlay';
+        scanlineEl.setAttribute('aria-hidden', 'true');
+        document.body.appendChild(scanlineEl);
+    }
+    scanlineEl.classList.remove('scanline-active');
+    void scanlineEl.offsetWidth; // force reflow to restart the animation
+    scanlineEl.classList.add('scanline-active');
+}
+
+function setupScrollspy() {
+    const navLinks = document.querySelectorAll('#sidebar-nav a[data-section]');
+    if (!navLinks.length) return;
+
+    let lastActiveSection = null;
+
+    const setActive = (sectionId) => {
+        navLinks.forEach((link) => {
+            link.classList.toggle('active', link.dataset.section === sectionId);
+        });
+        updateGraphHighlight(sectionId);
+        if (lastActiveSection && lastActiveSection !== sectionId) {
+            triggerScanline();
         }
-    }
+        lastActiveSection = sectionId;
+    };
 
-    onMove(e) {
-        this.target.x = e.clientX;
-        this.target.y = e.clientY;
-    }
+    const spyObserver = new IntersectionObserver((entries) => {
+        const visible = entries.filter((e) => e.isIntersecting);
+        if (visible.length === 0) return;
+        const mostVisible = visible.reduce((a, b) => (a.intersectionRatio > b.intersectionRatio ? a : b));
+        if (mostVisible.target.id) setActive(mostVisible.target.id);
+    }, { threshold: [0, 0.25, 0.5, 0.75, 1], rootMargin: '-45% 0px -45% 0px' });
 
-    onClick(e) {
-        this.target.x = e.clientX;
-        this.target.y = e.clientY;
-        this.clickPulse = 2.5;
-        clearTimeout(this._pulseTimeout);
-        clearTimeout(this._fadeTimeout);
-        this._pulseTimeout = setTimeout(() => { this.clickPulse = -0.3; }, 1000);
-        this._fadeTimeout = setTimeout(() => { this.target.x = -1000; this.target.y = -1000; this.clickPulse = 0; }, 3500);
-    }
-
-    onTouchStart(e) {
-        const t = e.touches[0];
-        this.target.x = t.clientX;
-        this.target.y = t.clientY;
-        this.clickPulse = 1.5;
-        clearTimeout(this._pulseTimeout);
-        clearTimeout(this._fadeTimeout);
-    }
-
-    onTouchMove(e) {
-        const t = e.touches[0];
-        this.target.x = t.clientX;
-        this.target.y = t.clientY;
-    }
-
-    onTouchEnd() {
-        this._pulseTimeout = setTimeout(() => { this.clickPulse = -0.3; }, 200);
-        this._fadeTimeout = setTimeout(() => { this.target.x = -1000; this.target.y = -1000; this.clickPulse = 0; }, 2500);
-    }
-
-    animate() {
-        this.ctx.fillStyle = '#080808';
-        this.ctx.fillRect(0, 0, this.w, this.h);
-
-        this.mouse.x += (this.target.x - this.mouse.x) * 0.08;
-        this.mouse.y += (this.target.y - this.mouse.y) * 0.08;
-
-        if (this.clickPulse > 0) this.clickPulse *= 0.96;
-        else if (this.clickPulse < 0) this.clickPulse *= 0.94;
-
-        const pulseBoost = this.clickPulse > 0 ? 1 + this.clickPulse : 1;
-        const radius = this.radius * (this.isMobile ? 2 * pulseBoost : 1);
-
-        for (const p of this.points) {
-            const dx = this.mouse.x - p.x;
-            const dy = this.mouse.y - p.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-
-            if (dist < radius && dist > 0.1) {
-                const force = Math.pow(1 - dist / radius, 2) * this.maxForce * pulseBoost;
-                const angle = Math.atan2(dy, dx);
-                p.vx -= Math.cos(angle) * force * 0.12;
-                p.vy -= Math.sin(angle) * force * 0.12;
-            }
-
-            p.vx += (p.ox - p.x) * 0.06;
-            p.vy += (p.oy - p.y) * 0.06;
-            p.vx *= 0.88;
-            p.vy *= 0.88;
-            p.x += p.vx;
-            p.y += p.vy;
-
-            const displaced = Math.sqrt((p.x - p.ox) ** 2 + (p.y - p.oy) ** 2);
-            const pulseBrightness = this.clickPulse > 0 ? 1 + this.clickPulse * 0.8 : 1;
-            const alpha = (0.12 + displaced * 0.04) * pulseBrightness;
-
-            this.ctx.beginPath();
-            this.ctx.arc(p.x, p.y, 1.6, 0, Math.PI * 2);
-            this.ctx.fillStyle = `rgba(220,220,220,${Math.min(alpha, 0.75)})`;
-            this.ctx.fill();
-        }
-
-        requestAnimationFrame(() => this.animate());
-    }
+    document.querySelectorAll('#whoami, #summary, #achievements, #experience, #education, #skills, #certifications, #languages')
+        .forEach((el) => spyObserver.observe(el));
 }
 
 // Resume Data - Bilingual
@@ -145,6 +186,10 @@ const resumeDataBilingual = {
     en: {
         title: 'SDET Quality Assurance',
         professionalSummary: 'Professional Summary',
+        closingTitle: "Let's Work Together",
+        closingCopy: "Quality-focused engineering, delivered. If you're looking for an SDET who bridges the gap between development and reliability, let's talk.",
+        ctaDownload: 'Download Resume',
+        ctaContact: 'Contact Me',
         experience: 'Experience',
         education: 'Education',
         skills: 'Skills',
@@ -318,6 +363,10 @@ const resumeDataBilingual = {
     es: {
         title: 'SDET Aseguramiento de Calidad',
         professionalSummary: 'Resumen Profesional',
+        closingTitle: 'Trabajemos Juntos',
+        closingCopy: 'Ingeniería enfocada en calidad, entregada. Si buscas un SDET que conecte desarrollo y confiabilidad, hablemos.',
+        ctaDownload: 'Descargar CV',
+        ctaContact: 'Contáctame',
         experience: 'Experiencia',
         education: 'Educación',
         skills: 'Habilidades',
@@ -536,6 +585,20 @@ function updateSectionTitles() {
     document.getElementById('skills-title').textContent = data.skills;
     document.getElementById('certifications-title').textContent = data.certifications;
     document.getElementById('languages-title').textContent = data.languages;
+    document.getElementById('closing-title').textContent = data.closingTitle;
+    document.getElementById('closing-copy').textContent = data.closingCopy;
+    document.getElementById('cta-download-text').textContent = data.ctaDownload;
+    document.getElementById('cta-contact-text').textContent = data.ctaContact;
+    document.getElementById('closing-download-text').textContent = data.ctaDownload;
+    document.getElementById('closing-contact-text').textContent = data.ctaContact;
+    updateNavLabels();
+    retriggerRevealedH2Typing();
+}
+
+function updateNavLabels() {
+    document.querySelectorAll('#sidebar-nav a[data-section]').forEach((link) => {
+        link.textContent = currentLanguage === 'es' ? link.dataset.es : link.dataset.en;
+    });
 }
 
 // Render all content
@@ -563,6 +626,60 @@ function renderAchievements() {
     });
 
     container.innerHTML = html;
+    setupCounterAnimations();
+}
+
+// Terminal-style "typing" effect on section headers
+function triggerH2Typing(sectionEl) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const h2 = sectionEl.querySelector('h2');
+    if (!h2) return;
+    h2.style.setProperty('--h2-target-width', h2.textContent.length + 'ch');
+    h2.classList.remove('h2-typing');
+    void h2.offsetWidth; // force reflow to restart the animation
+    h2.classList.add('h2-typing');
+}
+
+function retriggerRevealedH2Typing() {
+    document.querySelectorAll('.profile-section.revealed, .achievements-section.revealed, section.revealed').forEach((sectionEl) => {
+        triggerH2Typing(sectionEl);
+    });
+}
+
+// Animated counters on key achievement metrics
+function setupCounterAnimations() {
+    const metrics = document.querySelectorAll('.achievement-metric');
+    if (!metrics.length) return;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            const match = el.textContent.trim().match(/^(\d+)(.*)$/);
+            counterObserver.unobserve(el);
+            if (!match) return;
+
+            const target = parseInt(match[1], 10);
+            const suffix = match[2];
+
+            if (prefersReducedMotion) {
+                el.textContent = target + suffix;
+                return;
+            }
+
+            const duration = 1200;
+            const start = performance.now();
+            const step = (now) => {
+                const progress = Math.min((now - start) / duration, 1);
+                el.textContent = Math.round(target * progress) + suffix;
+                if (progress < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+        });
+    }, { threshold: 0.5 });
+
+    metrics.forEach((el) => counterObserver.observe(el));
 }
 
 // Carousel State
@@ -627,8 +744,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const staticCv = document.querySelector('.static-cv');
     if (staticCv) staticCv.remove();
 
-    // Start interactive grid background
-    new GridWarp();
+    // Start CSS 3D node-graph background
+    setupNodeGraph();
 
     // Set initial language
     document.getElementById('language-text').textContent = currentLanguage === 'en' ? 'ES' : 'EN';
@@ -645,12 +762,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Setup observers for conditional autoplay
     setupAutoplayObservers();
+    setupScrollspy();
 
     // Scroll-driven reveal animations
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('revealed');
+                triggerH2Typing(entry.target);
             }
         });
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });

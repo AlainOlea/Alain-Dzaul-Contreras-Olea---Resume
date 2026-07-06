@@ -205,7 +205,7 @@ function setupMobileNavSwiper() {
 // Resume Data - Bilingual
 const resumeDataBilingual = {
     en: {
-        title: 'SDET Quality Assurance',
+        title: 'QA Engineer / SDET',
         professionalSummary: 'Professional Summary',
         closingTitle: "Let's Work Together",
         closingCopy: "Quality-focused engineering, delivered. If you're looking for an SDET who bridges the gap between development and reliability, let's talk.",
@@ -217,49 +217,47 @@ const resumeDataBilingual = {
         certifications: 'Certifications & Licenses',
         languages: 'Languages',
         summaryItems: [
-            'Quality-focused engineer who believes great software comes from great collaboration—4+ years partnering with developers, stakeholders, and end users to deliver reliable solutions',
-            'Translate complex technical requirements into clear acceptance criteria and actionable test strategies that teams actually use',
-            'Built trust with leadership by acting as technical bridge between C-Level vision and development execution, improving product satisfaction from 6/10 to 8/10',
-            'Hands-on engineer who strengthens teams through knowledge sharing, automated testing frameworks, and streamlined processes (CI/CD, Three Amigos)',
-            'Proven track record in high-stakes environments: 5 consecutive zero-bug releases, 100% FDA audit pass rate'
+            'QA Engineer / SDET with 4+ years in regulated software (FDA 21 CFR Part 11) and SaaS products',
+            'Design testing strategies and automation (Playwright, Jest, CI/CD) and work directly with the business to turn ambiguous requirements into clear acceptance criteria',
+            'Recent results: 800+ automated tests, 5 consecutive zero-critical-bug releases, 2 passed FDA audits'
         ],
         keyAchievements: [
-            { metric: '33%', label: 'Quality improvement (6/10 → 8/10)' },
             { metric: '800+', label: 'Automated tests created' },
             { metric: '100%', label: 'FDA audit pass rate' },
-            { metric: '5', label: 'Bug-free releases in a row' }
+            { metric: '5', label: 'Consecutive zero-bug releases' },
+            { metric: '4+', label: 'Years in QA & test engineering' }
         ],
         experienceItems: [
             {
-                role: 'Quality Assurance',
+                role: 'QA Engineer',
                 company: 'Rubidex',
                 location: 'Mexico City',
                 period: 'February 2025 - May 2026',
                 description: [
-                    'Improved product quality from 6/10 to 8/10 client satisfaction (33% increase)',
-                    'Built 800+ automated tests (600 unit, 200 integration, 10 E2E) serving dual purpose: validation and living documentation',
-                    'Led QA for 7 developers across 2 teams, blocking 5+ critical bugs pre-production'
+                    'Improved client satisfaction with the product from 6/10 to 8/10 over two quarters',
+                    'Built 800+ automated tests (600 unit, 200 integration, 10 E2E) that also serve as living documentation for the system',
+                    'Led QA for 7 developers across 2 teams, blocking 5+ critical bugs before production'
                 ],
                 expandedDescription: [
-                    'Implemented CI/CD pipelines for Frontend/Backend and agile processes: Three Amigos, Design Handoffs, Definition of Ready',
+                    'Implemented CI/CD pipelines for Frontend/Backend and introduced agile processes: Three Amigos, Design Handoffs, Definition of Ready',
                     'Acted as technical bridge between leadership and development, refining requirements and defining acceptance criteria for complex modules',
-                    'Established change control governance and process standardization to protect sprint scope and mitigate risks'
+                    'Established change control governance and process standardization to protect sprint scope'
                 ]
             },
             {
-                role: 'Software Quality Engineer',
+                role: 'QA Engineer / SDET',
                 company: 'AspenTech',
                 location: 'Mexico City',
                 period: 'March 2021 – July 2024',
                 description: [
-                    '5 consecutive releases with zero critical bugs (zero showstoppers)',
-                    'Passed 2 FDA audits + 3+ client audits with no critical observations',
-                    'Managed 1,600+ test cases for pharmaceutical spectrometry software (50 specialized users)'
+                    'Delivered 5 consecutive releases with zero critical bugs as the engineer responsible for end-to-end validation',
+                    'Passed 2 FDA audits and 3+ client audits with no critical observations',
+                    'Managed 1,600+ test cases for pharmaceutical spectrometry software used by 50 specialized users'
                 ],
                 expandedDescription: [
-                    'Delivered multiple successful releases for enterprise client with 3 interdependent products',
-                    'Complete documentation under FDA 21CFR Part 11 and ISO 9001 compliance',
-                    'Hybrid testing approach: 10% automated (critical flows) + 90% manual (regulatory flexibility)'
+                    'Delivered multiple releases for an enterprise client with 3 interdependent products',
+                    'Authored and maintained validation documentation under FDA 21 CFR Part 11 and ISO 9001',
+                    'Designed a hybrid testing approach: 10% automated for critical flows, 90% manual to preserve regulatory flexibility'
                 ]
             },
             {
@@ -268,13 +266,11 @@ const resumeDataBilingual = {
                 location: 'Mexico City',
                 period: 'July 2019 – February 2021',
                 description: [
-                    'L2/L3 technical support for 5,000+ users in Fortune 500 client (multi-continental operations)',
+                    'Provided L2/L3 technical support to 5,000+ users for a Fortune 500 client with multi-continental operations',
                     'Resolved ~25 tickets/month in Oracle ERP Supply Chain using Python, SQL, and Java',
-                    'Collaborated in multicultural team for international enterprise-scale project'
+                    'Built internal Android tools using Kotlin'
                 ],
-                expandedDescription: [
-                    'Android development with Kotlin for internal tools'
-                ]
+                expandedDescription: []
             },
             {
                 role: 'Engineering Intern',
@@ -282,13 +278,11 @@ const resumeDataBilingual = {
                 location: 'Mexico City, Tula Hidalgo, Salina Cruz Oaxaca',
                 period: 'September 2018 – March 2019',
                 description: [
-                    'Analyzed gas production optimization data and performed ethylene production forecasting that aligned with subsequent downward trends in national output',
-                    'Visited 5 facilities (refineries, distribution centers, gas processing plants) for operational audits'
+                    'Analyzed gas production optimization data and performed ethylene production forecasting',
+                    'Visited 5 facilities (refineries, distribution centers, gas processing plants) for operational audits',
+                    'Supported gas and liquid transportation process tracking'
                 ],
-                expandedDescription: [
-                    'Supported gas and liquid transportation process tracking',
-                    'Participated in large-scale industrial operations in energy sector'
-                ]
+                expandedDescription: []
             }
         ],
         educationItems: [
@@ -311,15 +305,6 @@ const resumeDataBilingual = {
             }
         ],
         skillsItems: [
-            {
-                category: 'AI & Development Tools',
-                items: [
-                    { name: 'Antigravity', description: 'AI-powered development environment for rapid prototyping' },
-                    { name: 'Claude Code', description: 'AI coding assistant CLI for autonomous software development' },
-                    { name: 'Gemini CLI', description: 'Google\'s AI assistant command-line interface for coding tasks' },
-                    { name: 'WindSurf', description: 'AI-first IDE with intelligent code completion and refactoring' }
-                ]
-            },
             {
                 category: 'Programming Languages',
                 items: [
@@ -370,10 +355,19 @@ const resumeDataBilingual = {
                     { name: 'Postman', description: 'API development and testing platform for REST/GraphQL' },
                     { name: 'OPC Tools', description: 'Industrial automation protocol tools for SCADA systems' }
                 ]
+            },
+            {
+                category: 'AI Development Tools',
+                items: [
+                    { name: 'Claude Code', description: 'AI coding assistant CLI for autonomous software development' },
+                    { name: 'Gemini CLI', description: 'Google\'s AI assistant command-line interface for coding tasks' },
+                    { name: 'Antigravity', description: 'AI-powered development environment for rapid prototyping' },
+                    { name: 'Windsurf', description: 'AI-first IDE with intelligent code completion and refactoring' }
+                ]
             }
         ],
         certificationsItems: [
-            { name: 'Certified in ISO 9001:2015', details: '' },
+            { name: 'Experience working under ISO 9001:2015', details: '' },
             { name: 'Professional License (Cédula Profesional)', details: 'Chemical Engineering — Number: 12075687' }
         ],
         languagesItems: [
@@ -382,7 +376,7 @@ const resumeDataBilingual = {
         ]
     },
     es: {
-        title: 'SDET Aseguramiento de Calidad',
+        title: 'QA Engineer / SDET',
         professionalSummary: 'Resumen Profesional',
         closingTitle: 'Trabajemos Juntos',
         closingCopy: 'Ingeniería enfocada en calidad, entregada. Si buscas un SDET que conecte desarrollo y confiabilidad, hablemos.',
@@ -394,49 +388,47 @@ const resumeDataBilingual = {
         certifications: 'Certificaciones y Licencias',
         languages: 'Idiomas',
         summaryItems: [
-            'Ingeniero enfocado en calidad que cree que el gran software nace de la gran colaboración—4+ años trabajando con developers, stakeholders y usuarios finales para entregar soluciones confiables',
-            'Traduzco requerimientos técnicos complejos en criterios de aceptación claros y estrategias de testing accionables que los equipos realmente usan',
-            'Construí confianza con liderazgo actuando como puente técnico entre la visión de C-Level y la ejecución de desarrollo, mejorando la satisfacción del producto de 6/10 a 8/10',
-            'Ingeniero práctico que fortalece equipos a través de compartir conocimiento, frameworks de testing automatizado y procesos optimizados (CI/CD, Three Amigos)',
-            'Historial comprobado en ambientes críticos: 5 releases consecutivos sin bugs, 100% de tasa de aprobación en auditorías FDA'
+            'QA Engineer / SDET con 4+ años en software regulado (FDA 21 CFR Part 11) y productos SaaS',
+            'Diseño estrategias de testing y automatización (Playwright, Jest, CI/CD) y trabajo directo con negocio para convertir requerimientos ambiguos en criterios de aceptación',
+            'Últimos resultados: 800+ tests automatizados, 5 releases consecutivos sin bugs críticos, 2 auditorías FDA aprobadas'
         ],
         keyAchievements: [
-            { metric: '33%', label: 'Mejora de calidad (6/10 → 8/10)' },
             { metric: '800+', label: 'Tests automatizados creados' },
             { metric: '100%', label: 'Tasa de aprobación FDA' },
-            { metric: '5', label: 'Releases sin bugs consecutivos' }
+            { metric: '5', label: 'Releases sin bugs consecutivos' },
+            { metric: '4+', label: 'Años en QA e ingeniería de pruebas' }
         ],
         experienceItems: [
             {
-                role: 'Aseguramiento de Calidad',
+                role: 'QA Engineer',
                 company: 'Rubidex',
                 location: 'Ciudad de México',
                 period: 'Febrero 2025 - Mayo 2026',
                 description: [
-                    'Mejoré la calidad del producto de 6/10 a 8/10 en satisfacción del cliente (incremento del 33%)',
-                    'Desarrollé 800+ tests automatizados (600 unitarios, 200 integración, 10 E2E) con doble propósito: validación y documentación viva',
-                    'Lideré QA para 7 developers en 2 equipos, bloqueando 5+ bugs críticos pre-producción'
+                    'Mejoré la satisfacción del cliente con el producto de 6/10 a 8/10 en dos trimestres',
+                    'Desarrollé 800+ tests automatizados (600 unitarios, 200 integración, 10 E2E) que además sirven como documentación viva del sistema',
+                    'Lideré QA para 7 developers en 2 equipos, bloqueando 5+ bugs críticos antes de producción'
                 ],
                 expandedDescription: [
-                    'Implementé pipelines CI/CD para Frontend/Backend y procesos ágiles: Three Amigos, Design Handoffs, Definition of Ready',
+                    'Implementé pipelines de CI/CD para Frontend/Backend e introduje procesos ágiles: Three Amigos, Design Handoffs, Definition of Ready',
                     'Actué como puente técnico entre liderazgo y desarrollo, refinando requerimientos y definiendo criterios de aceptación para módulos complejos',
-                    'Establecí control de cambios y estandarización de procesos para proteger el alcance del sprint y mitigar riesgos'
+                    'Establecí control de cambios y estandarización de procesos para proteger el alcance del sprint'
                 ]
             },
             {
-                role: 'Ingeniero de Calidad de Software',
+                role: 'QA Engineer / SDET',
                 company: 'AspenTech',
                 location: 'Ciudad de México',
                 period: 'Marzo 2021 – Julio 2024',
                 description: [
-                    '5 releases consecutivos con cero bugs críticos (cero showstoppers)',
-                    'Aprobé 2 auditorías FDA + 3+ auditorías de clientes sin observaciones críticas',
-                    'Gestioné 1,600+ casos de prueba para software de espectrometría farmacéutica (50 usuarios especializados)'
+                    'Entregué 5 releases consecutivos sin bugs críticos como responsable de la validación end-to-end',
+                    'Aprobé 2 auditorías FDA y 3+ auditorías de clientes sin observaciones críticas',
+                    'Gestioné 1,600+ casos de prueba para software de espectrometría farmacéutica usado por 50 usuarios especializados'
                 ],
                 expandedDescription: [
-                    'Entregué múltiples releases exitosos para cliente enterprise con 3 productos interdependientes',
-                    'Documentación completa bajo cumplimiento FDA 21CFR Part 11 e ISO 9001',
-                    'Enfoque de testing híbrido: 10% automatizado (flujos críticos) + 90% manual (flexibilidad regulatoria)'
+                    'Entregué múltiples releases para cliente enterprise con 3 productos interdependientes',
+                    'Elaboré y mantuve la documentación de validación bajo FDA 21 CFR Part 11 e ISO 9001',
+                    'Diseñé un enfoque de testing híbrido: 10% automatizado en flujos críticos, 90% manual para mantener flexibilidad regulatoria'
                 ]
             },
             {
@@ -445,13 +437,11 @@ const resumeDataBilingual = {
                 location: 'Ciudad de México',
                 period: 'Julio 2019 – Febrero 2021',
                 description: [
-                    'Soporte técnico L2/L3 para 5,000+ usuarios en cliente Fortune 500 (operaciones multi-continentales)',
+                    'Brindé soporte técnico L2/L3 a 5,000+ usuarios de un cliente Fortune 500 con operaciones multi-continentales',
                     'Resolví ~25 tickets/mes en Oracle ERP Supply Chain usando Python, SQL y Java',
-                    'Colaboré en equipo multicultural para proyecto internacional a escala enterprise'
+                    'Desarrollé herramientas internas en Android con Kotlin'
                 ],
-                expandedDescription: [
-                    'Desarrollo Android con Kotlin para herramientas internas'
-                ]
+                expandedDescription: []
             },
             {
                 role: 'Becario de Ingeniería',
@@ -459,13 +449,11 @@ const resumeDataBilingual = {
                 location: 'Ciudad de México, Tula Hidalgo, Salina Cruz Oaxaca',
                 period: 'Septiembre 2018 – Marzo 2019',
                 description: [
-                    'Analicé datos de optimización de producción de gas y realicé forecasting de producción de etileno que se alineó con la tendencia nacional de disminución subsecuente',
-                    'Visité 5 instalaciones (refinerías, centros de distribución, plantas de procesamiento de gas) para auditorías operacionales'
+                    'Analicé datos de optimización de producción de gas y realicé forecasting de producción de etileno',
+                    'Visité 5 instalaciones (refinerías, centros de distribución, plantas de procesamiento de gas) para auditorías operacionales',
+                    'Di seguimiento a procesos de transportación de gas y líquidos'
                 ],
-                expandedDescription: [
-                    'Apoyé seguimiento de procesos de transportación de gas y líquidos',
-                    'Participé en operaciones industriales a gran escala en sector energético'
-                ]
+                expandedDescription: []
             }
         ],
         educationItems: [
@@ -488,15 +476,6 @@ const resumeDataBilingual = {
             }
         ],
         skillsItems: [
-            {
-                category: 'IA y Herramientas de Desarrollo',
-                items: [
-                    { name: 'Antigravity', description: 'Entorno de desarrollo potenciado por IA para prototipado rápido' },
-                    { name: 'Claude Code', description: 'Asistente de código IA CLI para desarrollo autónomo de software' },
-                    { name: 'Gemini CLI', description: 'Interfaz de línea de comandos del asistente IA de Google para tareas de código' },
-                    { name: 'WindSurf', description: 'IDE con IA integrada para autocompletado y refactorización inteligente' }
-                ]
-            },
             {
                 category: 'Lenguajes de Programación',
                 items: [
@@ -547,10 +526,19 @@ const resumeDataBilingual = {
                     { name: 'Postman', description: 'Plataforma de desarrollo y testing de APIs REST/GraphQL' },
                     { name: 'OPC Tools', description: 'Herramientas de protocolo de automatización industrial para sistemas SCADA' }
                 ]
+            },
+            {
+                category: 'Herramientas de Desarrollo con IA',
+                items: [
+                    { name: 'Claude Code', description: 'Asistente de código IA CLI para desarrollo autónomo de software' },
+                    { name: 'Gemini CLI', description: 'Interfaz de línea de comandos del asistente IA de Google para tareas de código' },
+                    { name: 'Antigravity', description: 'Entorno de desarrollo potenciado por IA para prototipado rápido' },
+                    { name: 'Windsurf', description: 'IDE con IA integrada para autocompletado y refactorización inteligente' }
+                ]
             }
         ],
         certificationsItems: [
-            { name: 'Certificado en ISO 9001:2015', details: '' },
+            { name: 'Experiencia trabajando bajo norma ISO 9001:2015', details: '' },
             { name: 'Cédula Profesional', details: 'Ingeniería Química Petrolera — Número: 12075687' }
         ],
         languagesItems: [
@@ -763,6 +751,19 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         document.querySelector('.title').classList.add('done');
     }, 3400);
+
+    // Once the contact icons finish popping in, bring them into view above
+    // the fixed mobile nav and focus them, so they're not left hidden below it
+    const contactIcons = document.querySelector('.contact-icons');
+    const lastIcon = contactIcons ? contactIcons.lastElementChild : null;
+    if (contactIcons && lastIcon) {
+        lastIcon.addEventListener('animationend', () => {
+            if (!window.matchMedia('(max-width: 768px)').matches) return;
+            contactIcons.setAttribute('tabindex', '-1');
+            contactIcons.scrollIntoView({ behavior: 'smooth', block: 'end' });
+            contactIcons.focus({ preventScroll: true });
+        }, { once: true });
+    }
 });
 
 // Summary Carousel (Swiper, same pattern as the Experience carousel)
@@ -875,13 +876,9 @@ function renderExperience() {
 
         html += '</ul>';
 
-        // Add expandable section if there are expanded descriptions
+        // Additional details are always shown inline — no expand/collapse toggle
         if (item.expandedDescription && item.expandedDescription.length > 0) {
-            const buttonText = currentLanguage === 'en' ? 'See full details' : 'Ver detalles completos';
-            const hideText = currentLanguage === 'en' ? 'Hide details' : 'Ocultar detalles';
-
-            html += '<button class="expand-btn" onclick="toggleExpand(this)">' + buttonText + ' ↓</button>';
-            html += '<ul class="expanded-bullets" data-hide-text="' + hideText + '">';
+            html += '<ul class="expanded-bullets">';
 
             item.expandedDescription.forEach(desc => {
                 html += '<li>' + desc + '</li>';
@@ -1156,28 +1153,3 @@ function downloadFile(fileName) {
         });
 }
 
-// Toggle expand/collapse for experience details
-function toggleExpand(button) {
-    const expandedSection = button.nextElementSibling;
-    const isExpanded = expandedSection.classList.contains('show');
-
-    if (isExpanded) {
-        expandedSection.classList.remove('show');
-        const showText = currentLanguage === 'en' ? 'See full details' : 'Ver detalles completos';
-        button.textContent = showText + ' ↓';
-    } else {
-        expandedSection.classList.add('show');
-        const hideText = expandedSection.getAttribute('data-hide-text');
-        button.textContent = hideText + ' ↑';
-
-        // Move focus to the end of the newly expanded content once its reveal transition finishes
-        const lastItem = expandedSection.lastElementChild;
-        if (lastItem) {
-            setTimeout(() => {
-                lastItem.setAttribute('tabindex', '-1');
-                lastItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                lastItem.focus({ preventScroll: true });
-            }, 420);
-        }
-    }
-}

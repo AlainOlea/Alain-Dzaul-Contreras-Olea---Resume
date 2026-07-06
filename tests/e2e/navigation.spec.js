@@ -42,7 +42,7 @@ test.describe('Basic Navigation and Page Load', () => {
   test('should display correct page title', async ({ page }) => {
     await page.goto('/');
 
-    await expect(page).toHaveTitle(/Alain Dzaul Contreras Olea - SDET Quality Assurance/);
+    await expect(page).toHaveTitle(/Alain Dzaul Contreras Olea - QA Engineer \/ SDET/);
   });
 
   test('should have correct meta description', async ({ page }) => {
@@ -51,7 +51,7 @@ test.describe('Basic Navigation and Page Load', () => {
     const metaDescription = page.locator('meta[name="description"]');
     const content = await metaDescription.getAttribute('content');
 
-    expect(content).toContain('SDET Quality Assurance Engineer');
+    expect(content).toContain('QA Engineer / SDET');
     expect(content).toContain('4+ years');
   });
 
@@ -68,7 +68,7 @@ test.describe('Basic Navigation and Page Load', () => {
 
     const title = page.locator('#job-title');
     await expect(title).toBeVisible();
-    await expect(title).toHaveText(/Quality Assurance|Aseguramiento de Calidad/);
+    await expect(title).toHaveText('QA Engineer / SDET');
   });
 
   test('should display all contact icons', async ({ page }) => {

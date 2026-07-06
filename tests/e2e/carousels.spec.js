@@ -98,59 +98,22 @@ test.describe('Experience Swiper', () => {
     await expect(firstSlide.locator('.meta')).toBeVisible(); // Period
   });
 
-  test('should have expand button for additional details', async ({ page }) => {
+  test('should show additional experience details inline without an expand button', async ({ page }) => {
     await page.goto('/');
 
     // Wait for swiper to initialize
     await page.waitForTimeout(1000);
 
-    const expandButtons = page.locator('.expand-btn');
-    const count = await expandButtons.count();
+    await expect(page.locator('.expand-btn')).toHaveCount(0);
 
-    // Should have expand buttons (most experiences have them)
-    expect(count).toBeGreaterThan(0);
-  });
-
-  test('should expand and collapse experience details', async ({ page }) => {
-    await page.goto('/');
-
-    // Wait for swiper to initialize
-    await page.waitForTimeout(1500);
-
-    // Find the active slide to ensure button interaction works
     const activeSlide = page.locator('.swiper-slide-active');
-    const expandBtn = activeSlide.locator('.expand-btn').first();
+    const expandedSection = activeSlide.locator('.expanded-bullets');
+    const expandedSectionCount = await expandedSection.count();
 
-    // Only test if expand button exists in active slide
-    const expandBtnCount = await expandBtn.count();
-    if (expandBtnCount === 0) {
-      // Skip if no expand button in active slide
-      return;
+    // Only assert visibility if the active slide's job has expanded details
+    if (expandedSectionCount > 0) {
+      await expect(expandedSection).toBeVisible();
     }
-
-    await expandBtn.scrollIntoViewIfNeeded();
-    await expect(expandBtn).toBeVisible();
-
-    // Click to expand
-    await expandBtn.click();
-    await page.waitForTimeout(500);
-
-    // Check expanded section is visible
-    const expandedSection = activeSlide.locator('.expanded-bullets.show');
-    await expect(expandedSection).toBeVisible({ timeout: 2000 });
-
-    // Verify button text changed to collapse state
-    await expect(expandBtn).toContainText('↑');
-
-    // Click to collapse
-    await expandBtn.click();
-    await page.waitForTimeout(500);
-
-    // Expanded section should be hidden
-    await expect(expandedSection).not.toBeVisible({ timeout: 2000 });
-
-    // Button should revert to expand state
-    await expect(expandBtn).toContainText('↓');
   });
 
   test('should auto-rotate experience slides after scrolling to section', async ({ page }) => {

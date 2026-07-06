@@ -5,13 +5,13 @@ test.describe('Language Toggle Functionality', () => {
     await page.goto('/');
 
     // Ensure we start in English
-    await expect(page.locator('#job-title')).toHaveText('SDET Quality Assurance');
+    await expect(page.locator('#job-title')).toHaveText('QA Engineer / SDET');
 
     // Click language toggle
     await page.locator('.language-toggle').click();
 
     // Check content changed to Spanish
-    await expect(page.locator('#job-title')).toHaveText('SDET Aseguramiento de Calidad');
+    await expect(page.locator('#job-title')).toHaveText('QA Engineer / SDET');
     await expect(page.locator('#summary-title')).toHaveText('Resumen Profesional');
     await expect(page.locator('#experience-title')).toHaveText('Experiencia');
   });
@@ -38,18 +38,18 @@ test.describe('Language Toggle Functionality', () => {
     await page.goto('/');
 
     // Switch to Spanish
-    const initialTitle = await page.locator('#job-title').textContent();
+    const initialTitle = await page.locator('#summary-title').textContent();
     await page.locator('.language-toggle').click();
     await page.waitForTimeout(500); // Wait for localStorage to update
 
-    const changedTitle = await page.locator('#job-title').textContent();
+    const changedTitle = await page.locator('#summary-title').textContent();
     expect(changedTitle).not.toBe(initialTitle);
 
     // Reload page
     await page.reload();
 
     // Language should persist
-    await expect(page.locator('#job-title')).toHaveText(changedTitle);
+    await expect(page.locator('#summary-title')).toHaveText(changedTitle);
   });
 
   test('should update all section titles when toggling language', async ({ page }) => {
@@ -88,7 +88,7 @@ test.describe('Language Toggle Functionality', () => {
     const achievementLabels = page.locator('.achievement-label');
     const firstLabel = await achievementLabels.first().textContent();
 
-    expect(firstLabel).toContain('Mejora de calidad');
+    expect(firstLabel).toContain('Tests automatizados creados');
   });
 
   test('should update skills categories when toggling language', async ({ page }) => {
@@ -109,7 +109,7 @@ test.describe('Language Toggle Functionality', () => {
     // Check skills categories
     const categoryTitles = await page.locator('.skills-category h3').allTextContents();
 
-    expect(categoryTitles).toContain('IA y Herramientas de Desarrollo');
+    expect(categoryTitles).toContain('Herramientas de Desarrollo con IA');
     expect(categoryTitles).toContain('Lenguajes de Programación');
   });
 
@@ -129,6 +129,6 @@ test.describe('Language Toggle Functionality', () => {
     await spanishItem.click();
 
     // Should switch to Spanish
-    await expect(page.locator('#job-title')).toHaveText('SDET Aseguramiento de Calidad');
+    await expect(page.locator('#experience-title')).toHaveText('Experiencia');
   });
 });

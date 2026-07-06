@@ -290,6 +290,13 @@ body {
     animation: fadeInUp 0.7s ease-out 0.6s both;
 }
 
+/* Focused programmatically (script.js) purely to scroll it into view above
+   the fixed mobile nav once the icons finish popping in — not a keyboard
+   interaction, so suppress the default focus ring. */
+.contact-icons:focus {
+    outline: none;
+}
+
 .profile-info {
     grid-column: 2;
     grid-row: 2;
@@ -730,43 +737,9 @@ h3, h4 {
     animation: pulse 1.5s ease-in-out infinite;
 }
 
-/* Expand/Collapse Button */
-.expand-btn {
-    background: rgba(40, 40, 40, 0.35);
-    border: 1px solid rgba(180, 180, 180, 0.3);
-    color: #d4d4d4;
-    padding: 8px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    margin-top: 15px;
-    width: 100%;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-}
-
-.expand-btn:hover {
-    background: rgba(50, 50, 50, 0.55);
-    border-color: rgba(200, 200, 200, 0.5);
-    transform: translateY(-2px);
-    color: #ffffff;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7), 0 0 2px rgba(255, 255, 255, 0.2);
-}
-
-/* Expanded Bullets */
+/* Expanded Bullets — always shown inline, no expand/collapse toggle */
 .expanded-bullets {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
-    margin-top: 0;
     list-style: none;
-}
-
-.expanded-bullets.show {
-    max-height: 500px;
-    opacity: 1;
     margin-top: 15px;
 }
 
@@ -1324,6 +1297,7 @@ h3, h4 {
         gap: 10px;
         align-items: center;
         margin-top: 15px;
+        scroll-margin-bottom: 70px;
     }
 
     .profile-info {

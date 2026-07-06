@@ -52,24 +52,21 @@ test.describe('Summary Carousel', () => {
     expect(newText).not.toBe(currentText);
   });
 
-  test('should auto-advance after scrolling to section', async ({ page }) => {
+  test('should not auto-advance on its own after scrolling to section', async ({ page }) => {
     await page.goto('/');
 
-    // Scroll to summary section to trigger autoplay
     const summarySection = page.locator('.summary-section');
     await summarySection.scrollIntoViewIfNeeded();
-
-    // Wait a bit for Intersection Observer to trigger
     await page.waitForTimeout(500);
 
     const indicator = page.locator('#summary-indicator');
     const initialText = await indicator.textContent();
 
-    // Wait for autoplay (5 seconds + buffer)
-    await page.waitForTimeout(5500);
+    // No autoplay: waiting well past the old 10s interval should show no change
+    await page.waitForTimeout(11000);
 
     const newText = await indicator.textContent();
-    expect(newText).not.toBe(initialText);
+    expect(newText).toBe(initialText);
   });
 
   test('should display active summary item', async ({ page }) => {

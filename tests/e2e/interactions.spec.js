@@ -191,3 +191,29 @@ test.describe('User Interactions', () => {
     expect(transform).toBeDefined();
   });
 });
+
+test.describe('Scroll reveal animations on cards', () => {
+  test('achievement cards start hidden and reveal when their section is scrolled into view', async ({ page }) => {
+    await page.goto('/');
+
+    const firstCard = page.locator('.achievement-card').first();
+    const opacityBefore = await firstCard.evaluate((el) => getComputedStyle(el).opacity);
+    expect(Number(opacityBefore)).toBeLessThan(1);
+
+    await page.locator('.achievements-section').scrollIntoViewIfNeeded();
+    await expect(page.locator('.achievements-section')).toHaveClass(/revealed/);
+
+    await page.waitForTimeout(700); // allow the 0.5s transition + stagger delay to finish
+    const opacityAfter = await firstCard.evaluate((el) => getComputedStyle(el).opacity);
+    expect(Number(opacityAfter)).toBe(1);
+  });
+});
+
+test.describe('Rubidex experience end date', () => {
+  test('shows a fixed end date instead of Present/Presente', async ({ page }) => {
+    await page.goto('/');
+
+    await expect(page.locator('body')).not.toContainText('February 2025 - Present');
+    await expect(page.locator('body')).toContainText('May 2026');
+  });
+});

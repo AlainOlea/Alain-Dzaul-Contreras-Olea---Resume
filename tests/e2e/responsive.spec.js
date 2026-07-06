@@ -103,3 +103,19 @@ test.describe('Responsive Design', () => {
     }
   });
 });
+
+test.describe('Mobile section nav', () => {
+  test.use({ viewport: { width: 390, height: 844 } });
+
+  test('renders the nav as a horizontal swiper on mobile', async ({ page }) => {
+    await page.goto('/');
+
+    const nav = page.locator('#sidebar-nav');
+    await expect(nav).toBeVisible();
+
+    const box = await nav.boundingBox();
+    expect(box.width).toBeGreaterThan(300); // spans (most of) the viewport width instead of a narrow side rail
+
+    await expect(page.locator('#sidebar-nav-swiper.swiper-initialized')).toHaveCount(1);
+  });
+});

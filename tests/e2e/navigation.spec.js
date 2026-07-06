@@ -80,4 +80,19 @@ test.describe('Basic Navigation and Page Load', () => {
     // Email, Phone, LinkedIn, Download, Language Toggle
     expect(count).toBe(5);
   });
+
+  test('should not render the old sidebar mini-graph, and should render one full-screen node graph', async ({ page }) => {
+    await page.goto('/');
+
+    await expect(page.locator('#sidebar-graph')).toHaveCount(0);
+    await expect(page.locator('#node-graph')).toHaveCount(1);
+    await expect(page.locator('#node-graph')).toBeVisible();
+  });
+
+  test('should not apply the typewriter effect to section h2 headers', async ({ page }) => {
+    await page.goto('/');
+
+    const typingHeaders = await page.locator('h2.h2-typing').count();
+    expect(typingHeaders).toBe(0);
+  });
 });

@@ -5,7 +5,7 @@ let currentLanguage = localStorage.getItem('language') || 'en';
 const GRAPH_CATEGORIES = ['whoami', 'summary', 'achievements', 'experience', 'education', 'skills', 'certifications', 'languages'];
 let graphAnimating = false;
 let backgroundGraph = null;
-let sidebarGraph = null;
+let mobileNavSwiper = null;
 
 function buildGraphNodes(count) {
     const nodes = [];
@@ -107,19 +107,10 @@ function setupNodeGraph() {
     document.body.prepend(bgContainer);
 
     backgroundGraph = renderGraph(bgContainer, {
-        nodeCount: isMobileViewport ? 9 : 26,
-        opacity: isMobileViewport ? 0.12 : 0.2,
+        nodeCount: isMobileViewport ? 14 : 40,
+        opacity: isMobileViewport ? 0.2 : 0.35,
         is3D: !isMobileViewport && !prefersReducedMotion
     });
-
-    const sidebarContainer = document.getElementById('sidebar-graph');
-    if (sidebarContainer && !isMobileViewport) {
-        sidebarGraph = renderGraph(sidebarContainer, {
-            nodeCount: 12,
-            opacity: 0.9,
-            is3D: !prefersReducedMotion
-        });
-    }
 
     // Body scroll drives progress bar / scroll listener even when the rotation loop is off (reduced motion)
     document.body.addEventListener('scroll', updateScrollProgress, { passive: true });
@@ -132,8 +123,8 @@ function setupNodeGraph() {
 }
 
 function updateGraphHighlight(sectionId) {
-    if (!sidebarGraph) return;
-    sidebarGraph.container.querySelectorAll('.graph-node, .graph-line').forEach((el) => {
+    if (!backgroundGraph) return;
+    backgroundGraph.container.querySelectorAll('.graph-node, .graph-line').forEach((el) => {
         el.classList.toggle('lit', el.dataset.category === sectionId);
     });
 }
@@ -164,6 +155,10 @@ function setupScrollspy() {
             link.classList.toggle('active', link.dataset.section === sectionId);
         });
         updateGraphHighlight(sectionId);
+        if (mobileNavSwiper) {
+            const activeIndex = Array.from(navLinks).findIndex((link) => link.dataset.section === sectionId);
+            if (activeIndex !== -1) mobileNavSwiper.slideTo(activeIndex);
+        }
         if (lastActiveSection && lastActiveSection !== sectionId) {
             triggerScanline();
         }
@@ -179,6 +174,23 @@ function setupScrollspy() {
 
     document.querySelectorAll('#whoami, #summary, #achievements, #experience, #education, #skills, #certifications, #languages')
         .forEach((el) => spyObserver.observe(el));
+}
+
+function setupMobileNavSwiper() {
+    const isMobileViewport = window.matchMedia('(max-width: 768px)').matches;
+    if (!isMobileViewport) return;
+
+    mobileNavSwiper = new Swiper('#sidebar-nav-swiper', {
+        wrapperClass: 'nav-swiper-wrapper',
+        slideClass: 'nav-swiper-slide',
+        slidesPerView: 'auto',
+        spaceBetween: 4,
+        freeMode: {
+            enabled: true,
+            momentum: true
+        },
+        grabCursor: true
+    });
 }
 
 // Resume Data - Bilingual
@@ -213,7 +225,7 @@ const resumeDataBilingual = {
                 role: 'Quality Assurance',
                 company: 'Rubidex',
                 location: 'Mexico City',
-                period: 'February 2025 - Present',
+                period: 'February 2025 - May 2026',
                 description: [
                     'Improved product quality from 6/10 to 8/10 client satisfaction (33% increase)',
                     'Built 800+ automated tests (600 unit, 200 integration, 10 E2E) serving dual purpose: validation and living documentation',
@@ -390,7 +402,7 @@ const resumeDataBilingual = {
                 role: 'Aseguramiento de Calidad',
                 company: 'Rubidex',
                 location: 'Ciudad de México',
-                period: 'Febrero 2025 - Presente',
+                period: 'Febrero 2025 - Mayo 2026',
                 description: [
                     'Mejoré la calidad del producto de 6/10 a 8/10 en satisfacción del cliente (incremento del 33%)',
                     'Desarrollé 800+ tests automatizados (600 unitarios, 200 integración, 10 E2E) con doble propósito: validación y documentación viva',
@@ -592,7 +604,6 @@ function updateSectionTitles() {
     document.getElementById('closing-download-text').textContent = data.ctaDownload;
     document.getElementById('closing-contact-text').textContent = data.ctaContact;
     updateNavLabels();
-    retriggerRevealedH2Typing();
 }
 
 function updateNavLabels() {
@@ -627,23 +638,6 @@ function renderAchievements() {
 
     container.innerHTML = html;
     setupCounterAnimations();
-}
-
-// Terminal-style "typing" effect on section headers
-function triggerH2Typing(sectionEl) {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const h2 = sectionEl.querySelector('h2');
-    if (!h2) return;
-    h2.style.setProperty('--h2-target-width', h2.textContent.length + 'ch');
-    h2.classList.remove('h2-typing');
-    void h2.offsetWidth; // force reflow to restart the animation
-    h2.classList.add('h2-typing');
-}
-
-function retriggerRevealedH2Typing() {
-    document.querySelectorAll('.profile-section.revealed, .achievements-section.revealed, section.revealed').forEach((sectionEl) => {
-        triggerH2Typing(sectionEl);
-    });
 }
 
 // Animated counters on key achievement metrics
@@ -684,32 +678,12 @@ function setupCounterAnimations() {
 
 // Carousel State
 let summaryIndex = 0;
-let summaryAutoplay;
 
 // Intersection Observer for conditional autoplay
-let summaryObserver;
 let experienceObserver;
-let summaryAutoplayStarted = false;
 let experienceAutoplayStarted = false;
 
 function setupAutoplayObservers() {
-    // Observer for Summary Carousel
-    const summarySection = document.querySelector('.summary-section');
-    if (summarySection) {
-        summaryObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !summaryAutoplayStarted) {
-                    // User scrolled to summary section, start autoplay
-                    startSummaryAutoplay();
-                    summaryAutoplayStarted = true;
-                }
-            });
-        }, {
-            threshold: 0.3 // Trigger when 30% of section is visible
-        });
-
-        summaryObserver.observe(summarySection);
-    }
 
     // Observer for Experience Swiper
     const experienceSection = document.querySelector('.experience-section');
@@ -763,13 +737,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Setup observers for conditional autoplay
     setupAutoplayObservers();
     setupScrollspy();
+    setupMobileNavSwiper();
 
     // Scroll-driven reveal animations
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('revealed');
-                triggerH2Typing(entry.target);
             }
         });
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
@@ -895,25 +869,11 @@ function showSummary(index) {
 function nextSummary() {
     summaryIndex++;
     showSummary(summaryIndex);
-    resetSummaryAutoplay();
 }
 
 function prevSummary() {
-    summaryIndex--; 
+    summaryIndex--;
     showSummary(summaryIndex);
-    resetSummaryAutoplay();
-}
-
-function startSummaryAutoplay() {
-    summaryAutoplay = setInterval(() => {
-        summaryIndex++;
-        showSummary(summaryIndex);
-    }, 10000);
-}
-
-function resetSummaryAutoplay() {
-    clearInterval(summaryAutoplay);
-    startSummaryAutoplay();
 }
 
 // Experience Carousel with Swiper

@@ -77,13 +77,13 @@ test.describe('Responsive Design', () => {
     }
   });
 
-  test('should adapt carousel controls for mobile', async ({ page }) => {
+  test('should show swipeable summary carousel with dots on mobile', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
     await page.goto('/');
 
-    // Carousel controls should still be visible
-    await expect(page.locator('.carousel-btn.prev')).toBeVisible();
-    await expect(page.locator('.carousel-btn.next')).toBeVisible();
+    await expect(page.locator('.summary-swiper')).toBeVisible();
+    const dots = page.locator('.summary-swiper .swiper-pagination-bullet');
+    expect(await dots.count()).toBeGreaterThan(0);
   });
 
   test('should make contact icons accessible on mobile', async ({ page }) => {

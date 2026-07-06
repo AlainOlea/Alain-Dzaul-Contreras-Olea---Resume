@@ -1,55 +1,26 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Summary Carousel', () => {
-  test('should display carousel controls', async ({ page }) => {
+  test('should display swipeable carousel with pagination dots', async ({ page }) => {
     await page.goto('/');
 
-    await expect(page.locator('.carousel-btn.prev')).toBeVisible();
-    await expect(page.locator('.carousel-btn.next')).toBeVisible();
-    await expect(page.locator('.carousel-indicator')).toBeVisible();
+    await expect(page.locator('.summary-swiper')).toBeVisible();
+    const dots = page.locator('.summary-swiper .swiper-pagination-bullet');
+    expect(await dots.count()).toBeGreaterThan(0);
   });
 
-  test('should show indicator with correct format', async ({ page }) => {
+  test('should navigate to next summary item by clicking a pagination dot', async ({ page }) => {
     await page.goto('/');
 
-    const indicator = page.locator('#summary-indicator');
-    const text = await indicator.textContent();
+    const getActiveSlideText = () => page.locator('.summary-swiper .swiper-slide-active').textContent();
+    const initialText = await getActiveSlideText();
 
-    expect(text).toMatch(/\d+ \/ \d+/);
-  });
+    const dots = page.locator('.summary-swiper .swiper-pagination-bullet');
+    await dots.nth(1).click();
+    await page.waitForTimeout(700);
 
-  test('should navigate to next summary item', async ({ page }) => {
-    await page.goto('/');
-
-    const indicator = page.locator('#summary-indicator');
-    const initialText = await indicator.textContent();
-
-    // Click next button
-    await page.locator('.carousel-btn.next').click();
-
-    // Wait for change
-    await page.waitForTimeout(300);
-
-    const newText = await indicator.textContent();
+    const newText = await getActiveSlideText();
     expect(newText).not.toBe(initialText);
-  });
-
-  test('should navigate to previous summary item', async ({ page }) => {
-    await page.goto('/');
-
-    // Go next first
-    await page.locator('.carousel-btn.next').click();
-    await page.waitForTimeout(300);
-
-    const indicator = page.locator('#summary-indicator');
-    const currentText = await indicator.textContent();
-
-    // Click prev button
-    await page.locator('.carousel-btn.prev').click();
-    await page.waitForTimeout(300);
-
-    const newText = await indicator.textContent();
-    expect(newText).not.toBe(currentText);
   });
 
   test('should not auto-advance on its own after scrolling to section', async ({ page }) => {
@@ -59,20 +30,20 @@ test.describe('Summary Carousel', () => {
     await summarySection.scrollIntoViewIfNeeded();
     await page.waitForTimeout(500);
 
-    const indicator = page.locator('#summary-indicator');
-    const initialText = await indicator.textContent();
+    const getActiveSlideText = () => page.locator('.summary-swiper .swiper-slide-active').textContent();
+    const initialText = await getActiveSlideText();
 
     // No autoplay: waiting well past the old 10s interval should show no change
     await page.waitForTimeout(11000);
 
-    const newText = await indicator.textContent();
+    const newText = await getActiveSlideText();
     expect(newText).toBe(initialText);
   });
 
   test('should display active summary item', async ({ page }) => {
     await page.goto('/');
 
-    const activeItem = page.locator('.summary-item.active');
+    const activeItem = page.locator('.summary-swiper .swiper-slide-active .summary-item');
     await expect(activeItem).toBeVisible();
 
     // Should have content
@@ -84,7 +55,7 @@ test.describe('Summary Carousel', () => {
   test('should apply karaoke effect to active item', async ({ page }) => {
     await page.goto('/');
 
-    const activeItem = page.locator('.summary-item.active');
+    const activeItem = page.locator('.summary-swiper .swiper-slide-active .summary-item');
     const letters = activeItem.locator('.letter');
 
     // Should have wrapped letters

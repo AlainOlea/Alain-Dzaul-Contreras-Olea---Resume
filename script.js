@@ -16,7 +16,7 @@ function buildGraphNodes(count) {
             left: Math.random() * 100,
             top: Math.random() * 100,
             z: (Math.random() - 0.5) * 400,
-            size: 3 + Math.random() * 4
+            size: 4 + Math.random() * 5
         });
     }
     return nodes;
@@ -107,7 +107,7 @@ function setupNodeGraph() {
     document.body.prepend(bgContainer);
 
     backgroundGraph = renderGraph(bgContainer, {
-        nodeCount: isMobileViewport ? 14 : 40,
+        nodeCount: isMobileViewport ? 20 : 60,
         opacity: isMobileViewport ? 0.2 : 0.35,
         is3D: !isMobileViewport && !prefersReducedMotion
     });
@@ -599,8 +599,6 @@ function updateSectionTitles() {
     document.getElementById('languages-title').textContent = data.languages;
     document.getElementById('closing-title').textContent = data.closingTitle;
     document.getElementById('closing-copy').textContent = data.closingCopy;
-    document.getElementById('cta-download-text').textContent = data.ctaDownload;
-    document.getElementById('cta-contact-text').textContent = data.ctaContact;
     document.getElementById('closing-download-text').textContent = data.ctaDownload;
     document.getElementById('closing-contact-text').textContent = data.ctaContact;
     updateNavLabels();
@@ -676,9 +674,6 @@ function setupCounterAnimations() {
     metrics.forEach((el) => counterObserver.observe(el));
 }
 
-// Carousel State
-let summaryIndex = 0;
-
 // Intersection Observer for conditional autoplay
 let experienceObserver;
 let experienceAutoplayStarted = false;
@@ -732,7 +727,6 @@ document.addEventListener('DOMContentLoaded', () => {
     renderCertifications();
     renderLanguages();
     renderExperience();
-    showSummary(0);
 
     // Setup observers for conditional autoplay
     setupAutoplayObservers();
@@ -762,56 +756,65 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 3400);
 });
 
-// Summary Carousel
+// Summary Carousel (Swiper, same pattern as the Experience carousel)
+function wrapKaraokeForActiveSlide(swiperInstance) {
+    const activeSlide = swiperInstance.slides[swiperInstance.activeIndex];
+    if (!activeSlide) return;
+    const summaryItem = activeSlide.querySelector('.summary-item');
+    if (!summaryItem || summaryItem.hasAttribute('data-wrapped')) return;
+
+    const bulletTexts = summaryItem.querySelectorAll('.bullet-text');
+    bulletTexts.forEach(textWrapper => {
+        if (!textWrapper.hasAttribute('data-wrapped')) {
+            wrapLettersInSpans(textWrapper);
+            textWrapper.setAttribute('data-wrapped', 'true');
+        }
+    });
+    summaryItem.setAttribute('data-wrapped', 'true');
+}
+
 function renderSummary() {
     const data = getCurrentData();
     const container = document.getElementById('summary-carousel');
-    container.innerHTML = '';
+    let html = '';
 
     // Group items in pairs (2 items per page)
     const itemsPerPage = 2;
     const totalPages = Math.ceil(data.summaryItems.length / itemsPerPage);
 
     for (let i = 0; i < totalPages; i++) {
-        const pageDiv = document.createElement('div');
-        pageDiv.className = 'summary-item';
-        if (i === summaryIndex) pageDiv.classList.add('active');
-        pageDiv.setAttribute('data-index', i);
+        html += '<div class="swiper-slide"><div class="summary-item"><ul class="summary-bullets">';
 
-        const ul = document.createElement('ul');
-        ul.className = 'summary-bullets';
-
-        // Add 2 items to this page
         for (let j = 0; j < itemsPerPage; j++) {
             const itemIndex = i * itemsPerPage + j;
             if (itemIndex < data.summaryItems.length) {
-                const li = document.createElement('li');
-                const textWrapper = document.createElement('span');
-                textWrapper.className = 'bullet-text';
-                textWrapper.textContent = data.summaryItems[itemIndex];
-                li.appendChild(textWrapper);
-                ul.appendChild(li);
+                html += '<li><span class="bullet-text">' + data.summaryItems[itemIndex] + '</span></li>';
             }
         }
 
-        pageDiv.appendChild(ul);
-        container.appendChild(pageDiv);
+        html += '</ul></div></div>';
     }
 
-    // Wrap letters for karaoke effect on current item
-    const currentItem = container.querySelector('.summary-item.active');
-    if (currentItem && !currentItem.hasAttribute('data-wrapped')) {
-        const bulletTexts = currentItem.querySelectorAll('.bullet-text');
-        bulletTexts.forEach(textWrapper => {
-            if (!textWrapper.hasAttribute('data-wrapped')) {
-                wrapLettersInSpans(textWrapper);
-                textWrapper.setAttribute('data-wrapped', 'true');
-            }
-        });
-        currentItem.setAttribute('data-wrapped', 'true');
+    container.innerHTML = html;
+
+    // Destroy existing Swiper instance if it exists
+    const existingSwiper = document.querySelector('.summary-swiper').swiper;
+    if (existingSwiper) {
+        existingSwiper.destroy(true, true);
     }
 
-    document.getElementById('summary-indicator').textContent = (summaryIndex + 1) + ' / ' + totalPages;
+    const swiperInstance = new Swiper('.summary-swiper', {
+        slidesPerView: 1,
+        speed: 600,
+        pagination: {
+            el: '.summary-swiper .swiper-pagination',
+            clickable: true
+        },
+        on: {
+            init: (instance) => wrapKaraokeForActiveSlide(instance),
+            slideChange: (instance) => wrapKaraokeForActiveSlide(instance)
+        }
+    });
 }
 
 function wrapLettersInSpans(element) {
@@ -840,40 +843,6 @@ function wrapLettersInSpans(element) {
             element.appendChild(document.createTextNode(' '));
         }
     });
-}
-
-function showSummary(index) {
-    summaryIndex = index;
-    const items = document.querySelectorAll('.summary-item');
-    if (summaryIndex >= items.length) summaryIndex = 0;
-    if (summaryIndex < 0) summaryIndex = items.length - 1;
-
-    items.forEach(item => item.classList.remove('active'));
-    items[summaryIndex].classList.add('active');
-
-    // Wrap letters in spans for karaoke effect on each bullet-text
-    if (!items[summaryIndex].hasAttribute('data-wrapped')) {
-        const bulletTexts = items[summaryIndex].querySelectorAll('.bullet-text');
-        bulletTexts.forEach(textWrapper => {
-            if (!textWrapper.hasAttribute('data-wrapped')) {
-                wrapLettersInSpans(textWrapper);
-                textWrapper.setAttribute('data-wrapped', 'true');
-            }
-        });
-        items[summaryIndex].setAttribute('data-wrapped', 'true');
-    }
-
-    document.getElementById('summary-indicator').textContent = summaryIndex + 1 + ' / ' + items.length;
-}
-
-function nextSummary() {
-    summaryIndex++;
-    showSummary(summaryIndex);
-}
-
-function prevSummary() {
-    summaryIndex--;
-    showSummary(summaryIndex);
 }
 
 // Experience Carousel with Swiper
@@ -1191,5 +1160,15 @@ function toggleExpand(button) {
         expandedSection.classList.add('show');
         const hideText = expandedSection.getAttribute('data-hide-text');
         button.textContent = hideText + ' ↑';
+
+        // Move focus to the end of the newly expanded content once its reveal transition finishes
+        const lastItem = expandedSection.lastElementChild;
+        if (lastItem) {
+            setTimeout(() => {
+                lastItem.setAttribute('tabindex', '-1');
+                lastItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                lastItem.focus({ preventScroll: true });
+            }, 420);
+        }
     }
 }

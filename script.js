@@ -191,6 +191,15 @@ function setupMobileNavSwiper() {
         },
         grabCursor: true
     });
+
+    // Re-measure slide widths once the custom web font finishes loading —
+    // Swiper computes widths at init time and won't know slides got wider
+    // once Fira Code (instead of the fallback font) actually renders.
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => {
+            if (mobileNavSwiper) mobileNavSwiper.update();
+        });
+    }
 }
 
 // Resume Data - Bilingual

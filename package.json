@@ -13,10 +13,12 @@
     "test:firefox": "playwright test --project=firefox",
     "test:mobile": "playwright test --project='Mobile Chrome'",
     "test:report": "playwright show-report",
-    "playwright:install": "playwright install"
+    "playwright:install": "playwright install",
+    "resume:pdf": "node scripts/generate-resume-pdf.js"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.0",
-    "@playwright/test": "^1.57.0"
+    "@playwright/test": "^1.57.0",
+    "marked": "^18.0.5"
   }
 }

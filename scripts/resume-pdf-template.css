@@ -1,0 +1,117 @@
+/* ATS-safe print template for the resume PDFs.
+   Single column, no tables/text-boxes/icons, standard section headers,
+   real embedded text throughout (no content rendered as images). */
+
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:wght@700&family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-size: 10.3pt;
+    line-height: 1.45;
+    color: #1a1a1a;
+    background: #ffffff;
+}
+
+h1 {
+    font-family: 'PT Serif', Georgia, 'Times New Roman', serif;
+    font-size: 25pt;
+    color: #16324f;
+    text-align: center;
+    letter-spacing: 0.3px;
+    margin: 0 0 2px;
+}
+
+/* Job title line right under the name */
+h1 + p {
+    text-align: center;
+    font-size: 12.5pt;
+    font-weight: 600;
+    color: #2f6690;
+    margin: 0 0 10px;
+}
+
+/* Horizontal rules from markdown "---" are replaced by section spacing/borders */
+hr {
+    display: none;
+}
+
+h2 {
+    font-size: 11.5pt;
+    color: #16324f;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1.4pt solid #16324f;
+    padding-bottom: 3px;
+    margin: 20px 0 8px;
+    break-after: avoid;
+}
+
+/* First h2 is "Contact Information" — hidden in favor of an inline contact bar below */
+h2:first-of-type {
+    display: none;
+}
+
+h2:first-of-type + ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+    text-align: center;
+    font-size: 9.5pt;
+    color: #333333;
+}
+
+h2:first-of-type + ul li {
+    display: inline;
+}
+
+h2:first-of-type + ul li:not(:last-child)::after {
+    content: ' \00b7 ';
+    color: #999999;
+}
+
+h3 {
+    font-size: 11pt;
+    color: #1a1a1a;
+    margin: 10px 0 1px;
+    break-after: avoid;
+}
+
+/* Meta line right after a job/institution/skill-category heading
+   (location + dates, or a skill category's tool list) */
+h3 + p {
+    color: #5a5a5a;
+    font-size: 9.5pt;
+    margin: 0 0 5px;
+}
+
+p {
+    margin: 0 0 6px;
+}
+
+ul {
+    margin: 0 0 8px;
+    padding-left: 20px;
+    break-inside: avoid;
+}
+
+li {
+    margin-bottom: 3px;
+}
+
+a {
+    color: #2f6690;
+    text-decoration: none;
+}
+
+strong {
+    font-weight: 700;
+}

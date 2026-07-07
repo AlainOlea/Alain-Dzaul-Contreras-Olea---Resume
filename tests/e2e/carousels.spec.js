@@ -74,14 +74,14 @@ test.describe('Experience Swiper', () => {
   test('should display pagination dots', async ({ page }) => {
     await page.goto('/');
 
-    const pagination = page.locator('.swiper-pagination');
+    const pagination = page.locator('.experience-swiper .swiper-pagination');
     await expect(pagination).toBeVisible();
   });
 
   test('should render all experience items', async ({ page }) => {
     await page.goto('/');
 
-    const slides = page.locator('.swiper-slide');
+    const slides = page.locator('.experience-swiper .swiper-slide');
     const count = await slides.count();
 
     // Should have 4 experience items
@@ -91,7 +91,7 @@ test.describe('Experience Swiper', () => {
   test('should display company and role information', async ({ page }) => {
     await page.goto('/');
 
-    const firstSlide = page.locator('.swiper-slide').first();
+    const firstSlide = page.locator('.experience-swiper .swiper-slide').first();
 
     await expect(firstSlide.locator('h3')).toBeVisible(); // Role
     await expect(firstSlide.locator('.company')).toBeVisible(); // Company + Location
@@ -106,7 +106,7 @@ test.describe('Experience Swiper', () => {
 
     await expect(page.locator('.expand-btn')).toHaveCount(0);
 
-    const activeSlide = page.locator('.swiper-slide-active');
+    const activeSlide = page.locator('.experience-swiper .swiper-slide-active');
     const expandedSection = activeSlide.locator('.expanded-bullets');
     const expandedSectionCount = await expandedSection.count();
 
@@ -128,7 +128,7 @@ test.describe('Experience Swiper', () => {
 
     // Get initial active slide
     const getActiveSlideIndex = async () => {
-      const activeSlide = page.locator('.swiper-slide-active');
+      const activeSlide = page.locator('.experience-swiper .swiper-slide-active');
       return await activeSlide.getAttribute('data-swiper-slide-index');
     };
 

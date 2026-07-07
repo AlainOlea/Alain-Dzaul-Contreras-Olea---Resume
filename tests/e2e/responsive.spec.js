@@ -5,10 +5,7 @@ test.describe('Responsive Design', () => {
     await page.setViewportSize({ width: 375, height: 667 });
     await page.goto('/');
 
-    // Main container should be visible
-    await expect(page.locator('.container')).toBeVisible();
-
-    // Profile section should be visible
+    // Profile section (the page's main section card) should be visible
     await expect(page.locator('.profile-section')).toBeVisible();
 
     // All sections should stack vertically
@@ -23,7 +20,6 @@ test.describe('Responsive Design', () => {
     await page.setViewportSize({ width: 768, height: 1024 });
     await page.goto('/');
 
-    await expect(page.locator('.container')).toBeVisible();
     await expect(page.locator('.profile-section')).toBeVisible();
 
     // Check that content is readable
@@ -35,10 +31,10 @@ test.describe('Responsive Design', () => {
     await page.setViewportSize({ width: 1920, height: 1080 });
     await page.goto('/');
 
-    await expect(page.locator('.container')).toBeVisible();
+    await expect(page.locator('.profile-section')).toBeVisible();
 
-    // Container should have max-width constraint
-    const container = page.locator('.container');
+    // Section cards should have a max-width constraint
+    const container = page.locator('.profile-section');
     const box = await container.boundingBox();
 
     // Max width is 900px

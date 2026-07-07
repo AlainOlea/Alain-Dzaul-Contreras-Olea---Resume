@@ -3,9 +3,14 @@ let currentLanguage = localStorage.getItem('language') || 'en';
 
 // Node Graph — CSS 3D background (replaces the old canvas GridWarp)
 const GRAPH_CATEGORIES = ['whoami', 'summary', 'achievements', 'experience', 'education', 'skills', 'certifications', 'languages'];
+// Number of distinct lit-node/line combinations spread evenly across the whole page scroll.
+const GRAPH_TOTAL_FRAMES = 28;
+const GRAPH_LIT_FRACTION = 0.4;
 let graphAnimating = false;
 let backgroundGraph = null;
 let mobileNavSwiper = null;
+let currentGraphCategory = null;
+let lastGraphFrame = -1;
 
 function buildGraphNodes(count) {
     const nodes = [];
@@ -82,6 +87,12 @@ function updateScrollProgress() {
     const scrollable = doc.scrollHeight - doc.clientHeight;
     const progress = scrollable > 0 ? doc.scrollTop / scrollable : 0;
     document.documentElement.style.setProperty('--scroll-progress', progress.toFixed(4));
+
+    const frameIndex = Math.min(GRAPH_TOTAL_FRAMES - 1, Math.floor(progress * GRAPH_TOTAL_FRAMES));
+    if (frameIndex !== lastGraphFrame) {
+        lastGraphFrame = frameIndex;
+        refreshGraphLit(frameIndex);
+    }
 }
 
 function animateGraph() {
@@ -122,11 +133,30 @@ function setupNodeGraph() {
     }
 }
 
-function updateGraphHighlight(sectionId) {
-    if (!backgroundGraph) return;
-    backgroundGraph.container.querySelectorAll('.graph-node, .graph-line').forEach((el) => {
-        el.classList.toggle('lit', el.dataset.category === sectionId);
+// Lights only a rotating subset (window) of the active category's nodes/lines,
+// sliding by one slot per frame — a "traveling light" effect instead of an
+// all-or-nothing toggle, so the pattern keeps changing while scrolling through
+// a single section rather than only at section boundaries.
+function refreshGraphLit(frameIndex) {
+    if (!backgroundGraph || !currentGraphCategory) return;
+    ['graph-node', 'graph-line'].forEach((cls) => {
+        const all = Array.from(backgroundGraph.container.querySelectorAll(`.${cls}`));
+        const pool = all.filter((el) => el.dataset.category === currentGraphCategory);
+        const windowSize = Math.max(1, Math.round(pool.length * GRAPH_LIT_FRACTION));
+        all.forEach((el) => {
+            if (el.dataset.category !== currentGraphCategory) {
+                el.classList.remove('lit');
+                return;
+            }
+            const rank = pool.indexOf(el);
+            el.classList.toggle('lit', pool.length > 0 && (rank + frameIndex) % pool.length < windowSize);
+        });
     });
+}
+
+function updateGraphHighlight(sectionId) {
+    currentGraphCategory = sectionId;
+    refreshGraphLit(Math.max(lastGraphFrame, 0));
 }
 
 let scanlineEl = null;

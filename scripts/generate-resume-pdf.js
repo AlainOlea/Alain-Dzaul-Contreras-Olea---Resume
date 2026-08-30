@@ -14,8 +14,8 @@ const ROOT = path.resolve(__dirname, '..');
 const CSS = fs.readFileSync(path.join(__dirname, 'resume-pdf-template.css'), 'utf8');
 
 const RESUMES = [
-    { md: 'Alain_Contreras_Resume_EN.md', pdf: 'Alain_Contreras_Resume_EN.pdf', lang: 'en' },
-    { md: 'Alain_Contreras_Resume_ES.md', pdf: 'Alain_Contreras_Resume_ES.pdf', lang: 'es' },
+    { md: 'Alain_Contreras_Resume_CV_QA_EN.md', pdf: 'Alain_Contreras_Resume_CV_QA_EN.pdf', lang: 'en' },
+    { md: 'Alain_Contreras_Resume_CV_QA_ES.md', pdf: 'Alain_Contreras_Resume_CV_QA_ES.pdf', lang: 'es' },
 ];
 
 async function main() {

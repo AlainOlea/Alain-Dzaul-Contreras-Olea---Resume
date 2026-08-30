@@ -38,10 +38,10 @@ resume/
 ├── index.html                          # Main page
 ├── script.js                           # All logic + bilingual data
 ├── styles.css                          # Full stylesheet
-├── Alain_Contreras_Resume_EN.md        # English Markdown resume
-├── Alain_Contreras_Resume_ES.md        # Spanish Markdown resume
-├── Alain_Contreras_Resume_EN.pdf       # English PDF resume
-├── Alain_Contreras_Resume_ES.pdf       # Spanish PDF resume
+├── Alain_Contreras_Resume_CV_QA_EN.md        # English Markdown resume
+├── Alain_Contreras_Resume_CV_QA_ES.md        # Spanish Markdown resume
+├── Alain_Contreras_Resume_CV_QA_EN.pdf       # English PDF resume
+├── Alain_Contreras_Resume_CV_QA_ES.pdf       # Spanish PDF resume
 ├── public/images/profile-picture.png   # Profile photo
 ├── sitemap.xml                         # SEO sitemap
 ├── robots.txt                          # Crawl rules

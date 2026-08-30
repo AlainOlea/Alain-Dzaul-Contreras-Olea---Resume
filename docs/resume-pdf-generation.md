@@ -1,12 +1,12 @@
 # How the resume PDFs are generated
 
-`Alain_Contreras_Resume_EN.pdf` and `Alain_Contreras_Resume_ES.pdf` are **generated
+`Alain_Contreras_Resume_CV_QA_EN.pdf` and `Alain_Contreras_Resume_CV_QA_ES.pdf` are **generated
 files**. Never hand-edit them, and never edit them in a PDF editor — they will get
 overwritten and drift from the `.md` source.
 
 ## Single source of truth
 
-- `Alain_Contreras_Resume_EN.md` / `Alain_Contreras_Resume_ES.md` are the only files
+- `Alain_Contreras_Resume_CV_QA_EN.md` / `Alain_Contreras_Resume_CV_QA_ES.md` are the only files
   you edit.
 - Running the generator turns the Markdown into styled HTML and prints it to PDF.
 

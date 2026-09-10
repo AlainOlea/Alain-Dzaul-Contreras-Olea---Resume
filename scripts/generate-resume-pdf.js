@@ -18,6 +18,15 @@ const RESUMES = [
     { md: 'Alain_Contreras_Resume_CV_QA_ES.md', pdf: 'Alain_Contreras_Resume_CV_QA_ES.pdf', lang: 'es' },
 ];
 
+// Counts page objects in a PDF buffer by scanning for "/Type /Page" entries.
+// Page tree root is "/Type /Pages", so it's excluded to reach the leaf count.
+function countPdfPages(buffer) {
+    const text = buffer.toString('latin1');
+    const allPages = (text.match(/\/Type\s*\/Page/g) || []).length;
+    const trees = (text.match(/\/Type\s*\/Pages/g) || []).length;
+    return allPages - trees;
+}
+
 async function main() {
     const browser = await chromium.launch();
     const page = await browser.newPage();
@@ -30,6 +39,14 @@ async function main() {
         const bodyHtml = marked.parse(mdContent).replace(
             /<ul>([\s\S]*?)<\/ul>/,
             (match, inner) => `<ul>${inner.replace(/<strong>[^<]*<\/strong>:\s*/g, '')}</ul>`
+        )
+        // Wrap each keyword-group under "Technical Skills" in a 2-column grid.
+        // Each group is an <h3> (category name) followed by a single <p> (tool list).
+        .replace(
+            new RegExp(`(<h2>(?:${
+                resume.lang === 'es' ? 'Habilidades Técnicas' : 'Technical Skills'
+            })</h2>)([\\s\\S]*?)(?=<h2>|$)`),
+            (match, heading, inner) => `${heading}<div class="skills-grid">${inner}</div>`
         );
         const html = `<!doctype html>
 <html lang="${resume.lang}">
@@ -44,13 +61,23 @@ ${bodyHtml}
 </html>`;
 
         await page.setContent(html, { waitUntil: 'networkidle' });
-        await page.pdf({
-            path: path.join(ROOT, resume.pdf),
+        const pdfBuffer = await page.pdf({
             format: 'Letter',
             printBackground: true,
-            margin: { top: '0.5in', bottom: '0.5in', left: '0.6in', right: '0.6in' },
+            margin: { top: '0.35in', bottom: '0.35in', left: '0.5in', right: '0.5in' },
         });
-        console.log(`Generated ${resume.pdf}`);
+
+        // Enforce a single-page CV: never write a PDF that spills onto page 2.
+        const pages = countPdfPages(pdfBuffer);
+        if (pages !== 1) {
+            throw new Error(
+                `${resume.md} produced ${pages} pages — must fit on exactly 1 page. ` +
+                'Tighten the CSS or trim content.'
+            );
+        }
+
+        fs.writeFileSync(path.join(ROOT, resume.pdf), pdfBuffer);
+        console.log(`Generated ${resume.pdf} (1 page)`);
     }
 
     await browser.close();

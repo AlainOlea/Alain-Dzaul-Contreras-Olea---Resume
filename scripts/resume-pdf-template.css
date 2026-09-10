@@ -15,28 +15,28 @@ html, body {
 
 body {
     font-family: 'Inter', Arial, Helvetica, sans-serif;
-    font-size: 10.3pt;
-    line-height: 1.45;
+    font-size: 9.2pt;
+    line-height: 1.22;
     color: #1a1a1a;
     background: #ffffff;
 }
 
 h1 {
     font-family: 'PT Serif', Georgia, 'Times New Roman', serif;
-    font-size: 25pt;
+    font-size: 21pt;
     color: #16324f;
     text-align: center;
     letter-spacing: 0.3px;
-    margin: 0 0 2px;
+    margin: 0 0 1px;
 }
 
 /* Job title line right under the name */
 h1 + p {
     text-align: center;
-    font-size: 12.5pt;
+    font-size: 11pt;
     font-weight: 600;
     color: #2f6690;
-    margin: 0 0 10px;
+    margin: 0 0 6px;
 }
 
 /* Horizontal rules from markdown "---" are replaced by section spacing/borders */
@@ -45,13 +45,13 @@ hr {
 }
 
 h2 {
-    font-size: 11.5pt;
+    font-size: 10pt;
     color: #16324f;
     text-transform: uppercase;
     letter-spacing: 1px;
-    border-bottom: 1.4pt solid #16324f;
-    padding-bottom: 3px;
-    margin: 20px 0 8px;
+    border-bottom: 1.2pt solid #16324f;
+    padding-bottom: 1px;
+    margin: 9px 0 4px;
     break-after: avoid;
 }
 
@@ -63,9 +63,11 @@ h2:first-of-type {
 h2:first-of-type + ul {
     list-style: none;
     padding: 0;
-    margin: 0 0 20px;
+    margin: 0 0 10px;
     text-align: center;
-    font-size: 9.5pt;
+    font-size: 8.5pt;
+    white-space: nowrap;
+    overflow: visible;
     color: #333333;
 }
 
@@ -79,9 +81,9 @@ h2:first-of-type + ul li:not(:last-child)::after {
 }
 
 h3 {
-    font-size: 11pt;
+    font-size: 10pt;
     color: #1a1a1a;
-    margin: 10px 0 1px;
+    margin: 4px 0 1px;
     break-after: avoid;
 }
 
@@ -89,22 +91,40 @@ h3 {
    (location + dates, or a skill category's tool list) */
 h3 + p {
     color: #5a5a5a;
-    font-size: 9.5pt;
-    margin: 0 0 5px;
+    font-size: 9pt;
+    margin: 0 0 2px;
 }
 
 p {
-    margin: 0 0 6px;
+    margin: 0 0 3px;
 }
 
 ul {
-    margin: 0 0 8px;
-    padding-left: 20px;
+    margin: 0 0 3px;
+    padding-left: 16px;
     break-inside: avoid;
 }
 
 li {
-    margin-bottom: 3px;
+    margin-bottom: 1px;
+}
+
+/* Technical Skills: two-column keyword grid so the section stays compact.
+   Each group (category <h3> + its tool <p>) is kept together across columns. */
+.skills-grid {
+    column-count: 2;
+    column-gap: 20px;
+}
+
+.skills-grid h3 {
+    break-inside: avoid;
+    break-after: avoid;
+    margin-top: 3px;
+}
+
+.skills-grid h3 + p {
+    break-inside: avoid;
+    margin: 0 0 4px;
 }
 
 a {

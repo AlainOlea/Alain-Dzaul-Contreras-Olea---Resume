@@ -16,72 +16,63 @@
 
 ## Professional Summary
 
-- 4+ years in regulated software (FDA 21 CFR Part 11) and SaaS products
-- Designed testing strategies and automation: 800+ tests (600 unit, 200 integration, 10 E2E)
-- Delivered 5 consecutive releases with comprehensive test coverage and validation
-- Passed 2 FDA audits and 3+ client audits with zero critical observations
+QA Engineer / SDET with 4+ years in regulated software (FDA 21 CFR Part 11) and SaaS products. I design testing strategies and automation (Playwright, Jest, CI/CD) and work directly with the business to turn ambiguous requirements into clear acceptance criteria. I track and standardize QA processes end to end — from change control and validation documentation to sprint definitions of ready — so teams ship safely and consistently. Recent results: 800+ automated tests, 5 consecutive zero-critical-bug releases, and 2 passed FDA audits. I also use AI-assisted tooling (Claude Code, OpenCode, Antigravity) to accelerate coverage without losing rigor.
 
 ---
 
 ## Professional Experience
 
 ### QA Engineer | Rubidex
-**Mexico City | February 2025 - Present**
+**Mexico City | February 2025 – May 2026**
 
-- Built 800+ automated tests (600 unit, 200 integration, 10 E2E) serving as living documentation
-- Led QA strategy for 7 developers across 2 teams, designing testing approach and validation processes from scratch
-- Implemented CI/CD pipelines for Frontend/Backend; introduced agile practices: Three Amigos, Design Handoffs, Definition of Ready
-- Designed acceptance criteria for complex modules, balancing product requirements with technical constraints
-- Established change control governance and process standardization to protect sprint scope
+- Led QA strategy for 7 developers across 2 teams, building the testing approach and validation processes from scratch
+- Drove the team to adopt unit testing as a habit, implementing it with Jest/Vitest and AI-assisted tooling (Claude Code, OpenCode, Antigravity) — 800+ automated tests
+- Worked with a full testing toolkit across the stack (Playwright, SuperTest, Postman/Newman, Vitest, ESLint, Prettier)
+- Set up CI/CD on GitHub Actions and used Vercel preview environments to validate frontend changes ahead of production
+- Authored BDD scenarios (Gherkin), applied TDD to keep acceptance criteria executable, and introduced agile/change-control practices (Three Amigos, Design Handoffs, Definition of Ready) to protect sprint scope
 
 ---
 
-### QA Engineer / SDET | AspenTech
+### Software Quality Engineer | AspenTech
 **Mexico City | March 2021 – July 2024**
 
-- Delivered 5 consecutive releases as engineer responsible for end-to-end validation and testing coverage
-- Passed 2 FDA audits and 3+ client audits with no critical observations
-- Managed 1,600+ test cases for pharmaceutical spectrometry software used by 50 specialized users
-- Delivered multiple releases for enterprise client with 3 interdependent products
-- Authored and maintained validation documentation under FDA 21 CFR Part 11 and ISO 9001
-- Designed hybrid testing approach: 10% automated for critical flows, 90% manual to preserve regulatory flexibility
+- Managed the test suite for pharmaceutical spectrometry software, prioritizing coverage across releases — 5 consecutive releases with zero critical bugs
+- Passed 2 FDA audits and 3+ client audits with no critical observations; authored validation documentation under FDA 21 CFR Part 11 and ISO 9001
+- Supported the automation team's regression automation (Ranorex, pytest, API request testing) while focusing on manual product testing of new features — audit-trail and operator-identity flows, and client-environment simulation with small Python scripts
+- Gained deep Agile methodology and pipeline/test-suite management experience, collaborating closely with development on definition of done
 
 ---
 
 ### Software Engineer | Infosys
 **Mexico City | July 2019 – February 2021**
 
-- Provided L2/L3 technical support to 5,000+ users for Fortune 500 client with multi-continental operations
-- Resolved ~25 tickets/month in Oracle ERP Supply Chain using Python, SQL, and Java
-- Built internal Android tools using Kotlin
-
----
-
-### Engineering Intern | Pemex
-**Mexico City, Tula Hidalgo, Salina Cruz Oaxaca | September 2018 – March 2019**
-
-- Analyzed gas production optimization data and performed ethylene production forecasting
-- Visited 5 facilities (refineries, distribution centers, gas processing plants) for operational audits
-- Supported gas and liquid transportation process tracking
+- Provided L2/L3 technical support to 5,000+ users of a Fortune 500 client, resolving issues in Oracle ERP Supply Chain with SQL, Java, and Python scripts
 
 ---
 
 ## Education
 
-### Escuela Superior de Ingeniería Química e Industrias Extractivas (IPN)
-**Mexico City**
-Bachelor's degree in Petroleum Chemical Engineering
+- **Escuela Superior de Ingeniería Química e Industrias Extractivas (IPN)** — Mexico City · Bachelor's degree in Petroleum Chemical Engineering
+- **Instituto Tecnológico de Buenos Aires (ITBA)** — Buenos Aires, Argentina · Exchange Program (Process Simulation and Optimization, Quality Management, Environmental Engineering)
 
-### Instituto Tecnológico de Buenos Aires (ITBA)
-**Buenos Aires, Argentina**
-Exchange Program
+---
+
+## Certifications & Licenses
+
+- Experience working under **ISO 9001:2015** standards · **Professional License (Cédula Profesional)** - Chemical Engineering, Number: 12075687
+
+---
+
+## Languages
+
+- **Spanish** - Native · **English** - Full Professional Proficiency
 
 ---
 
 ## Technical Skills
 
 ### Testing & QA
-Jest, Playwright, Vitest, SuperTest, Manual Testing, White-box Testing
+Jest, Playwright, Selenium, Vitest, SuperTest, Postman, Newman, BDD/TDD (Gherkin, Cucumber), Manual Testing, White-box Testing, Ranorex, pytest, API request testing
 
 ### Programming
 TypeScript, JavaScript, Python, SQL, Java, C++
@@ -89,27 +80,13 @@ TypeScript, JavaScript, Python, SQL, Java, C++
 ### Frontend & Backend
 React, Next.js, Nest.js, Node.js
 
-### CI/CD & Tools
-GitHub Actions, Git, Azure DevOps, Linux Environments, ESLint, Prettier
+### CI/CD & Deployment
+GitHub Actions, Git, Azure DevOps, Vercel (deployment & preview environment best practices), Docker, Linux Environments, ESLint, Prettier
 
-### Industry Software
-Aspen HYSYS, Ranorex, AutoCAD, Postman, OPC Tools
+### Project & Process
+Jira, Confluence, Agile (Scrum)
 
 ### AI & Automation
-Claude Code, Antigravity, AI-assisted test automation, Report generation automation
-
----
-
-## Certifications & Licenses
-
-- Experience working under **ISO 9001:2015** standards
-- **Professional License (Cédula Profesional)** - Chemical Engineering, Number: 12075687
-
----
-
-## Languages
-
-- **Spanish** - Native
-- **English** - Full Professional Proficiency
+Claude Code, OpenCode, Gemini CLI, Antigravity, AI-assisted test automation, Report generation automation
 
 ---

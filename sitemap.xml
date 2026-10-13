@@ -3,8 +3,8 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
     <url>
         <loc>https://alain-contreras-olea-resume.vercel.app/</loc>
-        <lastmod>2026-05-19</lastmod>
-        <changefreq>weekly</changefreq>
+        <lastmod>2026-10-12</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>1.0</priority>
         <image:image>
             <image:loc>https://alain-contreras-olea-resume.vercel.app/public/images/profile-picture.png</image:loc>
@@ -13,14 +13,14 @@
         </image:image>
     </url>
     <url>
-        <loc>https://alain-contreras-olea-resume.vercel.app/Alain_Contreras_Resume_CV_QA_EN.md</loc>
-        <lastmod>2026-05-19</lastmod>
+        <loc>https://alain-contreras-olea-resume.vercel.app/Alain_Contreras_Resume_CV_QA_EN.pdf</loc>
+        <lastmod>2026-10-12</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://alain-contreras-olea-resume.vercel.app/Alain_Contreras_Resume_CV_QA_ES.md</loc>
-        <lastmod>2026-05-19</lastmod>
+        <loc>https://alain-contreras-olea-resume.vercel.app/Alain_Contreras_Resume_CV_QA_ES.pdf</loc>
+        <lastmod>2026-10-12</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>

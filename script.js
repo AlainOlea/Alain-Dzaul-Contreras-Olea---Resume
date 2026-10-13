@@ -262,7 +262,7 @@ const resumeDataBilingual = {
                 role: 'QA Engineer',
                 company: 'Rubidex',
                 location: 'Mexico City',
-                period: 'February 2025 - May 2026',
+                period: 'February 2025 – May 2026',
                 description: [
                     'Improved client satisfaction with the product from 6/10 to 8/10 over two quarters',
                     'Built 800+ automated tests (600 unit, 200 integration, 10 E2E) that also serve as living documentation for the system',
@@ -433,7 +433,7 @@ const resumeDataBilingual = {
                 role: 'QA Engineer',
                 company: 'Rubidex',
                 location: 'Ciudad de México',
-                period: 'Febrero 2025 - Mayo 2026',
+                period: 'Febrero 2025 – Mayo 2026',
                 description: [
                     'Mejoré la satisfacción del cliente con el producto de 6/10 a 8/10 en dos trimestres',
                     'Desarrollé 800+ tests automatizados (600 unitarios, 200 integración, 10 E2E) que además sirven como documentación viva del sistema',

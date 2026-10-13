@@ -1,0 +1,29 @@
+name: IndexNow
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'Alain_Contreras_Resume_CV_QA_EN.pdf'
+      - 'Alain_Contreras_Resume_CV_QA_ES.pdf'
+      - 'sitemap.xml'
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Submit URLs to IndexNow
+        run: |
+          curl -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d '{
+              "host": "alain-contreras-olea-resume.vercel.app",
+              "key": "14eaa9a00043094737c23875d109103e",
+              "keyLocation": "https://alain-contreras-olea-resume.vercel.app/14eaa9a00043094737c23875d109103e.txt",
+              "urlList": [
+                "https://alain-contreras-olea-resume.vercel.app/",
+                "https://alain-contreras-olea-resume.vercel.app/Alain_Contreras_Resume_CV_QA_EN.pdf",
+                "https://alain-contreras-olea-resume.vercel.app/Alain_Contreras_Resume_CV_QA_ES.pdf"
+              ]
+            }'

@@ -15,7 +15,7 @@ test.describe('Download Modal', () => {
     await expect(modal).toBeVisible();
   });
 
-  test('should display 4 download options', async ({ page }) => {
+  test('should display 2 download options (PDF EN/ES)', async ({ page }) => {
     await page.goto('/');
 
     // Open modal
@@ -24,9 +24,9 @@ test.describe('Download Modal', () => {
     });
     await downloadButton.click();
 
-    // Check options
+    // Markdown options were removed; only PDF EN and PDF ES remain
     const options = page.locator('.download-option');
-    await expect(options).toHaveCount(4);
+    await expect(options).toHaveCount(2);
   });
 
   test('should display correct modal title in English', async ({ page }) => {
@@ -138,7 +138,7 @@ test.describe('Download Modal', () => {
     await expect(modal).not.toHaveClass(/show/);
   });
 
-  test('should have all download options with correct labels', async ({ page }) => {
+  test('should have PDF download options with correct labels', async ({ page }) => {
     await page.goto('/');
 
     // Ensure English
@@ -154,16 +154,14 @@ test.describe('Download Modal', () => {
     });
     await downloadButton.click();
 
-    // Check all options
+    // Check PDF options only (Markdown was removed)
     const options = await page.locator('.download-option strong').allTextContents();
 
-    expect(options).toContain('Markdown - English');
-    expect(options).toContain('Markdown - Español');
     expect(options).toContain('PDF - English');
     expect(options).toContain('PDF - Español');
   });
 
-  test('should display correct icons for each format', async ({ page }) => {
+  test('should display correct icons for PDF formats', async ({ page }) => {
     await page.goto('/');
 
     // Open modal
@@ -171,12 +169,6 @@ test.describe('Download Modal', () => {
       has: page.locator('.fa-download')
     });
     await downloadButton.click();
-
-    // Check MD options have code icon
-    const mdOptions = page.locator('.download-option').filter({
-      hasText: 'Markdown'
-    });
-    await expect(mdOptions.first().locator('.fa-file-code')).toBeVisible();
 
     // Check PDF options have PDF icon
     const pdfOptions = page.locator('.download-option').filter({

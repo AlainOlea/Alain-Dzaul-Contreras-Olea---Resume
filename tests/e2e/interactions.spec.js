@@ -46,6 +46,12 @@ test.describe('User Interactions', () => {
   });
 
   test('should open LinkedIn in new tab when clicking LinkedIn icon', async ({ page, context }) => {
+    // Fulfill LinkedIn requests with empty HTML so navigation completes
+    // instantly without hitting the real network
+    await context.route('**://*.linkedin.com/**', (route) =>
+      route.fulfill({ status: 200, contentType: 'text/html', body: '<html></html>' })
+    );
+
     await page.goto('/');
 
     // Setup listener for new page
@@ -203,9 +209,9 @@ test.describe('Scroll reveal animations on cards', () => {
     await page.locator('.achievements-section').scrollIntoViewIfNeeded();
     await expect(page.locator('.achievements-section')).toHaveClass(/revealed/);
 
-    await page.waitForTimeout(700); // allow the 0.5s transition + stagger delay to finish
-    const opacityAfter = await firstCard.evaluate((el) => getComputedStyle(el).opacity);
-    expect(Number(opacityAfter)).toBe(1);
+    // Card transition is 0.5s + up to 0.24s stagger; use retrying assertion
+    // instead of a fixed timeout so slow CI runners don't flake
+    await expect(firstCard).toHaveCSS('opacity', '1', { timeout: 3000 });
   });
 });
 

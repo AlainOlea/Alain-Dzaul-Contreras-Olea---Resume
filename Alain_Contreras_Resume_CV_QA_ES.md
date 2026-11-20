@@ -33,7 +33,7 @@ QA Engineer / SDET con más de 4 años en software regulado (FDA 21 CFR Part 11)
 
 ---
 
-### Software Quality Engineer | AspenTech
+### Software Quality Engineer II | AspenTech
 **Ciudad de México | Marzo 2021 – Julio 2024**
 
 - Gestioné la suite de pruebas de software de espectrometría farmacéutica, priorizando cobertura entre releases — 5 releases consecutivas con cero bugs críticos

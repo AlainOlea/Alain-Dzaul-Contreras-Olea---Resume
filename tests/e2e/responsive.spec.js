@@ -33,11 +33,11 @@ test.describe('Responsive Design', () => {
 
     await expect(page.locator('.profile-section')).toBeVisible();
 
-    // Section cards should have a max-width constraint
-    const container = page.locator('.profile-section');
-    const box = await container.boundingBox();
+    // Editorial hero is full-bleed, so the constraint is on the text column
+    const name = page.locator('.profile-section .name');
+    const box = await name.boundingBox();
 
-    // Max width is 900px
+    // Text block stays readable: the name never exceeds 900px
     expect(box.width).toBeLessThanOrEqual(900);
   });
 
@@ -73,13 +73,13 @@ test.describe('Responsive Design', () => {
     }
   });
 
-  test('should show swipeable summary carousel with dots on mobile', async ({ page }) => {
+  test('should show the summary as a plain list on mobile (no carousel)', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
     await page.goto('/');
 
-    await expect(page.locator('.summary-swiper')).toBeVisible();
-    const dots = page.locator('.summary-swiper .swiper-pagination-bullet');
-    expect(await dots.count()).toBeGreaterThan(0);
+    await expect(page.locator('#summary-list')).toBeVisible();
+    expect(await page.locator('#summary-list li').count()).toBeGreaterThan(1);
+    await expect(page.locator('.summary-section .swiper-pagination')).toHaveCount(0);
   });
 
   test('should make contact icons accessible on mobile', async ({ page }) => {

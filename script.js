@@ -12,16 +12,33 @@ let mobileNavSwiper = null;
 let currentGraphCategory = null;
 let lastGraphFrame = -1;
 
+// Tones pulled from the photo: blazer blue, deeper navy and neutral silver.
+function pickGraphTone() {
+    const r = Math.random();
+    if (r < 0.4) return 'blue';
+    if (r < 0.6) return 'navy';
+    return 'silver';
+}
+
+// Depth cue: nodes further back are dimmer and smaller, nodes in front are brighter.
+// z runs from -300 (back) to +300 (front); depth maps to an opacity between 0.3 and 1.
+function depthOpacity(z) {
+    return 0.3 + 0.7 * ((z + 300) / 600);
+}
+
 function buildGraphNodes(count) {
     const nodes = [];
     for (let i = 0; i < count; i++) {
+        const z = (Math.random() - 0.5) * 600;
         nodes.push({
             id: i,
             category: GRAPH_CATEGORIES[i % GRAPH_CATEGORIES.length],
+            tone: pickGraphTone(),
             left: Math.random() * 100,
             top: Math.random() * 100,
-            z: (Math.random() - 0.5) * 400,
-            size: 4 + Math.random() * 5
+            z,
+            depth: depthOpacity(z),
+            size: 4 + Math.random() * 6
         });
     }
     return nodes;
@@ -33,7 +50,8 @@ function buildGraphLines(nodes, linksPerNode) {
         for (let k = 1; k <= linksPerNode; k++) {
             const target = nodes[(i + k * 3) % nodes.length];
             if (target === node) continue;
-            lines.push({ from: node, to: target, category: node.category });
+            const depth = depthOpacity((node.z + target.z) / 2);
+            lines.push({ from: node, to: target, category: node.category, tone: node.tone, depth });
         }
     });
     return lines;
@@ -54,6 +72,8 @@ function renderGraph(container, { nodeCount, opacity, is3D }) {
         const el = document.createElement('div');
         el.className = 'graph-line';
         el.dataset.category = line.category;
+        el.dataset.tone = line.tone;
+        el.style.setProperty('--depth', line.depth.toFixed(3));
         const dx = line.to.left - line.from.left;
         const dy = line.to.top - line.from.top;
         const length = Math.sqrt(dx * dx + dy * dy);
@@ -71,6 +91,8 @@ function renderGraph(container, { nodeCount, opacity, is3D }) {
         const el = document.createElement('div');
         el.className = 'graph-node';
         el.dataset.category = node.category;
+        el.dataset.tone = node.tone;
+        el.style.setProperty('--depth', node.depth.toFixed(3));
         el.style.left = node.left + '%';
         el.style.top = node.top + '%';
         el.style.width = node.size + 'px';
@@ -119,7 +141,7 @@ function setupNodeGraph() {
 
     backgroundGraph = renderGraph(bgContainer, {
         nodeCount: isMobileViewport ? 20 : 60,
-        opacity: isMobileViewport ? 0.2 : 0.35,
+        opacity: isMobileViewport ? 0.35 : 0.5,
         is3D: !isMobileViewport && !prefersReducedMotion
     });
 
@@ -159,26 +181,10 @@ function updateGraphHighlight(sectionId) {
     refreshGraphLit(Math.max(lastGraphFrame, 0));
 }
 
-let scanlineEl = null;
-
-function triggerScanline() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if (!scanlineEl) {
-        scanlineEl = document.createElement('div');
-        scanlineEl.id = 'scanline-overlay';
-        scanlineEl.setAttribute('aria-hidden', 'true');
-        document.body.appendChild(scanlineEl);
-    }
-    scanlineEl.classList.remove('scanline-active');
-    void scanlineEl.offsetWidth; // force reflow to restart the animation
-    scanlineEl.classList.add('scanline-active');
-}
-
 function setupScrollspy() {
     const navLinks = document.querySelectorAll('#sidebar-nav a[data-section]');
     if (!navLinks.length) return;
 
-    let lastActiveSection = null;
 
     const setActive = (sectionId) => {
         navLinks.forEach((link) => {
@@ -189,10 +195,6 @@ function setupScrollspy() {
             const activeIndex = Array.from(navLinks).findIndex((link) => link.dataset.section === sectionId);
             if (activeIndex !== -1) mobileNavSwiper.slideTo(activeIndex);
         }
-        if (lastActiveSection && lastActiveSection !== sectionId) {
-            triggerScanline();
-        }
-        lastActiveSection = sectionId;
     };
 
     const spyObserver = new IntersectionObserver((entries) => {
@@ -236,6 +238,9 @@ function setupMobileNavSwiper() {
 const resumeDataBilingual = {
     en: {
         title: 'QA Engineer / SDET',
+        heroLead: 'Quality engineering for regulated software: test automation, CI/CD and FDA-compliant validation.',
+        achievementsTitle: 'Key Achievements',
+        credentialsTitle: 'Credentials',
         professionalSummary: 'Professional Summary',
         closingTitle: "Let's Work Together",
         closingCopy: "Quality-focused engineering, delivered. If you're looking for an SDET who bridges the gap between development and reliability, let's talk.",
@@ -275,7 +280,7 @@ const resumeDataBilingual = {
                 ]
             },
             {
-                role: 'QA Engineer / SDET',
+                role: 'Software Quality Engineer II',
                 company: 'AspenTech',
                 location: 'Mexico City',
                 period: 'March 2021 – July 2024',
@@ -407,6 +412,9 @@ const resumeDataBilingual = {
     },
     es: {
         title: 'QA Engineer / SDET',
+        heroLead: 'Ingeniería de calidad para software regulado: automatización de pruebas, CI/CD y validación conforme a FDA.',
+        achievementsTitle: 'Logros clave',
+        credentialsTitle: 'Credenciales',
         professionalSummary: 'Resumen Profesional',
         closingTitle: 'Trabajemos Juntos',
         closingCopy: 'Ingeniería enfocada en calidad, entregada. Si buscas un SDET que conecte desarrollo y confiabilidad, hablemos.',
@@ -446,7 +454,7 @@ const resumeDataBilingual = {
                 ]
             },
             {
-                role: 'QA Engineer / SDET',
+                role: 'Software Quality Engineer II',
                 company: 'AspenTech',
                 location: 'Ciudad de México',
                 period: 'Marzo 2021 – Julio 2024',
@@ -618,6 +626,9 @@ function toggleLanguage() {
 function updateSectionTitles() {
     const data = getCurrentData();
     document.getElementById('job-title').textContent = data.title;
+    document.getElementById('hero-lead').textContent = data.heroLead;
+    document.getElementById('achievements-title').textContent = data.achievementsTitle;
+    document.getElementById('credentials-title').textContent = data.credentialsTitle;
     document.getElementById('summary-title').textContent = data.professionalSummary;
     document.getElementById('experience-title').textContent = data.experience;
     document.getElementById('education-title').textContent = data.education;
@@ -662,71 +673,6 @@ function renderAchievements() {
     });
 
     container.innerHTML = html;
-    setupCounterAnimations();
-}
-
-// Animated counters on key achievement metrics
-function setupCounterAnimations() {
-    const metrics = document.querySelectorAll('.achievement-metric');
-    if (!metrics.length) return;
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            const el = entry.target;
-            const match = el.textContent.trim().match(/^(\d+)(.*)$/);
-            counterObserver.unobserve(el);
-            if (!match) return;
-
-            const target = parseInt(match[1], 10);
-            const suffix = match[2];
-
-            if (prefersReducedMotion) {
-                el.textContent = target + suffix;
-                return;
-            }
-
-            const duration = 1200;
-            const start = performance.now();
-            const step = (now) => {
-                const progress = Math.min((now - start) / duration, 1);
-                el.textContent = Math.round(target * progress) + suffix;
-                if (progress < 1) requestAnimationFrame(step);
-            };
-            requestAnimationFrame(step);
-        });
-    }, { threshold: 0.5 });
-
-    metrics.forEach((el) => counterObserver.observe(el));
-}
-
-// Intersection Observer for conditional autoplay
-let experienceObserver;
-let experienceAutoplayStarted = false;
-
-function setupAutoplayObservers() {
-
-    // Observer for Experience Swiper
-    const experienceSection = document.querySelector('.experience-section');
-    if (experienceSection) {
-        experienceObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !experienceAutoplayStarted) {
-                    // User scrolled to experience section, start swiper autoplay
-                    const swiper = document.querySelector('.experience-swiper').swiper;
-                    if (swiper && swiper.autoplay) {
-                        swiper.autoplay.start();
-                        experienceAutoplayStarted = true;
-                    }
-                }
-            });
-        }, {
-            threshold: 0.3 // Trigger when 30% of section is visible
-        });
-
-        experienceObserver.observe(experienceSection);
-    }
 }
 
 // Initialize
@@ -755,8 +701,6 @@ document.addEventListener('DOMContentLoaded', () => {
     renderLanguages();
     renderExperience();
 
-    // Setup observers for conditional autoplay
-    setupAutoplayObservers();
     setupScrollspy();
     setupMobileNavSwiper();
 
@@ -769,197 +713,57 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-    document.querySelectorAll('.profile-section, .achievements-section, section').forEach((el) => {
+    document.querySelectorAll('.profile-section, .achievements-section, section, .credential-group').forEach((el) => {
         revealObserver.observe(el);
     });
 
     // Remove typing cursor after animation
     setTimeout(() => {
         document.querySelector('.name').classList.add('done');
-    }, 2000);
+    }, 1000);
 
     setTimeout(() => {
         document.querySelector('.title').classList.add('done');
-    }, 3400);
+    }, 1700);
 
-    // Once the contact icons finish popping in, bring them into view above
-    // the fixed mobile nav and focus them, so they're not left hidden below it
-    const contactIcons = document.querySelector('.contact-icons');
-    const lastIcon = contactIcons ? contactIcons.lastElementChild : null;
-    if (contactIcons && lastIcon) {
-        lastIcon.addEventListener('animationend', () => {
-            if (!window.matchMedia('(max-width: 768px)').matches) return;
-            contactIcons.setAttribute('tabindex', '-1');
-            contactIcons.scrollIntoView({ behavior: 'smooth', block: 'end' });
-            contactIcons.focus({ preventScroll: true });
-        }, { once: true });
-    }
 });
 
-// Summary Carousel (Swiper, same pattern as the Experience carousel)
-function wrapKaraokeForActiveSlide(swiperInstance) {
-    const activeSlide = swiperInstance.slides[swiperInstance.activeIndex];
-    if (!activeSlide) return;
-    const summaryItem = activeSlide.querySelector('.summary-item');
-    if (!summaryItem || summaryItem.hasAttribute('data-wrapped')) return;
-
-    const bulletTexts = summaryItem.querySelectorAll('.bullet-text');
-    bulletTexts.forEach(textWrapper => {
-        if (!textWrapper.hasAttribute('data-wrapped')) {
-            wrapLettersInSpans(textWrapper);
-            textWrapper.setAttribute('data-wrapped', 'true');
-        }
-    });
-    summaryItem.setAttribute('data-wrapped', 'true');
-}
-
+// Summary: static list (no carousel)
 function renderSummary() {
     const data = getCurrentData();
-    const container = document.getElementById('summary-carousel');
-    let html = '';
-
-    // Group items in pairs (2 items per page)
-    const itemsPerPage = 2;
-    const totalPages = Math.ceil(data.summaryItems.length / itemsPerPage);
-
-    for (let i = 0; i < totalPages; i++) {
-        html += '<div class="swiper-slide"><div class="summary-item"><ul class="summary-bullets">';
-
-        for (let j = 0; j < itemsPerPage; j++) {
-            const itemIndex = i * itemsPerPage + j;
-            if (itemIndex < data.summaryItems.length) {
-                html += '<li><span class="bullet-text">' + data.summaryItems[itemIndex] + '</span></li>';
-            }
-        }
-
-        html += '</ul></div></div>';
-    }
-
-    container.innerHTML = html;
-
-    // Destroy existing Swiper instance if it exists
-    const existingSwiper = document.querySelector('.summary-swiper').swiper;
-    if (existingSwiper) {
-        existingSwiper.destroy(true, true);
-    }
-
-    const swiperInstance = new Swiper('.summary-swiper', {
-        slidesPerView: 1,
-        speed: 600,
-        pagination: {
-            el: '.summary-swiper .swiper-pagination',
-            clickable: true
-        },
-        on: {
-            init: (instance) => wrapKaraokeForActiveSlide(instance),
-            slideChange: (instance) => wrapKaraokeForActiveSlide(instance)
-        }
-    });
+    document.getElementById('summary-list').innerHTML = data.summaryItems
+        .map((text) => '<li>' + text + '</li>')
+        .join('');
 }
 
-function wrapLettersInSpans(element) {
-    const text = element.textContent;
-    const words = text.split(' ');
-    element.innerHTML = '';
-
-    let letterIndex = 0;
-
-    words.forEach((word, wordIdx) => {
-        const wordSpan = document.createElement('span');
-        wordSpan.className = 'word';
-
-        for (let i = 0; i < word.length; i++) {
-            const span = document.createElement('span');
-            span.textContent = word[i];
-            span.className = 'letter';
-            span.style.animationDelay = (letterIndex * 0.025) + 's';
-            letterIndex++;
-            wordSpan.appendChild(span);
-        }
-
-        element.appendChild(wordSpan);
-
-        if (wordIdx < words.length - 1) {
-            element.appendChild(document.createTextNode(' '));
-        }
-    });
-}
-
-// Experience Carousel with Swiper
+// Experience: static list (no carousel, no autoplay)
 function renderExperience() {
     const data = getCurrentData();
-    const container = document.getElementById('experience-carousel');
+    const container = document.getElementById('experience-list');
     let html = '';
 
     data.experienceItems.forEach((item, index) => {
-        html += '<div class="swiper-slide">';
-        // Add 'current-job' class to first item (most recent position)
-        const isCurrentJob = index === 0;
-        const experienceClass = isCurrentJob ? 'experience-item current-job' : 'experience-item';
-        html += '<div class="' + experienceClass + '"><h3>' + item.role + '</h3>';
+        // Most recent position gets the distinctive "current job" styling
+        const experienceClass = index === 0 ? 'experience-item current-job' : 'experience-item';
+        html += '<article class="' + experienceClass + '"><h3>' + item.role + '</h3>';
         html += '<div class="company">' + item.company + ' • ' + item.location + '</div>';
         html += '<div class="meta">' + item.period + '</div><ul class="main-bullets">';
-
-        item.description.forEach(desc => {
+        item.description.forEach((desc) => {
             html += '<li>' + desc + '</li>';
         });
-
         html += '</ul>';
 
-        // Additional details are always shown inline — no expand/collapse toggle
         if (item.expandedDescription && item.expandedDescription.length > 0) {
             html += '<ul class="expanded-bullets">';
-
-            item.expandedDescription.forEach(desc => {
+            item.expandedDescription.forEach((desc) => {
                 html += '<li>' + desc + '</li>';
             });
-
             html += '</ul>';
         }
-
-        html += '</div></div>';
+        html += '</article>';
     });
 
     container.innerHTML = html;
-
-    // Destroy existing Swiper instance if it exists
-    const existingSwiper = document.querySelector('.experience-swiper').swiper;
-    if (existingSwiper) {
-        existingSwiper.destroy(true, true);
-    }
-
-    // Initialize Swiper with 3D Coverflow effect
-    // Note: autoplay will be started by Intersection Observer when section becomes visible
-    const swiperInstance = new Swiper('.experience-swiper', {
-        effect: 'coverflow',
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: 'auto',
-        loop: true,
-        speed: 1000,
-        coverflowEffect: {
-            rotate: 50,
-            stretch: 0,
-            depth: 200,
-            modifier: 1,
-            slideShadows: true
-        },
-        autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true // Pause when user hovers
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-            dynamicBullets: true
-        }
-    });
-
-    // Stop autoplay initially - will be started by Intersection Observer
-    if (swiperInstance.autoplay) {
-        swiperInstance.autoplay.stop();
-    }
 }
 
 // Education

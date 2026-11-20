@@ -1,4 +1,4 @@
-const CACHE = 'resume-v1';
+const CACHE = 'resume-v17';
 const ASSETS = [
     '/',
     '/index.html',
